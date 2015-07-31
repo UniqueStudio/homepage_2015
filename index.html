@@ -24,12 +24,33 @@
     <div class="XCenter rela" id="loadImgContainer">
         <img src="imgs/load1.jpg" id="load1">
         <div id="load2Container">
+            <canvas id="wave"></canvas>
             <img src="imgs/load2.jpg" id="load2" >
         </div>
     </div>
 
     <!--显示loading的脚本-->
     <script>
+        (function() {
+            var c = document.getElementById("wave");
+            var cxt = c.getContext("2d");
+            cxt.fillStyle="#f7f7f7";
+            var j = 0;
+            function draw(){
+                cxt.clearRect(0, 0, 330, 200);
+                cxt.beginPath();
+                for (var i = 0;i < 330;i += 10){
+                    cxt.lineTo(i, (Math.sin(i/10 + j)+1.2)*60);
+                }
+                cxt.lineTo(320, 0);
+                cxt.lineTo(0, 0);
+                cxt.lineTo(0, 20);
+                cxt.closePath();
+                cxt.fill();
+                j += 0.4;
+            }
+            window.wave = setInterval(function (){draw()}, 20);
+        })();
         (function() {
             var container = document.getElementById('loadImgContainer');
             function resizeLoadContainer() {
@@ -45,7 +66,8 @@
 
     <div class="XCenter rela" id="hoverImgContainer">
 
-        <img src="imgs/bg.jpg" srcset="imgs/bggrey.png 1400w, imgs/bggrey.png 2000w" id="bgImg">
+        <!--opera和safari不能用srcset-->
+        <img src="imgs/bggrey.png" srcset="imgs/bggrey.png 1400w, imgs/bggrey.png 2000w" id="bgImg">
         <img src="imgs/handle.jpg" class="hoverImgHandle" id="designImgHandle">
         <img src="imgs/design.svg" class="hoverImg" id="designImg">
 
@@ -71,7 +93,7 @@
     }
     document.getElementsByTagName('body')[0].onload = function() {
         $('#cover').css('opacity',0);
-
+        $('#load2Container').css('top','29%');
     }
 </script>
 </html>
