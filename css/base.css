@@ -13,4 +13,8 @@ html {
 body {
   overflow: hidden; }
 
+.nowrap{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 /*# sourceMappingURL=base.css.map */

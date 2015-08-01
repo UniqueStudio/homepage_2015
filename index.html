@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="css/common.css">
 </head>
 <body>
+    <section>
     <div id="cover">
     </div>
 
@@ -28,7 +29,16 @@
             <img src="imgs/load2.jpg" id="load2" >
         </div>
     </div>
+    <div class="XCenter rela" id="hoverImgContainer">
 
+        <!--opera和safari不能用srcset-->
+        <img src="imgs/bggrey.png" id="bgImg">
+        <img src="imgs/handle.jpg" class="hoverImgHandle" id="designImgHandle">
+        <img src="imgs/design.svg" class="hoverImg" id="designImg">
+
+
+    </div>
+        </section>
     <!--显示loading的脚本-->
     <script>
         (function() {
@@ -51,9 +61,23 @@
             }
             window.wave = setInterval(function (){draw()}, 20);
         })();
+        
         (function() {
             var container = document.getElementById('loadImgContainer');
+            var html = document.getElementsByTagName('html')[0];
             function resizeLoadContainer() {
+                if(html.offsetWidth/html.offsetHeight < 16/9) {
+                    var width = html.offsetHeight *16/9 +'px';
+                    container.style.width = width;
+                    var width = html.offsetHeight *16/9 +'px';
+                    document.getElementById('hoverImgContainer').style.width = width;
+                    document.getElementById('bgImg').style.width = width;
+                }
+                else {
+                    document.getElementById('hoverImgContainer').style.width = '100%';
+                    document.getElementById('bgImg').style.width = '100%';
+                    container.style.width = '100%';
+                }
                 container.style.height = Number(getComputedStyle(container).width.replace('px','')) * 0.5625 + 'px';
             }
             resizeLoadContainer();
@@ -64,15 +88,10 @@
         })();
     </script>
 
-    <div class="XCenter rela" id="hoverImgContainer">
 
-        <!--opera和safari不能用srcset-->
-        <img src="imgs/bggrey.png" srcset="imgs/bggrey.png 1400w, imgs/bggrey.png 2000w" id="bgImg">
-        <img src="imgs/handle.jpg" class="hoverImgHandle" id="designImgHandle">
-        <img src="imgs/design.svg" class="hoverImg" id="designImg">
-
-        <!--导航条-->
-        <nav class="XCenter" id="nav">
+    <!--导航条-->
+    <nav id="nav">
+        <div id="menu" class="iconfont">&#xe651;</div>
             <li><a>首页</a></li>
             <li><a>简介</a></li>
             <li><a>组别</a></li>
@@ -80,20 +99,31 @@
             <li><a>作品</a></li>
             <li><a>加入/联系</a></li>
             <li><a>Hackday</a></li>
-        </nav>
-    </div>
+        </div>
+    </nav>
+
+    <section id="introduction" class="mainBlock"></section>
+    <section id="group">
+
+    </section>
+    <section id="greatEvent"></section>
+    <section id="works"></section>
+    <section id="contact"></section>
 
 	<script src="js/jquery-1.11.3.js"></script>
 	<script src="js/main.js"></script>
 
 </body>
 <script>
+    <!--测使用-->
     if(document.readyState == 'complete'){
         $('#cover').css('opacity','0');
     }
     document.getElementsByTagName('body')[0].onload = function() {
         $('#cover').css('opacity',0);
         $('#load2Container').css('top','29%');
+        clearInterval(window.wave);
     }
+
 </script>
 </html>
