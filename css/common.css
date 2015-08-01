@@ -160,6 +160,8 @@ body {
   -ms-transition: top 1s; }
 
 .mainBlock {
+  overflow: hidden;
+  position: relative;
   height: 100%;
   width: 100%; }
 

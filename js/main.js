@@ -38,12 +38,26 @@ $('#menu').bind('click', function() {
     } else {
         $(this).css('transform', 'rotate(1800deg)');
         $(this).attr('status', 'unfolded');
-        $('#nav').css('width', '500px');
+        $('#nav').css('width', '510px');
     }
 });
 $('#main').bind('mousewheel DOMMouseScroll', function(e) {
+	var delta;
+	if(e.originalEvent.wheelDelta) {
+		if(e.originalEvent.wheelDelta > 0) {
+			delta = 100;
+		} else {
+			delta = -100;
+		}
+	} else {
+		if(e.originalEvent.detail > 0) {
+			delta = -100;
+		} else {
+			delta = 100;
+		}
+	}
 	var topStr = this.style.top.replace('%', '');
-	var topNum = Number(topStr) -100;
+	var topNum = Number(topStr) +delta;
 	$(this).css('top', topNum + '%');
 });
 
