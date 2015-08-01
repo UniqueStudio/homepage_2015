@@ -1,10 +1,9 @@
-.rela{
-  position: relative;
-}
+.rela {
+  position: relative; }
+
 .XCenter {
   margin-left: auto;
-  margin-right: auto;
-  }
+  margin-right: auto; }
 
 html {
   width: 100%;
@@ -13,8 +12,10 @@ html {
 body {
   overflow: hidden; }
 
-.nowrap{
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
+.nowrap {
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+/*# sourceMappingURL=base.css.map */
+
 /*# sourceMappingURL=base.css.map */

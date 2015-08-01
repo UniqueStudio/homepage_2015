@@ -18,104 +18,106 @@
     <link rel="stylesheet" type="text/css" href="css/common.css">
 </head>
 <body>
-    <section>
-    <div id="cover">
-    </div>
+	<div id="main" style="top: 0%">
+		<section class="mainBlock" style="overflow:hidden;position:relative">
+			<div>
+				<div id="cover">
+				</div>
 
-    <div class="XCenter rela" id="loadImgContainer">
-        <img src="imgs/load1.jpg" id="load1">
-        <div id="load2Container">
-            <canvas id="wave"></canvas>
-            <img src="imgs/load2.jpg" id="load2" >
-        </div>
-    </div>
-    <div class="XCenter rela" id="hoverImgContainer">
+				<div class="XCenter rela" id="loadImgContainer">
+					<img src="imgs/load1.jpg" id="load1">
+					<div id="load2Container">
+						<canvas id="wave"></canvas>
+						<img src="imgs/load2.jpg" id="load2" >
+					</div>
+				</div>
+				<div class="XCenter rela" id="hoverImgContainer">
 
-        <!--opera和safari不能用srcset-->
-        <img src="imgs/bggrey.png" id="bgImg">
-        <img src="imgs/handle.jpg" class="hoverImgHandle" id="designImgHandle">
-        <img src="imgs/design.svg" class="hoverImg" id="designImg">
+					<!--opera和safari不能用srcset-->
+					<img src="imgs/bggrey.png" id="bgImg">
+					<img src="imgs/handle.jpg" class="hoverImgHandle" id="designImgHandle">
+					<img src="imgs/design.svg" class="hoverImg" id="designImg">
+
+				</div>
+			</div>
+		</section>
+		<!--显示loading的脚本-->
+		<script>
+			(function() {
+				var c = document.getElementById("wave");
+				var cxt = c.getContext("2d");
+				cxt.fillStyle="#f7f7f7";
+				var j = 0;
+				function draw(){
+					cxt.clearRect(0, 0, 330, 200);
+					cxt.beginPath();
+					for (var i = 0;i < 330;i += 10){
+						cxt.lineTo(i, (Math.sin(i/10 + j)+1.2)*60);
+					}
+					cxt.lineTo(320, 0);
+					cxt.lineTo(0, 0);
+					cxt.lineTo(0, 20);
+					cxt.closePath();
+					cxt.fill();
+					j += 0.4;
+				}
+				window.wave = setInterval(function (){draw()}, 20);
+			})();
+			
+			(function() {
+				var container = document.getElementById('loadImgContainer');
+				var html = document.getElementsByTagName('html')[0];
+				function resizeLoadContainer() {
+					if(html.offsetWidth/html.offsetHeight < 16/9) {
+						var width = html.offsetHeight *16/9 +'px';
+						container.style.width = width;
+						var width = html.offsetHeight *16/9 +'px';
+						document.getElementById('hoverImgContainer').style.width = width;
+						document.getElementById('bgImg').style.width = width;
+					}
+					else {
+						document.getElementById('hoverImgContainer').style.width = '100%';
+						document.getElementById('bgImg').style.width = '100%';
+						container.style.width = '100%';
+					}
+					container.style.height = Number(getComputedStyle(container).width.replace('px','')) * 0.5625 + 'px';
+				}
+				resizeLoadContainer();
+				window.onresize = function() {
+						resizeLoadContainer();
+				};
+				//document.getElementById('load2').onload = function(){alert(1);}
+			})();
+		</script>
 
 
-    </div>
-        </section>
-    <!--显示loading的脚本-->
-    <script>
-        (function() {
-            var c = document.getElementById("wave");
-            var cxt = c.getContext("2d");
-            cxt.fillStyle="#f7f7f7";
-            var j = 0;
-            function draw(){
-                cxt.clearRect(0, 0, 330, 200);
-                cxt.beginPath();
-                for (var i = 0;i < 330;i += 10){
-                    cxt.lineTo(i, (Math.sin(i/10 + j)+1.2)*60);
-                }
-                cxt.lineTo(320, 0);
-                cxt.lineTo(0, 0);
-                cxt.lineTo(0, 20);
-                cxt.closePath();
-                cxt.fill();
-                j += 0.4;
-            }
-            window.wave = setInterval(function (){draw()}, 20);
-        })();
-        
-        (function() {
-            var container = document.getElementById('loadImgContainer');
-            var html = document.getElementsByTagName('html')[0];
-            function resizeLoadContainer() {
-                if(html.offsetWidth/html.offsetHeight < 16/9) {
-                    var width = html.offsetHeight *16/9 +'px';
-                    container.style.width = width;
-                    var width = html.offsetHeight *16/9 +'px';
-                    document.getElementById('hoverImgContainer').style.width = width;
-                    document.getElementById('bgImg').style.width = width;
-                }
-                else {
-                    document.getElementById('hoverImgContainer').style.width = '100%';
-                    document.getElementById('bgImg').style.width = '100%';
-                    container.style.width = '100%';
-                }
-                container.style.height = Number(getComputedStyle(container).width.replace('px','')) * 0.5625 + 'px';
-            }
-            resizeLoadContainer();
-            window.onresize = function() {
-                resizeLoadContainer();
-            };
-            //document.getElementById('load2').onload = function(){alert(1);}
-        })();
-    </script>
+		<!--导航条-->
+		<nav id="nav">
+			<div id="menu" class="iconfont">&#xe651;</div>
+			<li><a>首页</a></li>
+			<li><a>简介</a></li>
+			<li><a>组别</a></li>
+			<li><a>大事记</a></li>
+			<li><a>作品</a></li>
+			<li><a>加入/联系</a></li>
+			<li><a>Hackday</a></li>
+		</nav>
 
+		<section id="introduction" class="mainBlock" style="background:red">
+		</section>
+		<section id="group" class="mainBlock" style="background: yellow">
 
-    <!--导航条-->
-    <nav id="nav">
-        <div id="menu" class="iconfont">&#xe651;</div>
-            <li><a>首页</a></li>
-            <li><a>简介</a></li>
-            <li><a>组别</a></li>
-            <li><a>大事记</a></li>
-            <li><a>作品</a></li>
-            <li><a>加入/联系</a></li>
-            <li><a>Hackday</a></li>
-        </div>
-    </nav>
-
-    <section id="introduction" class="mainBlock"></section>
-    <section id="group">
-
-    </section>
-    <section id="greatEvent"></section>
-    <section id="works"></section>
-    <section id="contact"></section>
-
+		</section>
+		<section id="greatEvent" class="mainBlock"></section>
+		<section id="works" class="mainBlock"></section>
+		<section id="contact" class="mainBlock"></section>
+	</div>
 	<script src="js/jquery-1.11.3.js"></script>
 	<script src="js/main.js"></script>
 
 </body>
 <script>
-    <!--测使用-->
+    <!--测试用-->
     if(document.readyState == 'complete'){
         $('#cover').css('opacity','0');
     }

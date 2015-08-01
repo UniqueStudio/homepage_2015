@@ -41,3 +41,9 @@ $('#menu').bind('click', function() {
         $('#nav').css('width', '500px');
     }
 });
+$('#main').bind('mousewheel DOMMouseScroll', function(e) {
+	var topStr = this.style.top.replace('%', '');
+	var topNum = Number(topStr) -100;
+	$(this).css('top', topNum + '%');
+});
+
