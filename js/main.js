@@ -5,6 +5,8 @@
 define(function(require) {
 	require('jquery');
 	require('base');
+	var Data = require('./data');
+	console.log(Data);
 	$(document).ready(function() {
 	//为所有的透明图绑定事件，鼠标悬停：彩图出现，该图的形状变为彩图形状
 		(function () {
@@ -44,40 +46,16 @@ define(function(require) {
 		}
 	});
 	$(window).bind('mousewheel DOMMouseScroll keydown', function(e) {
-		if($('#main').attr('transforming') == 'true') return;
-		var delta;
-		if(e.originalEvent.wheelDelta) {
-			if(e.originalEvent.wheelDelta > 0) {
-				delta = 100;
-			} else {
-				delta = -100;
-			}
-		} else if(e.originalEvent.detail) {
-			if(e.originalEvent.detail > 0) {
-				delta = -100;
-			} else {
-				delta = 100;
-			}
-		} else {
-			switch(e.which){
-				case 40:
-					delta = -100;
-					break;
-				case 38:
-					delta = 100;
-			}
-		}
-		//判断是第一个或最后一个
-		if (delta < 0 && Global.block == 5 || delta > 0 && Global.block == 0) return;
-		var topStr = $('#main')[0].style.top.replace('%', '');
-		var topNum = Number(topStr) +delta;
-		$('#main').css('top', topNum + '%');
-		$('#main').attr('transforming', 'true');
-		Global.block += (delta > 0)? -1:1;
+		var funcName = Data.scrollFuncMapping[Data.block];
+		Data.scrollFunc[funcName](e);
 	});
+	
 	//绑定渐变结束事件,重新激活绑定的事件
-	$('#main').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
-		$(this).attr('transforming', 'false');
+	$('#main, #workSecContainer').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
+		Data.changing = false;
+	});
+	$('#cover').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
+			$(this).attr('style', 'display:none');
 	});
 
 
@@ -87,4 +65,6 @@ define(function(require) {
 		$('#load2Container').css('top','29%');
 		clearInterval(window.wave);
 	}
+
+	
 });

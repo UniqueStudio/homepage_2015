@@ -10,12 +10,6 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale; }
 
-#hover {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 0; }
-
 .hoverImg {
   display: none;
   animation: scales 0.5s ease-in-out infinite alternate;
@@ -46,10 +40,6 @@
 
 .hoverImg, .hoverImgHandle {
   position: absolute; }
-
-body {
-  width: 100%;
-  height: 100%; }
 
 @media screen and (max-aspect-ratio: 16 / 9) {
   #hoverImgContainer, #loadImgContainer {
@@ -83,14 +73,12 @@ body {
 #cover {
   background-color: #f7f7f7;
   position: fixed;
-  height: 100%;
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
   -ms-transition: opacity 1s;
   -o-transition: opacity 1s;
   transition: opacity 1s;
   opacity: 1;
-  width: 100%;
   z-index: 2; }
 
 #load1, #load2Container {
@@ -151,8 +139,6 @@ body {
 
 #main {
   position: relative;
-  width: 100%;
-  height: 100%;
   transition: top 1s;
   -o-transition: top 1s;
   -webkit-transition: top 1s;
@@ -187,5 +173,20 @@ body {
   -moz-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg); }
+
+.workBlock {
+  display: inline-block;
+  position: relative;
+  width: 20%;
+  height: 100%; }
+
+#workSecContainer {
+  transition: left 1s;
+  -ms-transition: left 1s;
+  -moz-transition: left 1s;
+  -webkit-transition: left 1s;
+  -o-transition: left 1s;
+  position: relative;
+  width: 500%; }
 
 /*# sourceMappingURL=common.css.map */
