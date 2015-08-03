@@ -11,6 +11,7 @@ define(function(require, exports, module) {
 	function scroll(e, param) {
 		//param中包括direction, quantity, target($), block
 		if(data.changing) return;
+		
 		var delta;
 		if(e.originalEvent.wheelDelta) {
 			if(e.originalEvent.wheelDelta > 0) {
@@ -31,10 +32,21 @@ define(function(require, exports, module) {
 					break;
 				case ((param.direction == 'y')? 38:37) :
 					delta = 100;
+					break;
+				default:
+					//如果不这么做,按其他键会导致不触发,但设置了后面内容
+					return;
 			}
 		}
-		//判断是第一个或最后一个
-		if (delta < 0 && data.block[param.block] == param.quantity || delta > 0 && data.block[param.block] == 0) return;
+
+		//判断是第一个或最后一个	
+		if(delta > 0 && data.block[param.block] == 0 || delta < 0 && data.block[param.block] == param.quantity) {
+			if(param.block == 'default') return;
+			param.target = $('#main');
+			param.block = 'default';
+			param.direction = 'y';
+		}
+
 		var topStr = param.target[0].style[((param.direction == 'y')? 'top':'left')].replace('%', '');
 		var topNum = Number(topStr) + delta;
 		param.target.css(((param.direction == 'y')? 'top':'left'), topNum + '%');
@@ -42,8 +54,8 @@ define(function(require, exports, module) {
 		data.block[param.block] += (delta > 0)? -1:1;
 	}
 	data.scrollFunc = {
-		'default': function(e) {scroll(e, {direction: 'y', quantity: 6, target: $('#main'), block: 'default'})},				
-		'works': function(e) {scroll(e, {direction: 'x', quantity: 5, target: $('#workSecContainer'), block: 'works'})},		
+		'default': function(e) {scroll(e, {direction: 'y', quantity: 5, target: $('#main'), block: 'default'})},				
+		'works': function(e) {scroll(e, {direction: 'x', quantity: 4, target: $('#workSecContainer'), block: 'works'})},		
 	};
 	data.scrollFuncMapping = ['default', 'default', 'default', 'default', 'works', 'default'];
 	module.exports = data;

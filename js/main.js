@@ -55,16 +55,13 @@ define(function(require) {
 		Data.changing = false;
 	});
 	$('#cover').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
-			$(this).attr('style', 'display:none');
+		$(this).attr('style', 'display:none');
 	});
-
 
 	//测试用
 	$('body')[0].onload = function() {
 		$('#cover').css('opacity',0);
 		$('#load2Container').css('top','29%');
 		clearInterval(window.wave);
-	}
-
-	
+	}	
 });
