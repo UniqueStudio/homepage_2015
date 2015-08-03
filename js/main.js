@@ -46,7 +46,7 @@ define(function(require) {
 		}
 	});
 	$(window).bind('mousewheel DOMMouseScroll keydown', function(e) {
-		var funcName = Data.scrollFuncMapping[Data.block];
+		var funcName = Data.scrollFuncMapping[Data.block['default']];
 		Data.scrollFunc[funcName](e);
 	});
 	
