@@ -59,9 +59,10 @@ define(function(require) {
 	});
 
 	//测试用
-	$('body')[0].onload = function() {
+	$(document).ready(function() {
 		$('#cover').css('opacity',0);
 		$('#load2Container').css('top','29%');
 		clearInterval(window.wave);
-	}	
+		Data.isActive = true;
+	});	
 });

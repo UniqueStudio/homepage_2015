@@ -1,6 +1,8 @@
 define(function(require, exports, module) {
 	require('jquery');
 	var data = {};
+	//以防在没加载完就开始滚动
+	data.isActive = false;
 	data.changing = false;
 	data.block = {
 		'default': 0,
@@ -10,7 +12,7 @@ define(function(require, exports, module) {
 	}
 	function scroll(e, param) {
 		//param中包括direction, quantity, target($), block
-		if(data.changing) return;
+		if(data.changing || data.isActive == false) return;
 		
 		var delta;
 		if(e.originalEvent.wheelDelta) {
