@@ -55,6 +55,14 @@ define(function(require) {
 	$('#cover').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
 		$(this).attr('style', 'display:none');
 	});
+	$('.navList').bind('click', function() {
+		if(Data.changing || Data.isActive == false) return;
+		var top = $(this).attr('value');
+		$('#main').css('top', top);
+		Data.changing = true;
+		var data = Number($(this).attr('value').replace('%', '').replace('-', '')) / 100;
+		Data.block['default'] = data;
+	});
 
 	//测试用
 	$(document).ready(function() {
