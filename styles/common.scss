@@ -1,0 +1,235 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('../fonts/iconfont.eot'), url('../fonts/iconfont.woff') format("woff"), url('../fonts/iconfont.ttf') format("truetype"), url('../fonts/iconfont.svg#iconfont') format("svg");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.hoverImg {
+  display: none;
+  animation: scales 0.5s ease-in-out infinite alternate;
+  -webkit-animation: scales 0.5s ease-in-out infinite alternate;
+  -o-animation: scales 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes scales {
+  from {
+    transform: scale(0.98);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@-moz-keyframes scales {
+  from {
+    -moz-transform: scale(0.98);
+    transform: scale(0.98);
+  }
+
+  to {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes scales {
+  from {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.hoverImgHandle {
+  z-index: 1;
+}
+
+.hoverImg, .hoverImgHandle {
+  position: absolute;
+}
+
+@media screen and (max-aspect-ratio: 16 / 9) {
+  #hoverImgContainer, #loadImgContainer {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    height: 100%;
+  }
+
+  #bgImg {
+    height: 100%;
+    width: auto;
+  }
+}
+
+@media screen and (min-aspect-ratio: 16 / 9) {
+  #hoverImgContainer, #loadImgContainer {
+    position: absolute;
+    width: 100%;
+  }
+
+  #bgImg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+
+#hoverImgContainer {
+  z-index: 1;
+}
+
+#loadImgContainer {
+  z-index: 4;
+}
+
+/*#bgImg{ display: block; margin-left: -50%; left: 50%; position: relative}*/
+
+#cover {
+  background-color: #f7f7f7;
+  position: fixed;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -ms-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+  opacity: 1;
+  z-index: 2;
+}
+
+#load1, #load2Container {
+  position: absolute;
+  z-index: 102;
+  width: 29%;
+  left: 35%;
+  bottom: 47%;
+}
+
+#load2 {
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+}
+
+#load2Container {
+  overflow: hidden;
+  top: 53%;
+  z-index: 101;
+ -webkit-transition: top 0.5s linear;
+  -moz-transition: top 0.5s linear;
+  -ms-transition: top 0.5s linear;
+  -o-transition: top 0.5s linear;
+  transition: top 0.5s linear;
+}
+
+#wave {
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  z-index: 2;
+}
+
+/*导航条*/
+
+#nav {
+  z-index: 100;
+  position: fixed;
+  top: 3.5%;
+  right: 10%;
+  height: 34px;
+  overflow: hidden;
+  width: 32px;
+  -webkit-transition: width 1s;
+  -moz-transition: width 1s;
+  -ms-transition: width 1s;
+  -o-transition: width 1s;
+  transition: width 1s;
+
+  li {
+    margin: 10px;
+    display: inline-block;
+  }
+}
+
+#menu {
+  float: right;
+  line-height: 40px;
+  font-size: 2em;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+}
+
+#main{
+	position: relative;	
+	transition: top 1s;
+	-o-transition: top 1s;
+	-webkit-transition: top 1s;
+	-moz-transition: top 1s;
+	-ms-transition: top 1s;
+}
+.mainBlock{
+	overflow: hidden;
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+#works aside{
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	-o-transform: translate(0, -50%);
+	-moz-transform: translate(0, -50%);
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+}
+#worksArrowUp{
+	transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+}
+#worksArrowDown{
+	transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+}
+
+.workBlock{
+	display: inline-block;
+	position:relative;
+	width: 20%;
+	height:100%;
+}
+#workSecContainer{
+	transition: left 1s;
+	-ms-transition: left 1s;
+	-moz-transition: left 1s;
+	-webkit-transition: left 1s;
+	-o-transition: left 1s;
+	position:relative;
+	width: 500%;
+}
