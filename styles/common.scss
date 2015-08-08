@@ -1,6 +1,7 @@
+$scrollTime : 1s;
 @font-face {
   font-family: 'iconfont';
-  src: url('../fonts/iconfont.eot'), url('../fonts/iconfont.woff') format("woff"), url('../fonts/iconfont.ttf') format("truetype"), url('../fonts/iconfont.svg#iconfont') format("svg");
+  src: url('//at.alicdn.com/t/font_1438943391_3158083.eot'), url('//at.alicdn.com/t/font_1438943391_3158083.woff') format("woff"), url('//at.alicdn.com/t/font_1438943391_3158083.ttf') format("truetype"), url('//at.alicdn.com/t/font_1438943391_3158083.svg#iconfont') format("svg");
 }
 
 .iconfont {
@@ -181,11 +182,11 @@
 
 #main{
 	position: relative;	
-	transition: top 1s;
-	-o-transition: top 1s;
-	-webkit-transition: top 1s;
-	-moz-transition: top 1s;
-	-ms-transition: top 1s;
+	transition: top $scrollTime;
+	-o-transition: top $scrollTime;
+	-webkit-transition: top $scrollTime;
+	-moz-transition: top $scrollTime;
+	-ms-transition: top $scrollTime;
 }
 .mainBlock{
 	overflow: hidden;
@@ -193,31 +194,129 @@
 	height: 100%;
 	width: 100%;
 }
-
-#works aside{
+#groupCover{
+	height: 100%;
 	position: absolute;
-	top: 50%;
-	transform: translate(0, -50%);
-	-o-transform: translate(0, -50%);
-	-moz-transform: translate(0, -50%);
-	-webkit-transform: translate(0, -50%);
-	-ms-transform: translate(0, -50%);
+	left: 10%;
+	overflow: hidden;
 }
-#worksArrowUp{
+#group aside{
+	text-align: center;	
+	margin-left: 5%;
+}
+#groupArrowUp{
 	transform: rotate(-90deg);
 	-o-transform: rotate(-90deg);
 	-moz-transform: rotate(-90deg);
 	-webkit-transform: rotate(-90deg);
 	-ms-transform: rotate(-90deg);
 }
-#worksArrowDown{
+
+#groupArrowDown{
 	transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	-moz-transform: rotate(90deg);
 	-webkit-transform: rotate(90deg);
 	-ms-transform: rotate(90deg);
 }
+#dim{
+	//background-image: -webkit-linear-gradient(left,rgba(255, 255, 1, 0) %0 ,rgba(255,255,255,0) 100%);
+	z-index: 2;
+	background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%,rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0) 100%);
+	background-image: linear-gradient(left, rgba(255, 255, 255, 1) 0%,rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0) 100%);
+	background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%,rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0) 100%);
+	background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1) 0%,rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0) 100%);
+	background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 0%,rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0) 100%);
+	height:100%;
+	width: 4%;
+	position: absolute;
+}
+#groupImgContainer{
+	position: relative;
+	height: 100%;
+	left: 9%;
+	width: 295%;	
+	transform: translate(-75%,0);
+	-ms-transform: translate(-75%,0);
+	-moz-transform: translate(-75%,0);
+	-webkit-transform: translate(-75%,0);
+	-o-transform: translate(-75%,0);
 
+	transition: all $scrollTime;
+	-ms-transition: all $scrollTime;
+	-moz-transition: all $scrollTime;
+	-webkit-transition: all $scrollTime;
+	-o-transition: all $scrollTime;
+	//overflow: hidden;
+}
+.groupImg{
+	width: 25%;
+	position: relative;
+	float: right;
+	opacity: 0;
+	transition: all $scrollTime;
+	-ms-transition: all $scrollTime;
+	-moz-transition: all $scrollTime;
+	-webkit-transition: all $scrollTime;
+	-o-transition: all $scrollTime;
+}
+#groupImg1{
+	opacity: 1;
+}
+#groupName{
+	position: relative;
+	height: 20px;
+	//
+}
+#groupMoveContainer{
+	position: absolute;
+	left: 50%;
+	white-space: nowrap;
+	transition: all $scrollTime;
+	-ms-transition: all $scrollTime;
+	-moz-transition: all $scrollTime;
+	-webkit-transition: all $scrollTime;
+	-o-transition: all $scrollTime;
+}
+.dot{
+	margin-top: 128%;
+	margin-bottom: 128%;
+	font-size: 3px;
+}
+#intrContent{
+	word-wrap: break-word; 
+	word-break: normal; 
+	padding-left: 20%;
+	padding-right: 20%;
+}
+.groupIntr{
+	width: 100%;
+	//height: 30%;
+	
+}
+.groupNameContainer{
+	width: 55px;
+	display: inline-block;
+	text-align: center;
+	opacity: 0;
+	transition: all $scrollTime;
+	-ms-transition: all $scrollTime;
+	-moz-transition: all $scrollTime;
+	-webkit-transition: all $scrollTime;
+	-o-transition: all $scrollTime;
+}
+#groupNameContainer1{
+	opacity: 1;
+}
+.groupBlock{
+	position: relative;
+	height: 100%;
+	width: 50%;
+	display: inline-block;
+}
+#groupRight{
+	background-color: #ACDBEF;
+}
 .workBlock{
 	display: inline-block;
 	position:relative;
@@ -225,11 +324,11 @@
 	height:100%;
 }
 #workSecContainer{
-	transition: left 1s;
-	-ms-transition: left 1s;
-	-moz-transition: left 1s;
-	-webkit-transition: left 1s;
-	-o-transition: left 1s;
+	transition: left $scrollTime;
+	-ms-transition: left $scrollTime;
+	-moz-transition: left $scrollTime;
+	-webkit-transition: left $scrollTime;
+	-o-transition: left $scrollTime;
 	position:relative;
 	width: 500%;
 }

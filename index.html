@@ -10,12 +10,17 @@
     <meta name="discription" content="联创队团是华中科技大学由学生自发组织自主实践自行运营的IT团队">
     <meta name="discription" content="联创团队网站提供了团队的所有基本信息，包括团队简介，团队作品，团队招新和联系方式">
     <script src="scripts/judgeBrowser.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="styles/cssreset-min.css">
-    <link rel="stylesheet" type="text/css" href="styles/cssbase-min.css">
-    <link rel="stylesheet" type="text/css" href="styles/base.css">
-    <link rel="stylesheet" type="text/css" href="styles/index.css">
-    <link rel="stylesheet" type="text/css" href="styles/common.css">
+     
+
+	
+	
+	<link rel="stylesheet"  href="styles/main.css">
+
+	<link rel="stylesheet"  href="styles/cssreset-min.css">
+	<link rel="stylesheet"  href="styles/cssbase-min.css">
+	<link rel="stylesheet"  href="styles/base.css">
+	<link rel="stylesheet"  href="styles/index.css">
+	<link rel="stylesheet"  href="styles/common.css">
 </head>
 <body class="full">
 	<div id="main" style="top: 0%" class="full">
@@ -102,16 +107,49 @@
 
 		<section id="introduction" class="mainBlock" style="background:red" onload="alert(1)">
 		</section>
-		<section id="group" class="mainBlock" style="background: yellow">
-			<img src="images/bg1920.jpg" width="0px" height="0px"onload="processing(18)">
-			<img src="images/bg.jpg" width="0px" height="0px"onload="processing(18)">
-		</section>
+		<section id="group" class="mainBlock">
+			
+			<div id="groupLeft" class="groupBlock">
+				<aside id="groupAside" class="YCenter">
+					<div class="iconfont" id="groupArrowUp">&#xe601;</div>
+					<div class="iconfont dot" id="">&#xe604;</div>
+					<div class="iconfont dot" id="">&#xe603;</div>
+					<div class="iconfont dot" id="">&#xe603;</div>
+					<div class="iconfont dot" id="">&#xe603;</div>
+					<div class="iconfont dot" id="">&#xe603;</div>
+					<div class="iconfont dot" id="">&#xe603;</div>
+					<div class="iconfont" id="groupArrowDown">&#xe601;</div>
+				</aside>
+				<div id="groupCover">
+					<div id="dim">
+					</div>
+					<div id="groupImgContainer">
+						<img class="groupImg YCenter" src="images/xiniu.jpg" id="groupImg1">
+						<img class="groupImg YCenter" src="images/xiniu.jpg">
+						<img class="groupImg YCenter" src="images/xiniu.jpg">
+						<img class="groupImg YCenter" src="images/xiniu.jpg">
+					</div>
+				</div>
+			</div
+			><div id="groupRight" class="groupBlock">
+				<div class="groupIntr YCenter">
+					<div id="groupName">
+						<div id="groupMoveContainer">
+							<span class="groupNameContainer" id="groupNameContainer1"><span>Web</span></span>
+							<span class="groupNameContainer"><span>Android</span></span>
+							<span class="groupNameContainer"><span>IOS</span></span>
+							<span class="groupNameContainer"><span>Design</span></span>
+						</div>
+					</div>
+					<div id="intrContent">
+						hahahdsadadasdsadsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssa
+					</div>
+				</div>
+			</div	
+		></section>
 		<section id="greatEvent" class="mainBlock" style="background:green"onload="processing(18)"></section>
 		<section id="works" class="mainBlock" style="background: grey;"onload="processing(18)">
-			<aside>
-				<div class="iconfont" id="worksArrowUp">&#xe61a;</div>
-				<div class="iconfont" id="worksArrowDown">&#xe61a;</div>
-			</aside>
+			
 			<div id="workSecContainer" class="full" style="left: 0%" block=0>
 				<!--为了解决内联元素之间由空格和换行造成的空隙,也可设置字体为零,但会影响真实文字,故不采用-->
 				 <section class="workBlock">1</section	
@@ -125,7 +163,7 @@
 	</div>
 	<!--导航条-->
 		<nav id="nav">
-			<div><a href="javascript:void(0)" id="menu" class="iconfont">&#xe651;</a></div>
+			<div><a href="javascript:void(0)" id="menu" class="iconfont">&#xe602;</a></div>
 			<li><a href="javascript:void(0)" class="navList" value="0">首页</a></li>
 			<li><a href="javascript:void(0)" class="navList" value="-100%">简介</a></li>
 			<li><a href="javascript:void(0)" class="navList" value="-200%">组别</a></li>
@@ -134,17 +172,11 @@
 			<li><a href="javascript:void(0)" class="navList" value="-500%">加入/联系</a></li>
 			<li><a>Hackday</a></li>
 		</nav>
-	<script src="bower_components/seajs/dist/sea.js"></script>
-	<script>
-		seajs.config({
-			base: "",
-			alias: {
-			"jquery": "bower_components/jquery/dist/jquery.js",
-			}
-		});
-		// 加载入口模块
-		seajs.use("scripts/main");
-	</script>
+	
+		<script src="/bower_components/seajs/dist/sea.js"></script>
+
+		<script src="scripts/main.js"></script>
+		<script src="scripts/cloud.js"></script>
 
 </body>
 </html>
