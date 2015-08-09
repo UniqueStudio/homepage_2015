@@ -14,7 +14,6 @@
 
 	
 	
-	<link rel="stylesheet"  href="styles/main.css">
 
 	<link rel="stylesheet"  href="styles/cssreset-min.css">
 	<link rel="stylesheet"  href="styles/cssbase-min.css">
@@ -170,17 +169,82 @@
 		</section>
 		<section id="contact" class="mainBlock" style="background: black"onload="processing(18)"></section>
 	</div>
-	<!--导航条-->
-		<nav id="nav">
-			<div><a href="javascript:void(0)" id="menu" class="iconfont">&#xe602;</a></div>
-			<li><a href="javascript:void(0)" class="navList" value="0">首页</a></li>
-			<li><a href="javascript:void(0)" class="navList" value="-100%">简介</a></li>
-			<li><a href="javascript:void(0)" class="navList" value="-200%">组别</a></li>
-			<li><a href="javascript:void(0)" class="navList" value="-300%">大事记</a></li>
-			<li><a href="javascript:void(0)" class="navList" value="-400%">作品</a></li>
-			<li><a href="javascript:void(0)" class="navList" value="-500%">加入/联系</a></li>
-			<li><a>Hackday</a></li>
+		<nav id="nav" ischanging="false">
+			<div id="logo"></div>
+			<div id="navFlex"></div>
+			<div id="listContainer">
+				<span class="li">
+					<a href="javascript:void(0)" class="navList sin" value="0%">
+						<span class="listCon lanting">首页</span>
+						<div class="clapboard"></div>
+						<div class="listPicContainer">
+							<img src="images/home.jpg" class="listPic">
+						</div>
+					</a>
+				</span
+				><span class="li">
+					<a href="javascript:void(0)" class="navList dou" value="-100%">
+						<span class="listCon">简介</span>
+						<div class="clapboard"></div>
+						<div class="listPicContainer">
+							<img src="images/home.jpg" class="listPic">
+						</div>
+					</a>
+				</span
+				><span class="li">
+				<a href="javascript:void(0)" class="navList sin" value="-200%">
+					<span class="listCon">组别</span>
+					<div class="clapboard"></div>
+					<div class="listPicContainer">
+						<img src="images/home.jpg" class="listPic">
+					</div>
+				</a>
+				</span
+				><span class="li">
+				<a href="javascript:void(0)" class="navList dou" value="-300%">
+					<span class="listCon">大事记</span>
+					<div class="clapboard"></div>
+					<div class="listPicContainer">
+						<img src="images/home.jpg" class="listPic">
+					</div>
+				</a>
+				</span
+				><span class="li">
+				<a href="javascript:void(0)" class="navList sin" value="-400%">
+					<span class="listCon">作品</span>
+					<div class="clapboard"></div>
+					<div class="listPicContainer">
+						<img src="images/home.jpg" class="listPic">
+					</div>
+				</a>
+				</span
+				><span class="li">
+				<a href="javascript:void(0)" class="navList dou" value="-500%">
+					<span class="listCon">HackDay</span>
+					<div class="clapboard"></div>
+					<div class="listPicContainer">
+						<img src="images/home.jpg" class="listPic">
+					</div>
+				</a>
+				</span
+				><span class="li">
+				<a href="javascript:void(0)" class="navList sin" value="-500%">
+					<span class="listCon">加入</span>
+					<div class="clapboard"></div>
+					<div class="listPicContainer">
+						<img src="images/home.jpg" class="listPic">
+					</div>
+				</a>
+				</span
+				><a href="javascript:void(0)" id="menuInNav" class="iconfont" style="border-bottom: 1px solid #DBD9D9;background-color: white;">
+					<span style="margin:14px;display:inline-block;line-height:21px;font-size:22px" >&#xe605;
+					</span>
+				</a>
+			</div>
 		</nav>
+		<a id="menu" href="javascript:void(0)">
+			<div id="menuCenter" class="iconfont">&#xe605;</div>
+		</a>
 	
 		<script src="/bower_components/seajs/dist/sea.js"></script>
 

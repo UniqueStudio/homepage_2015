@@ -69,6 +69,7 @@ define(function(require, exports, module) {
 				var topStr = $('#main')[0].style['top'].replace('%', '');
 				var topNum = Number(topStr) + param.delta * 100;
 				$('#main').css('top', topNum + '%');
+				console.log(topStr);
 			});
 		},				
 

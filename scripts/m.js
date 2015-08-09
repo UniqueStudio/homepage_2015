@@ -33,16 +33,35 @@ define(function(require) {
 		}
 	});*/
 	$('#menu').bind('click', function() {
-		if($(this).attr('status') && $(this).attr('status') == 'unfolded') {
-			$(this).css('transform', 'rotate(0deg)');
-			$(this).attr('status', 'folded');
-			$('#nav').css('width', '32px');
-		} else {
-			$(this).css('transform', 'rotate(1800deg)');
-			$(this).attr('status', 'unfolded');
-			$('#nav').css('width', '525px');
-		}
+		if($('#nav').attr('ischanging') == 'true') return;	
+		$('#nav').css(
+			'transform','translate(0,0)',
+			'-o-transform','translate(0,0)',
+			'-moz-transform','translate(0,0)',
+			'-ms-transform','translate(0,0)',
+			'-webkit-transform','translate(0,0)'
+		);
+		$('#nav').attr('ischanging', 'true');
+		$(this).css('display','none');
 	});
+
+	$('#nav').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
+		$(this).attr('ischanging', 'false');
+	});
+
+	$('#menuInNav').bind('click', function() {
+		if($('#nav').attr('ischanging') == 'true') return;	
+		$('#nav').css(
+			'transform','translate(0,-100%)',
+			'-o-transform','translate(0,-100%)',
+			'-moz-transform','translate(0,-100%)',
+			'-ms-transform','translate(0,-100%)',
+			'-webkit-transform','translate(0,-100%)'
+		);
+		$('#nav').attr('ischanging', 'true');
+		$('#menu').css('display','block');
+	});
+
 	$(window).bind('mousewheel DOMMouseScroll keydown', function(e) {
 		var funcName = Data.scrollFuncMapping[Data.block['default']];
 		Data.scrollFunc[funcName](e);
@@ -56,13 +75,25 @@ define(function(require) {
 		$(this).attr('style', 'display:none');
 	});
 	$('.navList').bind('click', function() {
+		console.log(Data.changing);
 		if(Data.changing || Data.isActive == false) return;
 		var top = $(this).attr('value');
 		$('#main').css('top', top);
-		Data.changing = true;
 		var data = Number($(this).attr('value').replace('%', '').replace('-', '')) / 100;
+		//判断是否不需要移动
+		if (Data.block['default'] == data) return;
+
+		Data.changing = true;
 		Data.block['default'] = data;
 	});
+
+	/*$('.navList').bind('mouseover', function() {
+		$(this).css('transform')
+		$(this).css({
+			//opacity:0,
+			transform: "rotateX(360deg)"
+		});
+	});*/
 	$('.dot').bind('click', function() {
 
 	});
