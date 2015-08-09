@@ -63,6 +63,9 @@ define(function(require) {
 		var data = Number($(this).attr('value').replace('%', '').replace('-', '')) / 100;
 		Data.block['default'] = data;
 	});
+	$('.dot').bind('click', function() {
+
+	});
 
 	//测试用
 	$(document).ready(function() {

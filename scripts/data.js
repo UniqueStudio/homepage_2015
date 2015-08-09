@@ -13,7 +13,6 @@ define(function(require, exports, module) {
 	}
 
 	function scroll(e, param, handler) {
-		console.log(data.changing);
 		//param中包括direction, quantity, block
 		if(data.changing || data.isActive == false) return;
 		
@@ -44,8 +43,8 @@ define(function(require, exports, module) {
 					return;
 			}
 		}
-		console.log(delta);
 
+		console.log(data.block['group']);
 		//判断是第一个或最后一个	
 		if(delta > 0 && data.block[param.block] == 0 || delta < 0 && data.block[param.block] == param.quantity) {
 			if(param.block == 'default') return;
@@ -74,19 +73,19 @@ define(function(require, exports, module) {
 		},				
 
 		'group': function(e) {
-			scroll(e, {quantity: 3, block: 'group'}, function(param) {
+			scroll(e, {quantity: 5, block: 'group'}, function(param) {
 				var value = ( - param.delta + data.block['group'] - param.quantity) / (param.quantity + 1) * 100;
 				$('#groupImgContainer').css('transform', 'translate('+value+'%,0)');
 				$('#groupImgContainer').children()[data.block['group']].style.opacity = 0;
 				$('#groupImgContainer').children()[data.block['group'] - param.delta].style.opacity = 1;
 
-				var value_title = (  param.delta - data.block['group']) / (param.quantity + 1) * 100;
+				var value_title = (-0.5+  param.delta - data.block['group']) / (param.quantity + 1) * 100;
 				$('#groupMoveContainer').css('transform', 'translate('+value_title+'%,0)');
 				$('#groupMoveContainer').children()[data.block['group']].style.opacity = 0;
 				$('#groupMoveContainer').children()[data.block['group'] - param.delta].style.opacity = 1;
 				
-				$('#groupAside').children()[data.block['group'] + 1].innerHTML = '&#xe603';
-				$('#groupAside').children()[data.block['group'] + 1 -param.delta].innerHTML = '&#xe604';
+				$('#groupAside').children()[data.block['group'] + 1].childNodes[0].innerHTML = '&#xe603';
+				$('#groupAside').children()[data.block['group'] + 1 -param.delta].childNodes[0].innerHTML = '&#xe604';
 
 			});
 		},

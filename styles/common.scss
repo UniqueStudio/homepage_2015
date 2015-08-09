@@ -203,6 +203,7 @@ $scrollTime : 1s;
 #group aside{
 	text-align: center;	
 	margin-left: 5%;
+	z-index:3;
 }
 #groupArrowUp{
 	transform: rotate(-90deg);
@@ -231,16 +232,110 @@ $scrollTime : 1s;
 	width: 4%;
 	position: absolute;
 }
+#suspension{
+	position: absolute;
+	z-index:3;
+	//background-color: grey;
+}
+
+//-------------漂浮动画开始-------------
+@keyframes YMove {
+  from {
+    transform: translate(0, -20%);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+@-moz-keyframes YMove {
+  from {
+    -moz-transform: translate(0, -20%);
+    transform: translate(0, -20%);
+  }
+
+  to {
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@-webkit-keyframes YMove {
+  from {
+    -webkit-transform: translate(0, -20%);
+    transform: translate(0, -20%);
+  }
+
+  to {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes RotateR {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes RotateR {
+  from {
+    -moz-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  to {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes RotateR {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+#suspension{
+	display: none;
+	animation: YMove 5s ease-in-out infinite alternate;
+	-webkit-animation: YMove 5s ease-in-out infinite alternate;
+	-o-animation: YMove 5s ease-in-out infinite alternate;
+}
+
+.rotateR{
+	animation: RotateR 5s linear infinite;
+	-webkit-animation: RotateR 5s linear infinite;
+	-o-animation: RotateR 5s linear infinite;
+}
+
+@media screen and (max-aspect-ratio:8/3) and (min-width:600px) and (min-height:500px){ 
+	#suspension{
+		display: block;
+	}
+}
+
+.animation{
+	position: absolute;
+}
+//-------------漂浮动画结束-------------
 #groupImgContainer{
 	position: relative;
 	height: 100%;
 	left: 9%;
-	width: 295%;	
-	transform: translate(-75%,0);
-	-ms-transform: translate(-75%,0);
-	-moz-transform: translate(-75%,0);
-	-webkit-transform: translate(-75%,0);
-	-o-transform: translate(-75%,0);
+	width: 442.5%;	
+	transform: translate(-83.333333%,0);
+	-ms-transform: translate(-83.333333%,0);
+	-moz-transform: translate(-83.333333%,0);
+	-webkit-transform: translate(-83.333333%,0);
+	-o-transform: translate(-83.333333%,0);
 
 	transition: all $scrollTime;
 	-ms-transition: all $scrollTime;
@@ -250,7 +345,7 @@ $scrollTime : 1s;
 	//overflow: hidden;
 }
 .groupImg{
-	width: 25%;
+	width: 16.66666667%;
 	position: relative;
 	float: right;
 	opacity: 0;
@@ -266,7 +361,13 @@ $scrollTime : 1s;
 #groupName{
 	position: relative;
 	height: 20px;
-	//
+}
+#groupNameLine{
+	background-color: #333333;
+	height: 3px;
+	position: absolute;
+	width: 20px;
+	top: -5px;	
 }
 #groupMoveContainer{
 	position: absolute;
@@ -277,6 +378,12 @@ $scrollTime : 1s;
 	-moz-transition: all $scrollTime;
 	-webkit-transition: all $scrollTime;
 	-o-transition: all $scrollTime;
+
+	transform: translate(-8.333333%, 0);
+	-moz-transform: translate(-8.333333%, 0);
+	-o-transform: translate(-8.333333%, 0);
+	-webkit-transform: translate(-8.333333%, 0);
+	-ms-transform: translate(-8.333333%, 0);
 }
 .dot{
 	margin-top: 128%;
@@ -295,7 +402,7 @@ $scrollTime : 1s;
 	
 }
 .groupNameContainer{
-	width: 55px;
+	width: 72px;
 	display: inline-block;
 	text-align: center;
 	opacity: 0;
