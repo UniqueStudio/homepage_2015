@@ -36,6 +36,7 @@ define(function(require, exports, module) {
 			},
 		'group': 
 			function(param) {
+				/*
 				var value = ( param.loca - param.quantity) / (param.quantity + 1) * 100;
 				$('#groupImgContainer').css('transform', 'translate('+value+'%,0)');
 				$('.groupImg[value=' + data.block['group'] + ']').css('opacity' ,0);
@@ -44,10 +45,13 @@ define(function(require, exports, module) {
 				var value_title = (-0.5 - param.loca ) / (param.quantity + 1) * 100;
 				$('#groupMoveContainer').css('transform', 'translate('+value_title+'%,0)');	
 				$('.groupNameContainer[value=' + data.block['group'] + ']').css('opacity' ,0);
-				$('.groupNameContainer[value=' + param.loca + ']').css('opacity' ,1);
-				
+				$('.groupNameContainer[value=' + param.loca + ']').css('opacity' ,1);	
+				*/
+
+				$('#groupImgContainer').css('top', '-' + param.loca + '00%');	
 				$('.dot[value=' + data.block['group'] + ']').html('&#xe603');
 				$('.dot[value=' + param.loca + ']').html('&#xe604');
+				
 			},
 		'works': 
 			function(param){

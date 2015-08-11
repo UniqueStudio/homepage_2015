@@ -159,6 +159,11 @@ $scrollTime : 1s;
 	  //height:100%;
 	  height:60px;
 	  font-family: lanting;
+	  transform: scaleX(1.01);
+	  -o-transform: scaleX(1.01);
+	  -moz-transform: scaleX(1.01);
+	  -webkit-transform: scaleX(1.01);
+	  -ms-transform: scaleX(1.01);
   }
   #logo{
 	  width:120px;
@@ -168,9 +173,10 @@ $scrollTime : 1s;
   #navFlex{
 	  flex:1 2 400px;
 	  background-color:white;
-	  border-bottom:1px solid #DBD9D9;
+//	  border-bottom:1px solid #DBD9D9;
   }
   .listCon {
+	transform-style:preserve-3d;
     margin: 20px;
 	-moz-transition: opacity 0.5s;
 	transition: opacity 0.5s;
@@ -201,7 +207,7 @@ $scrollTime : 1s;
 	  -moz-transform: rotateX(-180deg);
 	  -o-transform: rotateX(-180deg);
   }
-  .li:hover .listCon{opacity:0}
+  //.li:hover .listCon{opacity:0}
 
 }
 #menuInNav{
@@ -210,7 +216,7 @@ $scrollTime : 1s;
   }
 
 .clapboard{
-	width: 100%;
+	width: 101%;
 	height: 100%;
 	position: absolute;
 	z-index: -2;
@@ -219,17 +225,16 @@ $scrollTime : 1s;
 	-webkit-backface-visibility:hidden;
 	backface-visibility:hidden;
 	-moz-backface-visibility:hidden;
-	  border-bottom:1px solid #DBD9D9;
 }
 .listPicContainer{
 	background-color:white;
 	position:absolute;
-	z-index: -5;
+	z-index: -4;
 	left: 50%;
 	top: 50%;
-	transform: perspective(600px) rotateX(180deg)translate(-50%,-50%);
-	-o-transform: perspective(600px) rotateX(180deg)translate(-50%,-50%);
-	-moz-transform: perspective(600px) rotateX(180deg)translate(-50%,-50%);
+	transform: rotateX(180deg)translate(-50%,-50%);
+	-o-transform: rotateX(180deg)translate(-50%,-50%);
+	-moz-transform: rotateX(180deg)translate(-50%,-50%);
 
 	-webkit-backface-visibility:hidden;
 	-moz-backface-visibility:hidden;
@@ -293,49 +298,14 @@ $scrollTime : 1s;
 	height: 100%;
 	width: 100%;
 }
-#groupCover{
-	height: 100%;
-	position: absolute;
-	left: 10%;
-	overflow: hidden;
-}
+
 #group aside{
 	text-align: center;	
 	margin-left: 5%;
 	z-index:3;
 }
-#groupArrowUp{
-	transform: rotate(-90deg);
-	-o-transform: rotate(-90deg);
-	-moz-transform: rotate(-90deg);
-	-webkit-transform: rotate(-90deg);
-	-ms-transform: rotate(-90deg);
-}
 
-#groupArrowDown{
-	transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
-}
-#dim{
-	//background-image: -webkit-linear-gradient(left,rgba(255, 255, 1, 0) %0 ,rgba(255,255,255,0) 100%);
-	z-index: 2;
-	background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%,rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0) 100%);
-	background-image: linear-gradient(left, rgba(255, 255, 255, 1) 0%,rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0) 100%);
-	background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%,rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0) 100%);
-	background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1) 0%,rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0) 100%);
-	background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 0%,rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0) 100%);
-	height:100%;
-	width: 4%;
-	position: absolute;
-}
-#suspension{
-	position: absolute;
-	z-index:3;
-	//background-color: grey;
-}
+
 
 //-------------漂浮动画开始-------------
 @keyframes YMove {
@@ -425,16 +395,17 @@ $scrollTime : 1s;
 	position: absolute;
 }
 //-------------漂浮动画结束-------------
+//-------------组别开始-------------
 #groupImgContainer{
 	position: relative;
-	height: 100%;
-	left: 9%;
-	width: 442.5%;	
-	transform: translate(-83.333333%,0);
-	-ms-transform: translate(-83.333333%,0);
-	-moz-transform: translate(-83.333333%,0);
-	-webkit-transform: translate(-83.333333%,0);
-	-o-transform: translate(-83.333333%,0);
+	height: 600%;
+//	left: 9%;
+//	width: 442.5%;	
+//	transform: translate(-83.333333%,0);
+//	-ms-transform: translate(-83.333333%,0);
+//	-moz-transform: translate(-83.333333%,0);
+//	-webkit-transform: translate(-83.333333%,0);
+//	-o-transform: translate(-83.333333%,0);
 
 	transition: all $scrollTime;
 	-ms-transition: all $scrollTime;
@@ -442,17 +413,21 @@ $scrollTime : 1s;
 	-webkit-transition: all $scrollTime;
 	-o-transition: all $scrollTime;
 	//overflow: hidden;
+
+	top:0;
 }
 .groupImg{
-	width: 16.66666667%;
-	position: relative;
-	float: right;
+	//width: 16.66666667%;
+	//position: relative;
+//	float: right;
 	opacity: 0;
-	transition: all $scrollTime;
-	-ms-transition: all $scrollTime;
-	-moz-transition: all $scrollTime;
-	-webkit-transition: all $scrollTime;
-	-o-transition: all $scrollTime;
+	width:60%;
+	
+}
+.groupImgBg{
+	height:16.6667%;
+	width:100%;
+	position:relative;
 }
 #groupImg1{
 	opacity: 1;
@@ -490,29 +465,30 @@ $scrollTime : 1s;
 	font-size: 3px;
 }
 #intrContent{
+	position:relative;
+	height:50%;
 	word-wrap: break-word; 
 	word-break: normal; 
-	padding-left: 20%;
-	padding-right: 20%;
+//	padding-left: 20%;
+//	padding-right: 20%;
 }
 .groupIntr{
 	width: 100%;
 	//height: 30%;
 	
 }
-.groupNameContainer{
-	width: 72px;
-	display: inline-block;
-	text-align: center;
-	opacity: 0;
+
+#groupNameContainer{
+	position:relative;
+	height:50%;
 	transition: all $scrollTime;
 	-ms-transition: all $scrollTime;
 	-moz-transition: all $scrollTime;
 	-webkit-transition: all $scrollTime;
 	-o-transition: all $scrollTime;
 }
-#groupNameContainer1{
-	opacity: 1;
+.groupNameImg{
+	width:80%;
 }
 .groupBlock{
 	position: relative;
@@ -521,9 +497,30 @@ $scrollTime : 1s;
 	display: inline-block;
 }
 #groupRight{
-	background-color: #ACDBEF;
+//	background-color: #ACDBEF;
+}
+#groupArrowUp{
+	transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
 }
 
+#groupArrowDown{
+	transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+}
+
+#suspension{
+	position: absolute;
+	z-index:3;
+	//background-color: grey;
+}
+//-----------组别结束----------------
 //-----------作品页开始----------------
 .workBlock{
 	display: inline-block;
