@@ -64,6 +64,9 @@ define(function(require) {
 
 	$(window).bind('mousewheel DOMMouseScroll keydown', function(e) {
 		var funcName = Data.scrollFuncMapping[Data.block['default']];
+		console.log(Data.scrollFunc[funcName]);
+		console.log(funcName);
+		console.log(Data.block['default']);
 		Data.scrollFunc[funcName](e);
 	});
 	
@@ -74,35 +77,26 @@ define(function(require) {
 	$('#cover').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
 		$(this).attr('style', 'display:none');
 	});
-	$('.navList').bind('click', function() {
-		console.log(Data.changing);
-		if(Data.changing || Data.isActive == false) return;
-		var top = $(this).attr('value');
-		$('#main').css('top', top);
-		var data = Number($(this).attr('value').replace('%', '').replace('-', '')) / 100;
-		//判断是否不需要移动
-		if (Data.block['default'] == data) return;
 
-		Data.changing = true;
-		Data.block['default'] = data;
+	$('.navList').bind('click', function(e) {
+		var This = $(this);
+		Data.scroll(e, {target: This, direction: 'y', quantity: 5,  block: 'default', isLoca:true}, Data.exeHandler['default']);
+	});
+	
+	$('.dot').bind('click', function(e) {		
+		var This = $(this);
+		Data.scroll(e, {target: This, quantity: 5, block: 'group', isLoca:true}, Data.exeHandler['group']);
 	});
 
-	/*$('.navList').bind('mouseover', function() {
-		$(this).css('transform')
-		$(this).css({
-			//opacity:0,
-			transform: "rotateX(360deg)"
-		});
-	});*/
-	$('.dot').bind('click', function() {
-
+	$(window).resize(function() {
+		Data.workComple();
 	});
-
 	//测试用
 	$(document).ready(function() {
 		$('#cover').css('opacity',0);
 		$('#load2Container').css('top','29%');
 		clearInterval(window.wave);
 		Data.isActive = true;
+		Data.workComple();
 	});	
 });

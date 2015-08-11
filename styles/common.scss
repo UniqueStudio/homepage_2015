@@ -6,7 +6,7 @@ $scrollTime : 1s;
 
 @font-face {
 	font-family: 'lanting';
-	src:url('fonts/lanting.ttf');
+	src:url('fonts/lantingx.ttf');
 }
 
 .iconfont {
@@ -127,12 +127,13 @@ $scrollTime : 1s;
 /*导航条*/
 
 #nav {
+  //height:6%;
   display: flex;
   width:100%;
   z-index: 100;
   top: 0;
   position: fixed;
-  height: 50px;
+  height: 60px;
   overflow: hidden;
   width: 100%;
 
@@ -155,7 +156,9 @@ $scrollTime : 1s;
   }
   .li{
 	  display:inline-block;
-	  height:100%;
+	  //height:100%;
+	  height:60px;
+	  font-family: lanting;
   }
   #logo{
 	  width:120px;
@@ -168,21 +171,22 @@ $scrollTime : 1s;
 	  border-bottom:1px solid #DBD9D9;
   }
   .listCon {
-    margin: 14px;
+    margin: 20px;
 	-moz-transition: opacity 0.5s;
 	transition: opacity 0.5s;
 	display: block;
 	-webkit-backface-visibility:hidden;
 	//backface-visibility:hidden;
 	-moz-backface-visibility:hidden;	
+	font-size:15px;
   }
   a {
 	  display: inline-block;
 	  position:relative;
-	  height: 100%;
+	  height: 60px;
 	  transform-style:preserve-3d;
 	  -moz-transform-style:preserve-3d;
-	  line-height:21px;
+	  line-height:24px;
   }
   .sin{
 	  transition:transform 0.5s ease;
@@ -192,7 +196,7 @@ $scrollTime : 1s;
 	  -o-transition:transform 0.5s ease-in-out;
 	  transition:transform 0.5s ease-in-out;
   }
-  .li:hover a{
+  .li:hover a, a[isselected=true]{
 	  transform: rotateX(-180deg);
 	  -moz-transform: rotateX(-180deg);
 	  -o-transform: rotateX(-180deg);
@@ -202,7 +206,7 @@ $scrollTime : 1s;
 }
 #menuInNav{
 	  display:inline-block;
-	  height:100%;
+	  height:60px;
   }
 
 .clapboard{
@@ -218,7 +222,7 @@ $scrollTime : 1s;
 	  border-bottom:1px solid #DBD9D9;
 }
 .listPicContainer{
-	background-color:green;
+	background-color:white;
 	position:absolute;
 	z-index: -5;
 	left: 50%;
@@ -237,7 +241,7 @@ $scrollTime : 1s;
 	height:100%;
 }
 .listPic{
-	height:80%;
+	height:48%;
 	position:absolute;
 	left:50%;
 	top:50%;
@@ -519,18 +523,113 @@ $scrollTime : 1s;
 #groupRight{
 	background-color: #ACDBEF;
 }
+
+//-----------作品页开始----------------
 .workBlock{
 	display: inline-block;
 	position:relative;
 	width: 20%;
 	height:100%;
 }
+.worksImg{
+	top:18%;
+	position: absolute;
+	background-color:green;
+	width:420px;
+	height:50%;
+}
+#worksIntr{
+	top:68%;
+	height:15%;
+	width:420px;
+	position:absolute;
+	background-color:grey;
+	text-align:center;
+}
 #workSecContainer{
-	transition: left $scrollTime;
-	-ms-transition: left $scrollTime;
-	-moz-transition: left $scrollTime;
-	-webkit-transition: left $scrollTime;
-	-o-transition: left $scrollTime;
+	transition: left $scrollTime ease-out 0.5s;
+	-ms-transition: left $scrollTime ease-out 0.5s;
+	-moz-transition: left $scrollTime ease-out 0.5s;
+	-webkit-transition: left $scrollTime ease-out 0.5s;
+	-o-transition: left $scrollTime ease-out 0.5s;
 	position:relative;
 	width: 500%;
 }
+#gallery{
+	transition: transform $scrollTime linear;
+	-ms-transition: transform $scrollTime linear;
+	-moz-transition: transform $scrollTime linear;
+	-webkit-transition: transform $scrollTime linear;
+	-o-transition: transform $scrollTime linear;
+	top:25%;
+	position:absolute;
+	height:36%;
+	white-space:nowrap;
+	//min-height:300px;
+	img{
+		height:100%;
+		display:inline;
+	}
+}
+#worksAside{
+	top:90%;
+}
+#worksArrowLeft{
+	transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
+.worksDot{
+	display:inline-block;
+}
+#worksArrowLeft{
+	display: inline-block;
+}
+#worksIntrCon{
+	height:50%;
+	background-color:white;
+	position:relative;
+}
+#worksIntrTitle{
+	position:relative;
+	height:50%;
+}
+.worksName{
+	transition: opacity 1s;
+	-o-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-webkit-transition: opacity 1s;
+	-ms-transition: opacity 1s;
+	opacity:0;
+	position:absolute;
+}
+//---------作品页结束-----------------
+//---------介绍页开始-----------------
+.intrImg{
+	position:absolute;
+	height:60%;
+}
+#lb{
+	left:0;
+	bottom:0;
+	z-index:1
+}
+#lt{
+	left:0;
+	top:0;
+	z-index:3;
+}
+#rb{
+	right:0;
+	bottom:0;
+	z-index:4;
+}
+#rt{
+	right:0;
+	top:0;
+	z-index:2;
+}
+
+//---------介绍页结束-----------------

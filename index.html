@@ -104,9 +104,13 @@
 
 		
 
-		<section id="introduction" class="mainBlock" style="background:red" >
+		<section id="introduction" class="mainBlock">
+			<img src="images/lb.jpg" id="lb" class="intrImg">
+			<img src="images/lt.jpg" id="lt" class="intrImg">
+			<img src="images/rb.jpg" id="rb" class="intrImg">
+			<img src="images/rt.jpg" id="rt" class="intrImg">
 		</section>
-		<section id="group" class="mainBlock">
+		<section id="group" class="mainBlock" value="2">
 			<div class="full" id="suspension">
 				<img src="images/pen.jpg" id="animation1" class="animation rotateR" width="30px" style="left:48%; top:11%">
 				<div id="animation2" class="animation" style="position:absolute;width:30px; height:30px; border:#C9E649 1px solid; border-radius:30px; left:25%;top:21%"></div>
@@ -115,24 +119,36 @@
 				
 				<aside id="groupAside" class="YCenter">
 					<div class="iconfont" id="groupArrowUp">&#xe601;</div>
-					<div><a href="javascript:void(0)" class="iconfont dot" id="" value="0">&#xe604;</a></div>
-					<div><a href="javascript:void(0)" class="iconfont dot" id="" value="1">&#xe603;</a></div>
-					<div><a href="javascript:void(0)" class="iconfont dot" id="" value="2">&#xe603;</a></div>
-					<div><a href="javascript:void(0)" class="iconfont dot" id="" value="3">&#xe603;</a></div>
-					<div><a href="javascript:void(0)" class="iconfont dot" id="" value="4">&#xe603;</a></div>
-					<div><a href="javascript:void(0)" class="iconfont dot" id="" value="5">&#xe603;</a></div>	
+					<div>
+						<a class="iconfont dot" id="" value="0">&#xe604;</a>
+					</div>
+					<div>
+						<a href="javascript:void(0)" class="iconfont dot" id="" value="1">&#xe603;</a>
+					</div>
+					<div>
+						<a href="javascript:void(0)" class="iconfont dot" id="" value="2">&#xe603;</a>
+					</div>
+					<div>
+						<a href="javascript:void(0)" class="iconfont dot" id="" value="3">&#xe603;</a>
+					</div>
+					<div>
+						<a href="javascript:void(0)" class="iconfont dot" id="" value="4">&#xe603;</a>
+					</div>
+					<div>
+						<a href="javascript:void(0)" class="iconfont dot" id="" value="5">&#xe603;</a>
+					</div>	
 					<div class="iconfont" id="groupArrowDown">&#xe601;</div>
 				</aside>
 				<div id="groupCover">
 					<div id="dim">
 					</div>
 					<div id="groupImgContainer">
-						<img class="groupImg YCenter" src="images/xiniu.jpg" id="groupImg1">
-						<img class="groupImg YCenter" src="images/xiniu.jpg">
-						<img class="groupImg YCenter" src="images/xiniu.jpg">
-						<img class="groupImg YCenter" src="images/xiniu.jpg">
-						<img class="groupImg YCenter" src="images/xiniu.jpg">
-						<img class="groupImg YCenter" src="images/xiniu.jpg">
+						<img value="0" class="groupImg YCenter" src="images/xiniu.jpg" id="groupImg1">
+						<img value="1" class="groupImg YCenter" src="images/xiniu.jpg">
+						<img value="2" class="groupImg YCenter" src="images/xiniu.jpg">
+						<img value="3" class="groupImg YCenter" src="images/xiniu.jpg">
+						<img value="4" class="groupImg YCenter" src="images/xiniu.jpg">
+						<img value="5" class="groupImg YCenter" src="images/xiniu.jpg">
 					</div>
 				</div>
 			</div
@@ -141,12 +157,12 @@
 					<div id="groupName">
 						<div id="groupNameLine" class="absoXCenter"></div>
 						<div id="groupMoveContainer">
-							<span class="groupNameContainer" id="groupNameContainer1"><span>Android</span></span>
-							<span class="groupNameContainer"><span>Design</span></span>
-							<span class="groupNameContainer"><span>IOS</span></span>
-							<span class="groupNameContainer"><span>PM</span></span>
-							<span class="groupNameContainer"><span>UniqueLab</span></span>
-							<span class="groupNameContainer"><span>Web</span></span>
+							<span value="0" class="groupNameContainer" id="groupNameContainer1"><span>Android</span></span>
+							<span value="1" class="groupNameContainer"><span>Design</span></span>
+							<span value="2" class="groupNameContainer"><span>IOS</span></span>
+							<span value="3" class="groupNameContainer"><span>PM</span></span>
+							<span value="4" class="groupNameContainer"><span>UniqueLab</span></span>
+							<span value="5" class="groupNameContainer"><span>Web</span></span>
 						</div>
 					</div>
 					<div id="intrContent">
@@ -156,15 +172,58 @@
 			</div	
 		></section>
 		<section id="greatEvent" class="mainBlock" style="background:green"onload="processing(18)"></section>
-		<section id="works" class="mainBlock" style="background: grey;"onload="processing(18)">
-			
-			<div id="workSecContainer" class="full" style="left: 0%" block=0>
-				<!--为了解决内联元素之间由空格和换行造成的空隙,也可设置字体为零,但会影响真实文字,故不采用-->
-				 <section class="workBlock">1</section	
-				><section class="workBlock">2</section	
-				><section class="workBlock">3</section	
-				><section class="workBlock">4</section	
-				><section class="workBlock">5</section>	
+		<section id="works" class="mainBlock" onload="processing(18)">
+			<div id="hidden" style="position:absolute;overflow:hidden">
+				<span>wwwwwwwwwww</span>
+				<span>eeeeee</span>
+			</div>
+			<div class="full" style="min-height:600px;position:relative">
+				<aside id="worksAside" class="absoXCenter">
+					<a class="iconfont" id="worksArrowLeft">&#xe601;</a>
+					<a href="javascript:void(0)" class="iconfont worksDot" id="" value="0">&#xe604;</a>
+					<a href="javascript:void(0)" class="iconfont worksDot" id="" value="1">&#xe603;</a>
+					<a href="javascript:void(0)" class="iconfont worksDot" id="" value="2">&#xe603;</a>
+					<a href="javascript:void(0)" class="iconfont worksDot" id="" value="3">&#xe603;</a>
+					<a href="javascript:void(0)" class="iconfont worksDot" id="" value="4">&#xe603;</a>
+					<a href="javascript:void(0)" class="iconfont worksDot" id="" value="5">&#xe603;</a>
+					<a class="iconfont" id="worksArrowRight">&#xe601;</a>
+				</aside>
+				<div id="gallery"><img src="images/gallery.jpg" id="galleryImg"></div>
+				<div id="worksIntr" class="absoXCenter">
+					<div id="worksIntrCon">
+						hahahahahahahahahahahaha
+					</div>
+					<div id="worksIntrTitle">
+						<span class="YCenter">
+							<span></span>
+							<span class="worksName" value="0">3333333</span>
+							<span class="worksName" value="1">1111111</span>
+							<span class="worksName" value="2">4444444</span>
+							<span class="worksName" value="3">aaaaaaa</span>
+							<span class="worksName" value="4">bbbbbbb</span>
+							<span></span>
+						</span>
+					</div>
+				</div>
+				
+				<div id="workSecContainer" class="full" style="left: 0%" block=0>
+					<!--为了解决内联元素之间由空格和换行造成的空隙,也可设置字体为零,但会影响真实文字,故不采用-->
+					 <section class="workBlock">
+						 <div class="worksImg absoXCenter"></div>
+					</section	
+					><section class="workBlock">
+						 <div class="worksImg absoXCenter"></div>
+					</section	
+					><section class="workBlock">
+						 <div class="worksImg absoXCenter"></div>
+					</section	
+					><section class="workBlock">
+						 <div class="worksImg absoXCenter"></div>
+					</section	
+					><section class="workBlock">
+						 <div class="worksImg absoXCenter"></div>
+					</section>	
+				</div>
 			</div>
 		</section>
 		<section id="contact" class="mainBlock" style="background: black"onload="processing(18)"></section>
@@ -174,7 +233,7 @@
 			<div id="navFlex"></div>
 			<div id="listContainer">
 				<span class="li">
-					<a href="javascript:void(0)" class="navList sin" value="0%">
+					<a href="javascript:void(0)" class="navList sin" value="0" isselected="true">
 						<span class="listCon lanting">首页</span>
 						<div class="clapboard"></div>
 						<div class="listPicContainer">
@@ -183,38 +242,38 @@
 					</a>
 				</span
 				><span class="li">
-					<a href="javascript:void(0)" class="navList dou" value="-100%">
+					<a href="javascript:void(0)" class="navList dou" value="1">
 						<span class="listCon">简介</span>
 						<div class="clapboard"></div>
 						<div class="listPicContainer">
-							<img src="images/home.jpg" class="listPic">
+							<img src="images/intr.jpg" class="listPic">
 						</div>
 					</a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="navList sin" value="-200%">
+				<a href="javascript:void(0)" class="navList sin" value="2">
 					<span class="listCon">组别</span>
 					<div class="clapboard"></div>
 					<div class="listPicContainer">
-						<img src="images/home.jpg" class="listPic">
+						<img src="images/group.jpg" class="listPic">
 					</div>
 				</a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="navList dou" value="-300%">
+				<a href="javascript:void(0)" class="navList dou" value="3">
 					<span class="listCon">大事记</span>
 					<div class="clapboard"></div>
 					<div class="listPicContainer">
-						<img src="images/home.jpg" class="listPic">
+						<img src="images/event.jpg" class="listPic">
 					</div>
 				</a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="navList sin" value="-400%">
+				<a href="javascript:void(0)" class="navList sin" value="4">
 					<span class="listCon">作品</span>
 					<div class="clapboard"></div>
 					<div class="listPicContainer">
-						<img src="images/home.jpg" class="listPic">
+						<img src="images/works.jpg" class="listPic">
 					</div>
 				</a>
 				</span
@@ -223,13 +282,13 @@
 					<span class="listCon">HackDay</span>
 					<div class="clapboard"></div>
 					<div class="listPicContainer">
-						<img src="images/home.jpg" class="listPic">
+						<img src="images/hack.jpg" class="listPic">
 					</div>
 				</a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="navList sin" value="-500%">
-					<span class="listCon">加入</span>
+				<a href="javascript:void(0)" class="navList sin" value="5">
+					<span class="listCon">加入/联系</span>
 					<div class="clapboard"></div>
 					<div class="listPicContainer">
 						<img src="images/home.jpg" class="listPic">
@@ -237,7 +296,7 @@
 				</a>
 				</span
 				><a href="javascript:void(0)" id="menuInNav" class="iconfont" style="border-bottom: 1px solid #DBD9D9;background-color: white;">
-					<span style="margin:14px;display:inline-block;line-height:21px;font-size:22px" >&#xe605;
+					<span style="margin:14px;display:inline-block;line-height:32px;font-size:22px" >&#xe605;
 					</span>
 				</a>
 			</div>
