@@ -1,4 +1,7 @@
 $scrollTime : 1s;
+html{
+	font-family: 'lanting';
+}
 @font-face {
   font-family: 'iconfont';
   src: url('//at.alicdn.com/t/font_1439136819_6711369.eot'), url('//at.alicdn.com/t/font_1439136819_6711369.woff') format("woff"), url('//at.alicdn.com/t/font_1439136819_6711369.ttf') format("truetype"), url('//at.alicdn.com/t/font_1439136819_6711369.svg#iconfont') format("svg");
@@ -177,9 +180,7 @@ $scrollTime : 1s;
   }
   .listCon {
 	transform-style:preserve-3d;
-    margin: 20px;
-	-moz-transition: opacity 0.5s;
-	transition: opacity 0.5s;
+    margin: 20px;	
 	display: block;
 	-webkit-backface-visibility:hidden;
 	//backface-visibility:hidden;
@@ -544,11 +545,11 @@ $scrollTime : 1s;
 	text-align:center;
 }
 #workSecContainer{
-	transition: left $scrollTime ease-out 0.5s;
-	-ms-transition: left $scrollTime ease-out 0.5s;
-	-moz-transition: left $scrollTime ease-out 0.5s;
-	-webkit-transition: left $scrollTime ease-out 0.5s;
-	-o-transition: left $scrollTime ease-out 0.5s;
+	transition: left $scrollTime cubic-bezier(.58,0,.05,.88);
+	-ms-transition: left $scrollTime cubic-bezier(.58,0,.05,.88);
+	-moz-transition: left $scrollTime cubic-bezier(.58,0,.05,.88);
+	-webkit-transition: left $scrollTime cubic-bezier(.58,0,.05,.88);
+	-o-transition: left $scrollTime cubic-bezier(.58,0,.05,.88);
 	position:relative;
 	width: 500%;
 }
@@ -630,3 +631,85 @@ $scrollTime : 1s;
 }
 
 //---------介绍页结束-----------------
+//---------报名页开始始--------------
+#join{
+}
+#labelBox{
+	float:left;
+	margin-right:30px;
+	margin-left:10%;
+
+}
+#recruit_form{
+	width:70%;
+	min-width:900px;
+	height:371px;
+	textarea{
+		width:335px;
+		height:220px;
+		margin-bottom:32px;
+		resize:none;
+	}
+	
+}
+#submit{
+	display:block;
+	width:170px;
+	height:43px;
+	color:white;
+	background-color:#6AC0EF;
+	border:0px;
+	border-radius:3px;
+}
+#inputBox{
+	float:left;
+	width:300px;
+}
+#selfIntro{
+	position:absolute;
+	right:0;
+	//float:right;
+	width:335px;
+	margin-right:10%;
+	label{
+		margin-bottom:25px;
+	}
+}
+#labelBox>label{
+	text-align:right;
+	display:block;
+	margin-bottom:35px;
+	height:18px;
+}
+#inputBox>input{
+	display:block;
+	height:30px;
+	margin-bottom:19px;
+	top:-7px;
+	position:relative;
+	width:200px;
+	border-width: 2px;
+	border-radius:3px;
+}
+#inputBox>div{
+	margin-bottom:31px;
+	position:relative;
+	top:-3px;
+}
+#groupRadio>label{
+	float:left;
+}
+label>.radio{
+	height:18px;
+	width:18px;
+	display:inline-block;
+}
+#name{
+	margin-bottom:11px;
+	top:-7px;
+}
+
+
+
+
+//---------报名页结束--------------

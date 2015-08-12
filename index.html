@@ -230,7 +230,86 @@
 				</div>
 			</div>
 		</section>
-		<section id="contact" class="mainBlock" style="background: black"onload="processing(18)"></section>
+
+		<section id="contact" class="mainBlock" onload="processing(18)">	
+			<div id="join" class="full">
+				
+				<form id="recruit_form" class="XYCenter">
+					<div id="labelBox">
+						<label for="name">姓名</label>
+						<label>性别</label>
+						<label>所在校区</label>
+						<label for="grade">院系/专业/年级</label>
+						<label for="phoneNum">联系电话</label>
+						<label for="reserveNum">备用电话</label>
+						<label for="group">报名组别</label>
+					</div>
+					<div id="inputBox">
+						<input type="text" id="name" name="name">
+						<div>
+							<label>
+								<span class="radio checked"></span>
+								<input type="radio" name="gender" value="男" checked="checked" style="display: none;">男
+							</label>
+							<label>
+								<span class="radio"></span>
+								<input type="radio" name="gender" value="女" style="display: none;">女
+							</label>
+						</div>
+						<div>
+							<label>
+								<span class="radio checked"></span>
+								<input type="radio" name="location" value="韵苑" checked="checked" style="display: none;">韵苑
+							</label>
+							<label>
+								<span class="radio"></span>
+								<input type="radio" name="location" value="沁苑" style="display: none;">沁苑
+							</label>
+							<label>
+								<span class="radio"></span><input type="radio" name="location" value="紫菘" style="display: none;">紫菘
+							</label>
+						</div>
+						<input type="text" name="grade" id="grade" placeholder="16字以内">
+						<input type="text" name="phoneNum" id="phoneNum">
+						<input type="text" name="reserveNum" id="reserveNum" placeholder=" 如室友电话">
+						<div id="groupRadio">
+							<label>
+								<span class="radio"></span>
+								<input type="radio" name="group" value="Android" checked="checked" style="display: none;">Android组
+							</label>
+							<label>
+								<span class="radio"></span>
+								<input type="radio" name="group" value="Web" style="display: none;">Web组
+							</label>
+							<label>
+								<span class="radio checked"></span>
+								<input type="radio" name="group" value="iOS" style="display: none;">iOS组
+							</label>
+							<label>
+								<span class="radio"></span>
+								<input type="radio" name="group" value="design" style="display: none;">Design组
+							</label>
+					
+				
+							<label>
+								<span class="radio"></span>
+								<input type="radio" name="group" value="pm" style="display: none;">PM组
+							</label>
+							<label>
+								<span class="radio"></span>
+								<input type="radio" name="group" value="lab" style="display: none;">UniqueLab
+							</label>
+						</div>
+					</div>
+					<div id="selfIntro">
+						<label for="selfIntroText" style="display:block">个人简介</label>
+						<textarea name="selfIntro" id="selfIntroText" placeholder="  自我介绍/组别意向的来由/个人优势等等"></textarea>
+						<input type="submit" name="submit" id="submit" value="提交" class="XCenter">
+					</div>
+				</form>
+			</div>
+			<div id="contact"></div>
+		</section>
 	</div>
 		<nav id="nav" ischanging="false">
 			<div id="logo"></div>
@@ -282,7 +361,7 @@
 				</a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="navList dou" value="-500%">
+				<a href="javascript:void(0)" class="dou" value="-500%">
 					<span class="listCon">HackDay</span>
 					<div class="clapboard"></div
 					><div class="listPicContainer">
