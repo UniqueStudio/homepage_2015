@@ -49,15 +49,23 @@ define(function(require, exports, module) {
 				*/
 
 				$('#groupImgContainer').css('top', '-' + param.loca + '00%');	
+				/*
 				$('.dot[value=' + data.block['group'] + ']').html('&#xe603');
 				$('.dot[value=' + param.loca + ']').html('&#xe604');
+				*/
 				
+				$('.dot[value=' + param.loca + ']').attr('check', 'true');
+				$('.dot[value=' + data.block['group'] + ']').attr('check', 'false');
 			},
 		'works': 
 			function(param){
 				$('#workSecContainer').css('left', '-' + param.loca + '00%');
+				$('.worksDot[value=' + param.loca + ']').attr('check', 'true');
+				$('.worksDot[value=' + data.block['works'] + ']').attr('check', 'false');
+				/*
 				$('.worksDot[value=' + data.block['works'] + ']').html('&#xe603');
 				$('.worksDot[value=' + param.loca + ']').html('&#xe604');
+				*/
 
 				data.galleryLeft = -param.loca * 1000;
 				$('#gallery').css('transform', 'translate('+ data.galleryLeft +'px)');
@@ -99,12 +107,16 @@ define(function(require, exports, module) {
 				}
 			}
 		} else {
-			if(loca == Number(param.target.attr('value'))) {
+			console.log('param.arrrow='+param.arrow);
+			if(param.arrow){
+				loca += param.arrow;
+			} else if(loca == Number(param.target.attr('value'))) {
 				loca = 'false';
 			} else {
 				loca = Number(param.target.attr('value'));
 			}
 		}
+		console.log(loca);
 		return loca;
 	}
 
@@ -122,7 +134,7 @@ define(function(require, exports, module) {
 				console.log('www' + loca);
 
 		//判断是第一个或最后一个,只有在不是通过定位点触发的时候才会执行	
-		if(param.isLoca == false) {
+		if(param.isLoca == false || param.arrow) {
 			if(loca < 0 || loca > param.quantity) {
 				if(param.block == 'default') return;
 				if(loca < 0) loca = data.block['default'] - 1;
@@ -154,7 +166,7 @@ define(function(require, exports, module) {
 			data.scroll(e, {direction: 'y', quantity: 5,  block: 'default', isLoca:false}, data.exeHandler['default']);
 		},				
 		'group': function(e) {
-			data.scroll(e, {quantity: 5, block: 'group', isLoca:false}, data.exeHandler['group']);
+			data.scroll(e, {direction: 'y',quantity: 5, block: 'group', isLoca:false}, data.exeHandler['group']);
 		},
 		'works': function(e) {
 			data.scroll(e, {direction: 'x', quantity: 4, block: 'works', isLoca:false}, data.exeHandler['works']);

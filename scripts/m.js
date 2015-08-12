@@ -91,6 +91,16 @@ define(function(require) {
 	$(window).resize(function() {
 		Data.workComple();
 	});
+	$('.groupArrow').bind('click', function(e){
+console.log('3333,'+$(this).attr('value'));
+		var value = Number($(this).attr('value'));
+
+		Data.scroll(e, {arrow:value,direction: 'y',quantity: 5, block: 'group', isLoca:true}, Data.exeHandler['group']);
+	});
+	$('.workspArrow').bind('click', function(e){
+		var value = Number($(this).attr('value'));
+		Data.scroll(e, {arrow:value,direction: 'x',quantity: 4, block: 'works', isLoca:true}, Data.exeHandler['works']);
+	});
 	//测试用
 	$(document).ready(function() {
 		$('#cover').css('opacity',0);

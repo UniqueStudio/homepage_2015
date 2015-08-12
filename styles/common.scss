@@ -1,4 +1,5 @@
 $scrollTime : 1s;
+$transFunc : cubic-bezier(.58,0,.05,.88);
 html{
 	font-family: 'lanting';
 }
@@ -287,11 +288,11 @@ html{
 //--------导航条结束----------
 #main{
 	position: relative;	
-	transition: top $scrollTime;
-	-o-transition: top $scrollTime;
-	-webkit-transition: top $scrollTime;
-	-moz-transition: top $scrollTime;
-	-ms-transition: top $scrollTime;
+	transition: top $scrollTime $transFunc;
+	-o-transition: top $scrollTime $transFunc;
+	-webkit-transition: top $scrollTime $transFunc;
+	-moz-transition: top $scrollTime $transFunc;
+	-ms-transition: top $scrollTime $transFunc;
 }
 .mainBlock{
 	overflow: hidden;
@@ -408,62 +409,43 @@ html{
 //	-webkit-transform: translate(-83.333333%,0);
 //	-o-transform: translate(-83.333333%,0);
 
-	transition: all $scrollTime;
-	-ms-transition: all $scrollTime;
-	-moz-transition: all $scrollTime;
-	-webkit-transition: all $scrollTime;
-	-o-transition: all $scrollTime;
+	transition: all $scrollTime $transFunc;
+	-ms-transition: all $scrollTime $transFunc;
+	-moz-transition: all $scrollTime $transFunc;
+	-webkit-transition: all $scrollTime $transFunc;
+	-o-transition: all $scrollTime $transFunc;
 	//overflow: hidden;
 
 	top:0;
 }
-.groupImg{
-	//width: 16.66666667%;
-	//position: relative;
-//	float: right;
-	opacity: 0;
-	width:60%;
-	
-}
+
 .groupImgBg{
 	height:16.6667%;
 	width:100%;
 	position:relative;
 }
-#groupImg1{
-	opacity: 1;
+.groupImg{
+	width:60%;
 }
 #groupName{
 	position: relative;
 	height: 20px;
 }
-#groupNameLine{
-	background-color: #333333;
-	height: 3px;
-	position: absolute;
-	width: 20px;
-	top: -5px;	
-}
-#groupMoveContainer{
-	position: absolute;
-	left: 50%;
-	white-space: nowrap;
-	transition: all $scrollTime;
-	-ms-transition: all $scrollTime;
-	-moz-transition: all $scrollTime;
-	-webkit-transition: all $scrollTime;
-	-o-transition: all $scrollTime;
 
-	transform: translate(-8.333333%, 0);
-	-moz-transform: translate(-8.333333%, 0);
-	-o-transform: translate(-8.333333%, 0);
-	-webkit-transform: translate(-8.333333%, 0);
-	-ms-transform: translate(-8.333333%, 0);
-}
-.dot{
+.dot, .worksDot{
+	height:3px;
+	width:3px;
+	margin-right:auto;
+	margin-left:auto;
 	margin-top: 128%;
 	margin-bottom: 128%;
-	font-size: 3px;
+	display:block;
+	border: solid black 1px;
+	transform:rotate(45deg);
+	-o-transform:rotate(45deg);
+	-ms-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	-webkit-transform:rotate(45deg);
 }
 #intrContent{
 	position:relative;
@@ -482,11 +464,11 @@ html{
 #groupNameContainer{
 	position:relative;
 	height:50%;
-	transition: all $scrollTime;
-	-ms-transition: all $scrollTime;
-	-moz-transition: all $scrollTime;
-	-webkit-transition: all $scrollTime;
-	-o-transition: all $scrollTime;
+	transition: all $scrollTime $transFunc;
+	-ms-transition: all $scrollTime $transFunc;
+	-moz-transition: all $scrollTime $transFunc;
+	-webkit-transition: all $scrollTime $transFunc;
+	-o-transition: all $scrollTime $transFunc;
 }
 .groupNameImg{
 	width:80%;
@@ -500,20 +482,31 @@ html{
 #groupRight{
 //	background-color: #ACDBEF;
 }
+.groupArrow > a{
+	height:8px;
+	width:8px;
+	transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	display:block;
+}
+
 #groupArrowUp{
-	transform: rotate(-90deg);
-	-o-transform: rotate(-90deg);
-	-moz-transform: rotate(-90deg);
-	-webkit-transform: rotate(-90deg);
-	-ms-transform: rotate(-90deg);
+	a{
+		border-right: solid black 1px;
+		border-top: solid black 1px;
+	}
+	
 }
 
 #groupArrowDown{
-	transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
+	a{
+	
+		border-bottom: solid black 1px;
+		border-left: solid black 1px;
+	}
 }
 
 #suspension{
@@ -545,11 +538,11 @@ html{
 	text-align:center;
 }
 #workSecContainer{
-	transition: left $scrollTime cubic-bezier(.58,0,.05,.88);
-	-ms-transition: left $scrollTime cubic-bezier(.58,0,.05,.88);
-	-moz-transition: left $scrollTime cubic-bezier(.58,0,.05,.88);
-	-webkit-transition: left $scrollTime cubic-bezier(.58,0,.05,.88);
-	-o-transition: left $scrollTime cubic-bezier(.58,0,.05,.88);
+	transition: left $scrollTime $transFunc;
+	-ms-transition: left $scrollTime $transFunc;
+	-moz-transition: left $scrollTime $transFunc;
+	-webkit-transition: left $scrollTime $transFunc;
+	-o-transition: left $scrollTime $transFunc;
 	position:relative;
 	width: 500%;
 }
@@ -572,19 +565,31 @@ html{
 #worksAside{
 	top:90%;
 }
+.dot[check=true], .worksDot[check=true]{
+	background-color:black;
+}
+.worksArrow{
+	transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	display: inline-block;
+	height:8px;
+	width:8px;
+}
 #worksArrowLeft{
-	transform: rotate(180deg);
-	-ms-transform: rotate(180deg);
-	-o-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-	-webkit-transform: rotate(180deg);
+	border-top:2px black solid;
+	border-left:2px black solid;
+}
+#worksArrowRight{
+	border-right:2px black solid;
+	border-bottom:2px black solid;
 }
 .worksDot{
 	display:inline-block;
 }
-#worksArrowLeft{
-	display: inline-block;
-}
+
 #worksIntrCon{
 	height:50%;
 	background-color:white;
