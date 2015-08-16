@@ -1,16 +1,16 @@
 $scrollTime : 1s;
-$transFunc : cubic-bezier(.58,0,.05,.88);
+$transFunc : cubic-bezier(.82,.03,.41,.59);
+//$transFunc: cubic-bezier(.92,.06,.37,.58);
 html{
 	font-family: 'lanting';
+  -webkit-font-smoothing: antialiased;
+//  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
 }
-@font-face {
-  font-family: 'iconfont';
-  src: url('//at.alicdn.com/t/font_1439136819_6711369.eot'), url('//at.alicdn.com/t/font_1439136819_6711369.woff') format("woff"), url('//at.alicdn.com/t/font_1439136819_6711369.ttf') format("truetype"), url('//at.alicdn.com/t/font_1439136819_6711369.svg#iconfont') format("svg");
-}
-
 @font-face {
 	font-family: 'lanting';
 	src:url('fonts/lantingx.ttf');
+	src:url('fonts/lantingx.eot');
 }
 
 .iconfont {
@@ -170,9 +170,26 @@ html{
 	  -ms-transform: scaleX(1.01);
   }
   #logo{
-	  width:120px;
-	  background-color:black;
+//	  width:120px;
 	  border-bottom:1px solid #DBD9D9;
+	  height:100%;
+	  white-space:nowrap;
+	  img{
+		  height:40px;
+		  margin:10px;
+	  }
+	  div{
+		  display:inline-block;
+		  vertical-align:top;
+		  height:100%;
+		  background-color:#6cbfef;
+	  }
+  }
+  #offset{
+	  display:inline-block;
+	  width:20px;
+	  height:100%;
+	  background-color:white;
   }
   #navFlex{
 	  flex:1 2 400px;
@@ -181,11 +198,15 @@ html{
   }
   .listCon {
 	transform-style:preserve-3d;
+	-webkit-transform-style:preserve-3d;
+	-moz-transform-style:preserve-3d;
+	-ms-transform-style:preserve-3d;
     margin: 20px;	
 	display: block;
 	-webkit-backface-visibility:hidden;
 	//backface-visibility:hidden;
 	-moz-backface-visibility:hidden;	
+	-ms-backface-visibility:hidden;	
 	font-size:15px;
   }
   a {
@@ -193,6 +214,9 @@ html{
 	  position:relative;
 	  height: 60px;
 	  transform-style:preserve-3d;
+		-webkit-transform-style:preserve-3d;
+		-ms-transform-style:preserve-3d;
+
 	  -moz-transform-style:preserve-3d;
 	  line-height:24px;
   }
@@ -213,10 +237,27 @@ html{
 
 }
 #menuInNav{
-	  display:inline-block;
-	  height:60px;
+  display:inline-block;
+  height:60px;
+  background-color: white;
+  vertical-align:top;
+  width:50px;
+  img{
+	  height:20px;
+	  position:relative;
+	  top:20px;
+	  display:block;
   }
-
+}
+#unique{
+	display:inline-block;
+	height:100%;
+	line-height:60px;
+	vertical-align:top;
+	font-size:18px;
+	padding-left:10px;
+	background-color:white;
+}
 .clapboard{
 	width: 101%;
 	height: 100%;
@@ -267,10 +308,10 @@ html{
 	right:40px;
 	top:40px;
 	z-index:101;
-	background-color:#3DF2E3;
-	width:36px;
-	height:36px;
-	border-radius:18px;
+	background-color:#6cbfef;
+	width:46px;
+	height:46px;
+	border-radius:23px;
 }
 #menuCenter {
 	position:absolute;  
@@ -303,7 +344,6 @@ html{
 
 #group aside{
 	text-align: center;	
-	margin-left: 5%;
 	z-index:3;
 }
 
@@ -398,6 +438,9 @@ html{
 }
 //-------------漂浮动画结束-------------
 //-------------组别开始-------------
+#group{
+	min-width:900px;
+}
 #groupImgContainer{
 	position: relative;
 	height: 600%;
@@ -432,13 +475,9 @@ html{
 	height: 20px;
 }
 
-.dot, .worksDot{
-	height:3px;
-	width:3px;
-	margin-right:auto;
-	margin-left:auto;
-	margin-top: 128%;
-	margin-bottom: 128%;
+.dot, .worksDot, .eventDot{
+	height:6px;
+	width:6px;
 	display:block;
 	border: solid black 1px;
 	transform:rotate(45deg);
@@ -447,11 +486,18 @@ html{
 	-moz-transform:rotate(45deg);
 	-webkit-transform:rotate(45deg);
 }
+.dot{	
+	margin-right:auto;
+	margin-left:auto;
+	margin-top: 128%;
+	margin-bottom: 128%;
+}
 #intrContent{
 	position:relative;
 	height:50%;
 	word-wrap: break-word; 
 	word-break: normal; 
+	line-height:2em;
 //	padding-left: 20%;
 //	padding-right: 20%;
 }
@@ -471,7 +517,7 @@ html{
 	-o-transition: all $scrollTime $transFunc;
 }
 .groupNameImg{
-	width:80%;
+	width:50%;
 }
 .groupBlock{
 	position: relative;
@@ -483,8 +529,8 @@ html{
 //	background-color: #ACDBEF;
 }
 .groupArrow > a{
-	height:8px;
-	width:8px;
+	height:17px;
+	width:17px;
 	transform: rotate(-45deg);
 	-o-transform: rotate(-45deg);
 	-moz-transform: rotate(-45deg);
@@ -516,6 +562,32 @@ html{
 }
 //-----------组别结束----------------
 //-----------作品页开始----------------
+#worksNameCon{
+	transition: width 1s;
+	-o-transition: width 1s;
+	-moz-transition: width 1s;
+	-webkit-transition: width 1s;
+	-ms-transition: width 1s;
+
+	height:100%;
+	display:inline-block;
+	margin-right:20px;
+	margin-left:20px;
+	overflow:hidden;
+	vertical-align:top;
+}
+.leau{
+	height:180%;
+	display:inline-block;
+	top:-40%;
+	position:relative;
+}
+
+.lea { 
+  animation: shake 0.2s ease-in-out 1s 2 alternate;
+  -webkit-animation: shake 0.2s ease-in-out 1s 2 alternate;
+  -o-animation: shake 0.2s ease-in-out 1s 2 alternate;
+}
 .workBlock{
 	display: inline-block;
 	position:relative;
@@ -534,24 +606,23 @@ html{
 	height:15%;
 	width:420px;
 	position:absolute;
-	background-color:grey;
 	text-align:center;
 }
 #workSecContainer{
-	transition: left $scrollTime $transFunc;
-	-ms-transition: left $scrollTime $transFunc;
-	-moz-transition: left $scrollTime $transFunc;
-	-webkit-transition: left $scrollTime $transFunc;
-	-o-transition: left $scrollTime $transFunc;
+	transition: left 0.7s $transFunc 0.3s;
+	-ms-transition: left 0.7s $scrollTime 0.3s;
+	-moz-transition: left 0.7s $scrollTime $transFunc 0.3s;
+	-webkit-transition: left 0.7s $transFunc 0.3s;
+	-o-transition: left 0.7s $transFunc 0.3s;
 	position:relative;
 	width: 500%;
 }
 #gallery{
-	transition: transform $scrollTime linear;
-	-ms-transition: transform $scrollTime linear;
-	-moz-transition: transform $scrollTime linear;
-	-webkit-transition: transform $scrollTime linear;
-	-o-transition: transform $scrollTime linear;
+	transition: transform $scrollTime ease-out;
+	-ms-transition: transform $scrollTime ease-out;
+	-moz-transition: transform $scrollTime ease-out;
+	-webkit-transition: transform $scrollTime ease-out;
+	-o-transition: transform $scrollTime ease-out;
 	top:25%;
 	position:absolute;
 	height:36%;
@@ -562,10 +633,15 @@ html{
 		display:inline;
 	}
 }
-#worksAside{
+#worksAside, #eventAside{
 	top:90%;
+	display:flex;
+	width:300px;
+	justify-content:space-around;
+	z-index:1;
+	align-items:center;
 }
-.dot[check=true], .worksDot[check=true]{
+.dot[check=true], .worksDot[check=true], .eventDot[check=true]{
 	background-color:black;
 }
 .worksArrow{
@@ -574,9 +650,8 @@ html{
 	-moz-transform: rotate(-45deg);
 	-webkit-transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
-	display: inline-block;
-	height:8px;
-	width:8px;
+	height:17px;
+	width:17px;
 }
 #worksArrowLeft{
 	border-top:2px black solid;
@@ -586,9 +661,7 @@ html{
 	border-right:2px black solid;
 	border-bottom:2px black solid;
 }
-.worksDot{
-	display:inline-block;
-}
+
 
 #worksIntrCon{
 	height:50%;
@@ -608,33 +681,106 @@ html{
 	opacity:0;
 	position:absolute;
 }
+#rouleau{
+	top:calc(50% - 9px);
+	top:-moz-calc(50% - 9px);
+	top:-webkit-calc(50% - 9px);
+	//top:-o-calc(50% - 9px);
+	position:relative;
+}
 //---------作品页结束-----------------
 //---------介绍页开始-----------------
-.intrImg{
-	position:absolute;
-	height:60%;
+#introduction{
+	#intrMain{
+		width: 80%;
+		height:100%;
+		min-width:850px;
+		max-width:1390px;
+		min-height:600px;
+	}
 }
-#lb{
-	left:0;
-	bottom:0;
-	z-index:1
+#intrMain > div{
+	height:100%;
+	vertical-align:top;
 }
-#lt{
-	left:0;
-	top:0;
-	z-index:3;
-}
-#rb{
-	right:0;
-	bottom:0;
-	z-index:4;
-}
-#rt{
-	right:0;
-	top:0;
-	z-index:2;
-}
+#intrImgCon{
+	top:53%;
+	//min-height:100%;
+	width:30%;
+	display:flex;
+	flex-flow:column;
+	justify-content:space-around;
 
+	img{
+		width:100%;
+		position:absolute;
+		-webkit-backface-visibility:hidden;
+		backface-visibility:hidden;
+		-moz-backface-visibility:hidden;
+		-ms-backface-visibility:hidden;
+
+		-webkit-transform-style:preserve-3d;
+		-moz-transform-style:preserve-3d;
+		-ms-transform-style:preserve-3d;
+		transform-style:preserve-3d;
+
+	}
+	div{
+		height:30%;
+		-webkit-transform-style:preserve-3d;
+		-moz-transform-style:preserve-3d;
+		-ms-transform-style:preserve-3d;
+		transform-style:preserve-3d;
+	}
+	div[aspect='f']{
+		transform:rotateX(180deg);
+		-moz-transform:rotateX(180deg);
+		-ms-transform:rotateX(180deg);
+		-webkit-transform:rotateX(180deg);
+	}
+	div[value='0']{
+		transition:transform 0.6s;
+		-webkit-transition:transform 0.6s;
+		-o-transition:transform 0.6s;
+		-ms-transition:transform 0.6s;
+		-moz-transition:transform 0.6s;
+	}
+	div[value='1']{
+		transition:transform 0.6s 0.2s;
+		-webkit-transition:transform 0.6s 0.2s;
+		-o-transition:transform 0.6s 0.2s;
+		-ms-transition:transform 0.6s 0.2s;
+		-moz-transition:transform 0.6s 0.2s;
+	}
+	div[value='2']{
+		transition:transform 0.6s 0.4s;
+		-webkit-transition:transform 0.6s 0.4s;
+		-o-transition:transform 0.6s 0.4s;
+		-ms-transition:transform 0.6s 0.4s;
+		-moz-transition:transform 0.6s 0.4s;
+	}
+	.z{
+		z-index:1;
+	}
+	.f{
+		z-index:-1;
+		transform:rotateX(180deg);
+		-webkit-transform:rotateX(180deg);
+		-moz-transform:rotateX(180deg);
+		-ms-transform:rotateX(180deg);
+	}
+}
+#intrRight{
+	width:70%;
+	float:right;
+	position:relative;
+}
+#intrRight > div{
+	margin-left:100px;
+	width:75%;
+	right:0;
+	line-height:2em;
+}
 //---------介绍页结束-----------------
 //---------报名页开始始--------------
 #join{
@@ -645,17 +791,74 @@ html{
 	margin-left:10%;
 
 }
-#recruit_form{
+#recruit_form, #chat > div{
 	width:70%;
 	min-width:900px;
-	height:371px;
-	textarea{
-		width:335px;
-		height:220px;
-		margin-bottom:32px;
-		resize:none;
-	}
+	height:371px;	
 	
+	
+}
+#recruit_form textarea{
+	width:335px;
+	height:220px;
+	margin-bottom:32px;
+	resize:none;
+	border:#C0BABA solid 1px;
+	border-radius:3px;
+	overflow:hidden;
+}
+
+#contact{
+//	transform:translate(0, -100%);
+}
+#chat form{
+	margin-left:8%;
+	float:left;
+	width:35%;
+	height:100%;
+	background-image:url("../images/form.jpg");
+	background-size:100% 100%;
+}
+#chat form > input{
+	display:block;
+	margin-right:auto;
+	margin-left:auto;
+	width:90px;
+	height:36px;
+	background-color:#6cbfef;
+	border:0;
+	color:white;
+	border-radius:3px;
+}
+#address img{
+	height:100%;
+	margin-right:20px;
+}
+#chat form p{
+	width:67%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:30px;
+	input{
+		width:162px;
+		float:right;
+		background-color:transparent;
+		border:0px;
+		border-bottom:1px solid;
+		outline:none;
+	}
+
+	textarea{
+		resize:none;
+		width:13.25em;
+		height:7em;
+	}
+}
+#address{
+	height:100%;
+	width:35%;
+	margin-right:8%;
+	float:right;
 }
 #submit{
 	display:block;
@@ -688,13 +891,25 @@ html{
 }
 #inputBox>input{
 	display:block;
-	height:30px;
+	height:31px;
 	margin-bottom:19px;
 	top:-7px;
 	position:relative;
 	width:200px;
-	border-width: 2px;
+	border: solid #C0BABA 1px;
 	border-radius:3px;
+}
+#inputBox>input:focus::-webkit-input-placeholder ,#selfIntro>textarea:focus::-webkit-input-placeholder{
+	color:white;
+}
+#inputBox>input:focus::-moz-input-placeholder ,#selfIntro>textarea:focus::-moz-input-placeholder{
+	color:white;
+}
+#inputBox>input:focus:-moz-input-placeholder ,#selfIntro>textarea:focus:-moz-input-placeholder{
+	color:white;
+}
+#inputBox>input:focus::-ms-input-placeholder ,#selfIntro>textarea:focus::-ms-input-placeholder{
+	color:white;
 }
 #inputBox>div{
 	margin-bottom:31px;
@@ -714,7 +929,98 @@ label>.radio{
 	top:-7px;
 }
 
-
-
-
 //---------报名页结束--------------
+//---------大事件页开始--------
+#axis{
+	z-index:1;
+	height:150%;
+	width:1px;
+	background-color:#939393;
+	position:relative;
+	top:-25%;
+	left:12%;
+	background-color:#D9D5D5;
+	transform:translate(0,-33px);
+	-webkit-transform:translate(0,-33px);
+	-moz-transform:translate(0,-33px);
+	-ms-transform:translate(0,-33px);
+	img{
+		width:100%;
+	}
+	.time{
+		width:80px;
+	}
+	.time[value=top]{
+		top:0%;
+	}
+	.time[value=center]{
+		top:50%;
+	}
+	.time[value=bottom]{
+		top:100%;
+	}
+}
+#eventRight{
+	position:absolute;
+	left:12%;
+	width:88%;
+	//right:0;
+	height:100%;
+	top:0;
+	overflow:hidden;
+}
+#eventImgCon{
+	width:75%;
+	min-width:700px;
+	max-width:920px;
+	display:flex;
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:-ms-flex;
+	justify-content:space-around;
+	align-items:center;
+	flex-wrap:wrap;
+}
+.display1{
+	width:60%;
+	height:60%;
+	margin-top:20%;
+	margin-bottom:20%;
+}
+.display2, .display4{
+	width:40%;
+	height:40%;
+}
+.display9{
+	width:30%;
+	height:30%;
+
+
+}
+.display9[val='1']{
+	transition:opacity 0.08s 0.08s;
+}
+.display9[val='2']{
+	transition:opacity 0.08s 0.16s;
+}
+.display9[val='3']{
+	transition:opacity 0.08s 0.24s;
+}
+.display9[val='4']{
+	transition:opacity 0.08s 0.32s;
+}
+.display9[val='5']{
+	transition:opacity 0.08s 0.40s;
+}
+.display9[val='6']{
+	transition:opacity 0.08s 0.48s;
+}
+.display9[val='7']{
+	transition:opacity 0.08s 0.56s;
+}
+.display9[val='8']{
+	transition:opacity 0.08s 0.64s;
+}
+
+
+//---------大事件页结束--------

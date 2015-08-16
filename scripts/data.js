@@ -18,65 +18,114 @@ define(function(require, exports, module) {
 			$('#gallery').append(img);
 		}
 	}
-
+ 	var eventYear = ['00', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15'];
+	var eventList = [
+		'',
+		'',
+		'',
+		'',
+		''
+			]
 	data.changing = false;
 	data.block = {
 		'default': 0,
+		'introduction': 0,
 		'group': 0,
-		'greatEvent': 0,
+		'event': 0,
 		'works': 0
 	};
 
 	data.exeHandler = {
 		'default': 
-			function(param){
+			function(param) {
 				$('#main').css('top', '-' + param.loca + '00%');	
-				$('.navList[value=' + param.loca + ']').attr('isselected', 'true');
-				$('.navList[value=' + data.block['default'] + ']').attr('isselected', 'false');	
+				$('.navList[val=' + param.loca + ']').attr('isselected', 'true');
+				$('.navList[val=' + data.block['default'] + ']').attr('isselected', 'false');	
+			},
+		'introduction':
+			function(param) {
+				if(param.loca == 1) {
+					$('#intrImgCon>div').attr('aspect','f');
+				} else {
+					$('#intrImgCon>div').attr('aspect','z');
+				}
 			},
 		'group': 
 			function(param) {
-				/*
-				var value = ( param.loca - param.quantity) / (param.quantity + 1) * 100;
-				$('#groupImgContainer').css('transform', 'translate('+value+'%,0)');
-				$('.groupImg[value=' + data.block['group'] + ']').css('opacity' ,0);
-				$('.groupImg[value=' + param.loca + ']').css('opacity' ,1);
+				$('#groupImgContainer').css('top', '-' + param.loca + '00%');			
+				$('.dot[val=' + param.loca + ']').attr('check', 'true');
+				$('.dot[val=' + data.block['group'] + ']').attr('check', 'false');
+			},
+		'event':
+			function(param) {
+				var firstDir, thirdDir, next, pre, center = $('.time[value=center]'), dir;
+				if(param.loca > data.block['event']) 
+					dir = 'up';
+				else
+					dir = 'down';
+				if(dir == 'up') {
+					next = $('.time[value=bottom]');
+					pre = $('.time[value=top]');
+					firstDir = '0%';
+					thirdDir = '100%';
+				} else {
+					pre = $('.time[value=bottom]');
+					next = $('.time[value=top]');
+					firstDir = '100%';
+					thirdDir = '0%';
 
-				var value_title = (-0.5 - param.loca ) / (param.quantity + 1) * 100;
-				$('#groupMoveContainer').css('transform', 'translate('+value_title+'%,0)');	
-				$('.groupNameContainer[value=' + data.block['group'] + ']').css('opacity' ,0);
-				$('.groupNameContainer[value=' + param.loca + ']').css('opacity' ,1);	
-				*/
-
-				$('#groupImgContainer').css('top', '-' + param.loca + '00%');	
-				/*
-				$('.dot[value=' + data.block['group'] + ']').html('&#xe603');
-				$('.dot[value=' + param.loca + ']').html('&#xe604');
-				*/
-				
-				$('.dot[value=' + param.loca + ']').attr('check', 'true');
-				$('.dot[value=' + data.block['group'] + ']').attr('check', 'false');
+				}
+				console.log('eee'+param.loca + data.block['event']);
+				pre.attr('value',dir=='up'?'bottom':'top');
+				pre.css('top', thirdDir);
+				$('.eventDot[val=' + param.loca + ']').attr('check', 'true');
+				$('.eventDot[val=' + data.block['event'] + ']').attr('check', 'false');
+				center.animate({'top': firstDir}, 800, function() {
+					center.attr('value', dir=='up'?'top':'bottom');
+					console.log(next);
+					next.children()[1].innerHTML = eventYear[param.loca];
+					next.animate({'top': '50%'}, 800, function() {
+						next.attr('value', 'center');
+						data.changing = false;	
+					});
+					$('#eventImgCon').html(eventList[param.loca]);
+					$('#eventImgCon>img').css('opacity', 1);
+				});
+				$('#eventImgCon>img').css('opacity', 0);
 			},
 		'works': 
 			function(param){
 				$('#workSecContainer').css('left', '-' + param.loca + '00%');
-				$('.worksDot[value=' + param.loca + ']').attr('check', 'true');
-				$('.worksDot[value=' + data.block['works'] + ']').attr('check', 'false');
-				/*
-				$('.worksDot[value=' + data.block['works'] + ']').html('&#xe603');
-				$('.worksDot[value=' + param.loca + ']').html('&#xe604');
-				*/
+				$('.worksDot[val=' + param.loca + ']').attr('check', 'true');
+				$('.worksDot[val=' + data.block['works'] + ']').attr('check', 'false');	
 
-				data.galleryLeft = -param.loca * 1000;
+				data.galleryLeft = -param.loca * 500;
 				$('#gallery').css('transform', 'translate('+ data.galleryLeft +'px)');
 
-				$('.worksName[value=' + data.block['works'] + ']').css('opacity',0);
-				$('.worksName[value=' + param.loca + ']').css('opacity',1);
+				$('.worksName[val=' + data.block['works'] + ']').css('opacity',0);
+				$('.worksName[val=' + param.loca + ']').css('opacity',1);
 
+				$('#worksNameCon').width($('.worksName[val=' + param.loca + ']').width() + 20);
+				$('.leau').addClass('lea');
 				//判断如果出界了,马上增补一张(或多张)
 				data.workComple();	
 			}
 	};
+
+	var isFirst = [true, true, true, true, true, true];
+	var previewHandler = {
+		'1': function() {
+
+		},
+
+		'3': function() {
+		}
+	};
+
+	function preview(loca) {
+
+		
+	}
 
 	function locaHandler(e, param) {
 		var loca = data.block[param.block];
@@ -110,10 +159,10 @@ define(function(require, exports, module) {
 			console.log('param.arrrow='+param.arrow);
 			if(param.arrow){
 				loca += param.arrow;
-			} else if(loca == Number(param.target.attr('value'))) {
+			} else if(loca == Number(param.target.attr('val'))) {
 				loca = 'false';
 			} else {
-				loca = Number(param.target.attr('value'));
+				loca = Number(param.target.attr('val'));
 			}
 		}
 		console.log(loca);
@@ -131,7 +180,9 @@ define(function(require, exports, module) {
 		console.log(loca);
 		if (loca == 'false') return;
 
-				console.log('www' + loca);
+		if(param.block == 'default'){
+			preview(loca);
+		}
 
 		//判断是第一个或最后一个,只有在不是通过定位点触发的时候才会执行	
 		if(param.isLoca == false || param.arrow) {
@@ -145,18 +196,18 @@ define(function(require, exports, module) {
 				var topNum = Number(topStr) + delta * 100;
 				*/
 				$('#main').css('top', '-' + loca + '00%');
-				$('.navList[value=' + loca + ']').attr('isselected', 'true');
-				$('.navList[value=' + data.block['default'] + ']').attr('isselected', 'false');
+				$('.navList[val=' + loca + ']').attr('isselected', 'true');
+				$('.navList[val=' + data.block['default'] + ']').attr('isselected', 'false');
 				data.changing = true;
 				data.block['default'] = loca;
 				return ;
 			}
 		}	
 		
+		data.changing = true;
 		param.loca = loca;
 		handler(param);
 
-		data.changing = true;
 		data.block[param.block] = loca;
 	}
 
@@ -165,13 +216,19 @@ define(function(require, exports, module) {
 		'default': function(e) {
 			data.scroll(e, {direction: 'y', quantity: 5,  block: 'default', isLoca:false}, data.exeHandler['default']);
 		},				
+		'introduction': function(e) {
+			data.scroll(e, {direction: 'y', quantity: 1,  block: 'introduction', isLoca:false}, data.exeHandler['introduction']);
+		},
 		'group': function(e) {
 			data.scroll(e, {direction: 'y',quantity: 5, block: 'group', isLoca:false}, data.exeHandler['group']);
 		},
 		'works': function(e) {
 			data.scroll(e, {direction: 'x', quantity: 4, block: 'works', isLoca:false}, data.exeHandler['works']);
 		},		
+		'event': function(e) {
+			data.scroll(e, {direction: 'y', quantity: 4, block: 'event', isLoca:false}, data.exeHandler['event']);
+		},
 	};
-	data.scrollFuncMapping = ['default', 'default', 'group', 'default', 'works', 'default'];
+	data.scrollFuncMapping = ['default', 'introduction', 'group', 'event', 'works', 'default'];
 	module.exports = data;
 });

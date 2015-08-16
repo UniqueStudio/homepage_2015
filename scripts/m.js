@@ -64,9 +64,7 @@ define(function(require) {
 
 	$(window).bind('mousewheel DOMMouseScroll keydown', function(e) {
 		var funcName = Data.scrollFuncMapping[Data.block['default']];
-		console.log(Data.scrollFunc[funcName]);
-		console.log(funcName);
-		console.log(Data.block['default']);
+
 		Data.scrollFunc[funcName](e);
 	});
 	
@@ -76,6 +74,9 @@ define(function(require) {
 	});
 	$('#cover').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
 		$(this).attr('style', 'display:none');
+	});
+	$('.leau').bind('webkitAnimationEnd animationend', function() {
+		$(this).removeClass('lea');
 	});
 
 	$('.navList').bind('click', function(e) {
@@ -88,19 +89,36 @@ define(function(require) {
 		Data.scroll(e, {target: This, quantity: 5, block: 'group', isLoca:true}, Data.exeHandler['group']);
 	});
 
-	$(window).resize(function() {
-		Data.workComple();
+	$('.worksDot').bind('click', function(e) {		
+		var This = $(this);
+		Data.scroll(e, {target: This, quantity: 4, block: 'works', isLoca:true}, Data.exeHandler['works']);
 	});
+
+	$('.eventDot').bind('click', function(e) {		
+		var This = $(this);
+		Data.scroll(e, {target: This, quantity: 4, block: 'event', isLoca:true}, Data.exeHandler['event']);
+	});
+
 	$('.groupArrow').bind('click', function(e){
-console.log('3333,'+$(this).attr('value'));
-		var value = Number($(this).attr('value'));
+		var value = Number($(this).attr('val'));
 
 		Data.scroll(e, {arrow:value,direction: 'y',quantity: 5, block: 'group', isLoca:true}, Data.exeHandler['group']);
 	});
-	$('.workspArrow').bind('click', function(e){
-		var value = Number($(this).attr('value'));
+
+	$('.worksArrow').bind('click', function(e){
+		var value = Number($(this).attr('val'));
 		Data.scroll(e, {arrow:value,direction: 'x',quantity: 4, block: 'works', isLoca:true}, Data.exeHandler['works']);
 	});
+	//----------------介绍部分开始----------------
+	$('#intrImgCon').height($('#intrImgCon').width() * 1.8);	
+	//大事记页面的自适应也是相同操作
+	$('#eventImgCon').height($('#eventImgCon').width() / 1.8);
+	$(window).resize(function() {
+		$('#intrImgCon').height($('#intrImgCon').width() * 1.8);	
+		$('#eventImgCon').height($('#eventImgCon').width() / 1.8);
+		Data.workComple();
+	});
+	//----------------介绍部分结束----------------
 	//测试用
 	$(document).ready(function() {
 		$('#cover').css('opacity',0);

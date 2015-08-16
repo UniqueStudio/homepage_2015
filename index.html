@@ -10,16 +10,12 @@
     <meta name="discription" content="联创队团是华中科技大学由学生自发组织自主实践自行运营的IT团队">
     <meta name="discription" content="联创团队网站提供了团队的所有基本信息，包括团队简介，团队作品，团队招新和联系方式">
     <script src="scripts/judgeBrowser.js"></script>
-     
-
-	
-	
-
 	<link rel="stylesheet"  href="styles/cssreset-min.css">
 	<link rel="stylesheet"  href="styles/cssbase-min.css">
 	<link rel="stylesheet"  href="styles/base.css">
 	<link rel="stylesheet"  href="styles/index.css">
 	<link rel="stylesheet"  href="styles/common.css">
+	<link rel="stylesheet"  href="styles/main.css">
 </head>
 <body class="full">
 	<div id="main" style="top: 0%" class="full">
@@ -28,18 +24,18 @@
 			</div>
 
 			<div class="XCenter rela" id="loadImgContainer">
-				<img src="images/load1.jpg" id="load1">
+				<img src="images/load1.jpg" id="load1" alt="uniquestudio底图">
 				<div id="load2Container">
 					<canvas id="wave"></canvas>
-					<img src="images/load2.jpg" id="load2" >
+					<img src="images/load2.jpg" id="load2" alt="uniquestudio彩图">
 				</div>
 			</div>
 			<div class="XCenter rela" id="hoverImgContainer">
 
 				<!--opera和safari不能用srcset-->
-				<img src="images/bggrey.png" id="bgImg">
-				<img src="images/handle.jpg" class="hoverImgHandle" id="designImgHandle">
-				<img src="images/design.svg" class="hoverImg" id="designImg">
+				<img src="images/bggrey.jpg" id="bgImg" alt="手绘背景">
+				<img src="images/handle.jpg" class="hoverImgHandle" id="designImgHandle" alt="悬浮触发器">
+				<img src="images/design.svg" class="hoverImg" id="designImg" alt="悬浮图标">
 
 			</div>
 			<!--显示loading的脚本-->
@@ -105,41 +101,63 @@
 		
 
 		<section id="introduction" class="mainBlock">
-			<img src="images/lb.jpg" id="lb" class="intrImg">
-			<img src="images/lt.jpg" id="lt" class="intrImg">
-			<img src="images/rb.jpg" id="rb" class="intrImg">
-			<img src="images/rt.jpg" id="rt" class="intrImg">
+			<div class="XYCenter" id="intrMain">
+				<div id="intrImgCon" class="YCenter">
+					<div value="0" aspect="z">
+						<img src="images/intr1.jpg" alt="介绍图片" class="z">
+						<img src="images/intr4.jpg" alt="介绍图片" class="f">
+					</div>
+					<div value="1" aspect="z">
+						<img src="images/intr2.jpg" alt="介绍图片" class="z">
+						<img src="images/intr5.jpg" alt="介绍图片" class="f">
+					</div>
+					<div value="2" aspect="z">
+						<img src="images/intr3.jpg" alt="介绍图片" class="z">
+						<img src="images/intr6.jpg" alt="介绍图片" class="f">
+					</div>
+				</div
+				><div id="intrRight">
+					<div class="YCenter">
+						<p>联创团队（Unique Studio）创建于2000年6月。团队秉承不断创新的核心精神，怀揣对技术的无限热忱，努力打造一个以技术为驱动，多元发展的精英学生组织。团队立足信息技术，通过承担科研项目，参加科技大赛，孕育创新产品等形式激发队员的无限激情和潜能，并积极整合历届队员的优势和资源，共同创造团队和个人的未来。
+						</p>
+						<p>		作为一个以兴趣为主导、强调主动实践和自主创新，由学生自发组织、自我管理的学生团队, 团队致力于为有潜力、肯努力、富有激情的学生构建一流的学习环境，引导他们快速成长。目前团队已经取得了优异的成绩成为华中科技大学大学生主动实践获得成功的典范之一。团队积极参加国际高水平的科技创新大赛，尤其是在微软创新杯(Imagine Cup)全球学生大赛中， 连续5年闯进总决赛并代表中国大学生在世界大学生科技竞赛的舞台上崭露头角。
+						</p>
+					</div>
+					<aside>
+					</aside>
+				</div>
+			</div>
 		</section>
-		<section id="group" class="mainBlock" value="2">
+		<section id="group" class="mainBlock" val="2">
 			<div class="full" id="suspension">
-				<img src="images/pen.jpg" id="animation1" class="animation rotateR" width="30px" style="left:48%; top:11%">
+				<img src="images/pen.jpg" id="animation1" class="animation rotateR" width="30" style="left:48%; top:11%" alt="悬浮动画">
 				<div id="animation2" class="animation" style="position:absolute;width:30px; height:30px; border:#C9E649 1px solid; border-radius:30px; left:25%;top:21%"></div>
 			</div>
 			<div id="groupLeft" class="groupBlock">
-				<div style="height:100%;width:15%;display:inline-block">	
-					<aside id="groupAside" class="YCenter">
-						<div class="groupArrow" id="groupArrowUp" value="-1">
+				<div style="position:relative;height:100%;width:15%;display:inline-block">	
+					<aside id="groupAside" class="XYCenter">
+						<div class="groupArrow" id="groupArrowUp" val="-1">
 							<a href="javascript:void(0)"></a>
 						</div>
 						<div>
-							<a href="javascript:void(0)" class="dot" value="0" check="true"></a>
+							<a href="javascript:void(0)" class="dot" val="0" check="true"></a>
 						</div>
 						<div>
-							<a href="javascript:void(0)" class="dot" value="1"></a>
+							<a href="javascript:void(0)" class="dot" val="1"></a>
 						</div>
 						<div>
-							<a href="javascript:void(0)" class="dot" value="2"></a>
+							<a href="javascript:void(0)" class="dot" val="2"></a>
 						</div>
 						<div>
-							<a href="javascript:void(0)" class="dot" value="3"></a>
+							<a href="javascript:void(0)" class="dot" val="3"></a>
 						</div>
 						<div>
-							<a href="javascript:void(0)" class="dot" value="4"></a>
+							<a href="javascript:void(0)" class="dot" val="4"></a>
 						</div>
 						<div>
-							<a href="javascript:void(0)" class="dot" value="5"></a>
+							<a href="javascript:void(0)" class="dot" val="5"></a>
 						</div>	
-						<div class="groupArrow" id="groupArrowDown" value="1">
+						<div class="groupArrow" id="groupArrowDown" val="1">
 							<a href="javascript:void(0)"></a>
 						</div>
 					</aside>
@@ -147,30 +165,30 @@
 				><div style="height:100%;width:85%;display:inline-block">	
 					<div id="groupImgContainer">
 						<div class="groupImgBg" style="background-color:#ACDBEF">
-							<img value="0" class="groupImg XYCenter" src="images/xiniu.jpg" id="groupImg1">
+							<img val="0" class="groupImg XYCenter" src="images/xiniu.jpg" id="groupImg1" alt="组别图">
 						</div>
 						<div class="groupImgBg">
-							<img value="1" class="groupImg XYCenter" src="images/xiniu.jpg">
+							<img val="1" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
 						</div>
 						<div class="groupImgBg">
-							<img value="2" class="groupImg XYCenter" src="images/xiniu.jpg">
+							<img val="2" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
 						</div>
 						<div class="groupImgBg">
-							<img value="3" class="groupImg XYCenter" src="images/xiniu.jpg">
+							<img val="3" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
 						</div>
 						<div class="groupImgBg">
-							<img value="4" class="groupImg XYCenter" src="images/xiniu.jpg">
+							<img val="4" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
 						</div>
 						<div class="groupImgBg">
-							<img value="5" class="groupImg XYCenter" src="images/xiniu.jpg">
+							<img val="5" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
 						</div>
 					</div>
 				</div>
 			</div
 			><div id="groupRight" class="groupBlock">
-				<div class="groupIntr XYCenter"style="min-height:380px;width:70%;height:35%;">
+				<div class="groupIntr XYCenter" style="min-height:380px;width:70%;height:35%;">
 					<div id="groupNameContainer">
-						<img src="images/web.jpg" class="groupNameImg absoXCenter">
+						<img src="images/web.jpg" class="groupNameImg XYCenter" alt="组名图">
 					</div>
 					<div id="intrContent">
 						<span>Web组以通过互联网丰富生活为主要目的，时刻与最新的趋势保持同步。浏览器是我们的世界，在这里我们可以尽情地毁灭和创造。主要方向：网站开发、Web App开发、浏览器插件开发、微信公众平台开发。</span>	
@@ -179,38 +197,74 @@
 				</div>
 			</div	
 		></section>
-		<section id="greatEvent" class="mainBlock" style="background:green"onload="processing(18)"></section>
-		<section id="works" class="mainBlock" onload="processing(18)">
-			<div id="hidden" style="position:absolute;overflow:hidden">
-				<span>wwwwwwwwwww</span>
-				<span>eeeeee</span>
+
+		<section id="greatEvent" class="mainBlock">
+			<div id="axis">
+				<div class="absoXCenter time" value="top">
+					<img src="images/time.jpg">
+					<span class="XYCenter">ssss</span>
+				</div>
+				<div class="absoXCenter time" value="center">
+					<img src="images/time.jpg">
+					<span class="XYCenter">ssss</span>
+				</div>
+				<div class="absoXCenter time" value="bottom">
+					<img src="images/time.jpg">
+					<span class="XYCenter">ssss</span>
+				</div>
 			</div>
+			<div id="eventRight">
+				<div id="eventImgCon" class="XYCenter">
+					<img src="images/imgcup.jpg" class="display9" val="0">
+					<img src="images/imgcup.jpg" class="display9" val="1">
+					<img src="images/imgcup.jpg" class="display9" val="2">
+					<img src="images/imgcup.jpg" class="display9" val="3">
+					<img src="images/imgcup.jpg" class="display9" val="4">
+					<img src="images/imgcup.jpg" class="display9" val="5">
+					<img src="images/imgcup.jpg" class="display9" val="6">
+					<img src="images/imgcup.jpg" class="display9" val="7">
+					<img src="images/imgcup.jpg" class="display9" val="8">
+				</div>
+				<aside class="absoXCenter" id="eventAside">
+					<a href="javascript:void(0)" class="eventDot" val="0" check="true"></a>
+					<a href="javascript:void(0)" class="eventDot" val="1"></a>
+					<a href="javascript:void(0)" class="eventDot" val="2"></a>
+					<a href="javascript:void(0)" class="eventDot" val="3"></a>
+					<a href="javascript:void(0)" class="eventDot" val="4"></a>
+					<a href="javascript:void(0)" class="eventDot" val="5"></a>
+				</aside>
+			</div>
+		</section>
+
+		<section id="works" class="mainBlock">
 			<div class="full" style="min-height:600px;position:relative">
 				<aside id="worksAside" class="absoXCenter">
-					<a class="worksArrow" id="worksArrowLeft" value="-1"></a>
-					<a href="javascript:void(0)" class="worksDot" value="0" check="true"></a>
-					<a href="javascript:void(0)" class="worksDot" value="1"></a>
-					<a href="javascript:void(0)" class="worksDot" value="2"></a>
-					<a href="javascript:void(0)" class="worksDot" value="3"></a>
-					<a href="javascript:void(0)" class="worksDot" value="4"></a>
-					<a href="javascript:void(0)" class="worksDot" value="5"></a>
-					<a class="worksArrow" id="worksArrowRight" value="1"></a>
+					<a href="javascript:void(0)" class="worksArrow" id="worksArrowLeft" val="-1"></a>
+					<a href="javascript:void(0)" class="worksDot" val="0" check="true"></a>
+					<a href="javascript:void(0)" class="worksDot" val="1"></a>
+					<a href="javascript:void(0)" class="worksDot" val="2"></a>
+					<a href="javascript:void(0)" class="worksDot" val="3"></a>
+					<a href="javascript:void(0)" class="worksDot" val="4"></a>
+					<a href="javascript:void(0)" class="worksDot" val="5"></a>
+					<a href="javascript:void(0)" class="worksArrow" id="worksArrowRight" val="1"></a>
 				</aside>
-				<div id="gallery"><img src="images/gallery.jpg" id="galleryImg"></div>
+				<div id="gallery"><img src="images/gallery.jpg" id="galleryImg" alt="gallery"></div>
 				<div id="worksIntr" class="absoXCenter">
 					<div id="worksIntrCon">
 						hahahahahahahahahahahaha
 					</div>
 					<div id="worksIntrTitle">
-						<span class="YCenter">
-							<span></span>
-							<span class="worksName" value="0">3333333</span>
-							<span class="worksName" value="1">1111111</span>
-							<span class="worksName" value="2">4444444</span>
-							<span class="worksName" value="3">aaaaaaa</span>
-							<span class="worksName" value="4">bbbbbbb</span>
-							<span></span>
-						</span>
+						<div id="rouleau" class="XCenter" style="height:18px;">
+							<img src="images/rouleau.jpg" class="leau" alt="卷轴装饰">
+							<div id="worksNameCon">
+								<span class="worksName XYCenter" val="0">3333333</span>
+								<span class="worksName XYCenter" val="1">1111111</span>
+								<span class="worksName XYCenter" val="2">4444444</span>
+								<span class="worksName XYCenter" val="3">aaaaaaaaaaaaaaaaaa</span>
+								<span class="worksName XYCenter" val="4">bbbbbbb</span>
+							</div>
+							<img src="images/rouleau.jpg" class="leau" alt="卷轴装饰">
+						</div>
 					</div>
 				</div>
 				
@@ -235,7 +289,8 @@
 			</div>
 		</section>
 
-		<section id="contact" class="mainBlock" onload="processing(18)">	
+		<section id="contact" class="mainBlock">	
+			<!--
 			<div id="join" class="full">
 				
 				<form id="recruit_form" class="XYCenter">
@@ -311,88 +366,120 @@
 						<input type="submit" name="submit" id="submit" value="提交" class="XCenter">
 					</div>
 				</form>
+			</div>-->
+			<div id="chat" class="full" style="position:relative">
+				<div class="XYCenter" style="height:463px;">
+					<form>
+						<p style="margin-top:18%">姓名<input name="yName"></p>
+						<p>专业<input name="yPro"></p>
+						<p>邮箱<input name="yAdd"></p>
+						<p>想法与建议<br>
+						<textarea></textarea></p>
+						<input type="submit" value="提交">
+					</form>
+					<div id="address">
+						<p>hr@hustunique.com</p>
+						<p>+86 155-2727-9060 孟涛</p>
+						<p style="height:54px">
+							<img src="images/sina.jpg"></img>
+							<img src="images/wechat.jpg"></img>
+							<img src="images/renren.jpg"></img>
+						</p>
+						<p>中国湖北省武汉市洪山区珞瑜路1037号华中科技大学启明学院亮胜楼8楼</p>
+						<p>8th Floor, Building LiangSheng, 1037 Luoyu Road, Wuhan 430074, P.R.China</p>
+						<iframe src="http://m.amap.com/navi/?dest=114.437217,30.515058&destName=%E5%90%AF%E6%98%8E%E5%AD%A6%E9%99%A2&hideRouteIcon=1&key=ef1d3d2475ba6588b872b73c4f6177af" style="width:100%;height:200px;border:0"></iframe>
+					</div>
+				</div>
 			</div>
-			<div id="contact"></div>
 		</section>
 	</div>
 		<nav id="nav" ischanging="false">
-			<div id="logo"></div>
+			<div id="logo">
+				<span id="offset"></span
+				><div>
+					<img src="images/logo.jpg" alt="logo">
+				</div
+				><span id="unique">联创团队</span>
+			</div>
 			<div id="navFlex"></div>
 			<div id="listContainer">
 				<span class="li">
-					<a href="javascript:void(0)" class="navList sin" value="0" isselected="true">
+					<a href="javascript:void(0)" class="navList sin" val="0" isselected="true">
 						<span class="listCon lanting">首页</span>
 						<div class="clapboard"></div
 						><div class="listPicContainer">
-							<img src="images/home.jpg" class="listPic">
+							<img src="images/home.jpg" class="listPic" alt="listIcon">
 						</div>
 					</a>
 				</span
 				><span class="li">
-					<a href="javascript:void(0)" class="navList dou" value="1">
+					<a href="javascript:void(0)" class="navList dou" val="1">
 						<span class="listCon">简介</span>
 						<div class="clapboard"></div
 						><div class="listPicContainer">
-							<img src="images/intr.jpg" class="listPic">
+							<img src="images/intr.jpg" class="listPic" alt="listIcon">
 						</div		
 					></a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="navList sin" value="2">
+				<a href="javascript:void(0)" class="navList sin" val="2">
 					<span class="listCon">组别</span>
 					<div class="clapboard"></div
 					><div class="listPicContainer">
-						<img src="images/group.jpg" class="listPic">
+						<img src="images/group.jpg" class="listPic" alt="listIcon">
 					</div>
 				</a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="navList dou" value="3">
+				<a href="javascript:void(0)" class="navList dou" val="3">
 					<span class="listCon">大事记</span>
 					<div class="clapboard"></div
 					><div class="listPicContainer">
-						<img src="images/event.jpg" class="listPic">
+						<img src="images/event.jpg" class="listPic" alt="listIcon">
 					</div>
 				</a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="navList sin" value="4">
+				<a href="javascript:void(0)" class="navList sin" val="4">
 					<span class="listCon">作品</span>
 					<div class="clapboard"></div
 					><div class="listPicContainer">
-						<img src="images/works.jpg" class="listPic">
+						<img src="images/works.jpg" class="listPic" alt="listIcon">
 					</div>
 				</a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="dou" value="-500%">
+				<a href="javascript:void(0)" class="dou" val="-500%">
 					<span class="listCon">HackDay</span>
 					<div class="clapboard"></div
 					><div class="listPicContainer">
-						<img src="images/hack.jpg" class="listPic">
+						<img src="images/hack.jpg" class="listPic" alt="listIcon">
 					</div>
 				</a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="navList sin" value="5">
+				<a href="javascript:void(0)" class="navList sin" val="5">
 					<span class="listCon">加入/联系</span>
 					<div class="clapboard"></div
 					><div class="listPicContainer">
-						<img src="images/home.jpg" class="listPic">
+						<img src="images/home.jpg" class="listPic" alt="listIcon">
 					</div>
 				</a>
 				</span
-				><a href="javascript:void(0)" id="menuInNav" class="iconfont" style="border-bottom: 1px solid #DBD9D9;background-color: white;">
-					<span style="margin:14px;display:inline-block;line-height:32px;font-size:22px" >&#xe605;
-					</span>
+				><a href="javascript:void(0)" id="menuInNav">
+					<img src="images/menu.svg" class="XCenter" alt="菜单">
 				</a>
 			</div>
 		</nav>
 		<a id="menu" href="javascript:void(0)">
-			<div id="menuCenter" class="iconfont">&#xe605;</div>
+			<img src="images/menu2.svg" alt="菜单" class="XYCenter" style="width:19px;">
+			<!--<div id="menuCenter">
+			</div>-->
 		</a>
 	
 		<script src="/bower_components/seajs/dist/sea.js"></script>
+
+		<script src="scripts/sea.js"></script>
 
 		<script src="scripts/main.js"></script>
 		<script src="scripts/cloud.js"></script>

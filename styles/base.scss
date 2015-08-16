@@ -7,6 +7,9 @@
 .lan{
 	font-family:'lanting';
 }
+a {
+	outline: none;
+}
 .XCenter {
   margin-left: auto;
   margin-right: auto;
@@ -122,5 +125,34 @@ body {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
+}
+
+@keyframes shake{
+	from {
+		transform: rotate(10deg);
+	}
+	to{
+		transform: rotate(-10deg);
+	}
+}
+@-webkit-keyframes shake{
+	from {
+		-webkit-transform: rotate(10deg);
+		transform: rotate(10deg);
+	}
+	to{
+		-webkit-transform: rotate(-10deg);
+		transform: rotate(-10deg);
+	}
+}
+@-moz-keyframes shake{
+	from {
+		-moz-transform: rotate(10deg);
+		transform: rotate(10deg);
+	}
+	to{
+		-moz-transform: rotate(-10deg);
+		transform: rotate(-10deg);
+	}
 }
 /*# sourceMappingURL=base.css.map */
