@@ -19,7 +19,8 @@
 </head>
 <body class="full">
 	<div id="main" style="top: 0%" class="full">
-		<section class="mainBlock">
+		<!--		<div id="circle" class="XYCenter">-->
+		<section id="home" class="mainBlock" style="z-index:6">
 			<div id="cover" class="full">
 			</div>
 
@@ -29,14 +30,33 @@
 					<canvas id="wave"></canvas>
 					<img src="images/load2.jpg" id="load2" alt="uniquestudio彩图">
 				</div>
+				<img src="images/handle.jpg" class="hoverImgHandle" id="designImgHandle" alt="悬浮触发器">
+				<img src="images/designHover.jpg" class="hoverImg" id="designImg" alt="悬浮图标">
+				<img src="images/handle.jpg" class="hoverImgHandle" id="webImgHandle" alt="悬浮触发器">
+				<img src="images/webHover.jpg" class="hoverImg" id="webImg" alt="悬浮图标">
+				<img src="images/handle.jpg" class="hoverImgHandle" id="pmImgHandle" alt="悬浮触发器">
+				<img src="images/pmHover.jpg" class="hoverImg" id="pmImg" alt="悬浮图标">
+				<img src="images/handle.jpg" class="hoverImgHandle" id="iosImgHandle" alt="悬浮触发器">
+				<img src="images/iosHover.jpg" class="hoverImg" id="iosImg" alt="悬浮图标">
+				<img src="images/handle.jpg" class="hoverImgHandle" id="labImgHandle" alt="悬浮触发器">
+				<img src="images/labHover.jpg" class="hoverImg" id="labImg" alt="悬浮图标">
+				<img src="images/handle.jpg" class="hoverImgHandle" id="monkeyImgHandle" alt="悬浮触发器">
+				<img src="images/monkeyHover.jpg" class="hoverImg" id="monkeyImg" alt="悬浮图标">
+				<img src="images/handle.jpg" class="hoverImgHandle" id="androidImgHandle" alt="悬浮触发器">
+				<img src="images/androidHover.jpg" class="hoverImg" id="androidImg" alt="悬浮图标">
+
+
+
+
+
+
+
+
 			</div>
 			<div class="XCenter rela" id="hoverImgContainer">
 
 				<!--opera和safari不能用srcset-->
-				<img src="images/bggrey.jpg" id="bgImg" alt="手绘背景">
-				<img src="images/handle.jpg" class="hoverImgHandle" id="designImgHandle" alt="悬浮触发器">
-				<img src="images/design.svg" class="hoverImg" id="designImg" alt="悬浮图标">
-
+				<img src="images/bgBig.jpg" id="bgImg" alt="手绘背景">
 			</div>
 			<!--显示loading的脚本-->
 			<script>
@@ -74,6 +94,9 @@
 				(function() {
 					var container = document.getElementById('loadImgContainer');
 					var html = document.getElementsByTagName('html')[0];
+					var home = document.getElementById('home');
+					home.style.height = html.style.height;
+					home.style.width = html.style.width;
 					function resizeLoadContainer() {
 						if(html.offsetWidth/html.offsetHeight < 16/9) {
 							var width = html.offsetHeight *16/9 +'px';
@@ -97,10 +120,20 @@
 			</script>
 
 		</section>
+		<!--	</div>-->
+	<script>
+/*
+		var circle = document.getElementById('circle');
+		var html = document.getElementsByTagName('html')[0];
+		var radius = Math.sqrt(Math.pow(html.offsetHeight,2) + Math.pow(html.offsetWidth,2));
+		circle.style.height = radius + 'px';
+		circle.style.width = radius + 'px';
+		/*
+	</script>
 
 		
 
-		<section id="introduction" class="mainBlock">
+		<section id="introduction" class="mainBlock" style="z-index:5">
 			<div class="XYCenter" id="intrMain">
 				<div id="intrImgCon" class="YCenter">
 					<div value="0" aspect="z">
@@ -118,17 +151,22 @@
 				</div
 				><div id="intrRight">
 					<div class="YCenter">
-						<p>联创团队（Unique Studio）创建于2000年6月。团队秉承不断创新的核心精神，怀揣对技术的无限热忱，努力打造一个以技术为驱动，多元发展的精英学生组织。团队立足信息技术，通过承担科研项目，参加科技大赛，孕育创新产品等形式激发队员的无限激情和潜能，并积极整合历届队员的优势和资源，共同创造团队和个人的未来。
-						</p>
-						<p>		作为一个以兴趣为主导、强调主动实践和自主创新，由学生自发组织、自我管理的学生团队, 团队致力于为有潜力、肯努力、富有激情的学生构建一流的学习环境，引导他们快速成长。目前团队已经取得了优异的成绩成为华中科技大学大学生主动实践获得成功的典范之一。团队积极参加国际高水平的科技创新大赛，尤其是在微软创新杯(Imagine Cup)全球学生大赛中， 连续5年闯进总决赛并代表中国大学生在世界大学生科技竞赛的舞台上崭露头角。
-						</p>
+						<div class="intrCon YCenter" style="opacity:1" value="0">
+							<p>联创团队（Unique Studio）创建于2000年6月。团队秉承不断创新的核心精神，怀揣对技术的无限热忱，努力打造一个以技术为驱动，多元发展的精英学生组织。团队立足信息技术，通过承担科研项目，参加科技大赛，孕育创新产品等形式激发队员的无限激情和潜能，并积极整合历届队员的优势和资源，共同创造团队和个人的未来。</p>
+							<p>		作为一个以兴趣为主导、强调主动实践和自主创新，由学生自发组织、自我管理的学生团队, 团队致力于为有潜力、肯努力、富有激情的学生构建一流的学习环境，引导他们快速成长。目前团队已经取得了优异的成绩成为华中科技大学大学生主动实践获得成功的典范之一。团队积极参加国际高水平的科技创新大赛，尤其是在微软创新杯(Imagine Cup)全球学生大赛中， 连续5年闯进总决赛并代表中国大学生在世界大学生科技竞赛的舞台上崭露头角。</p>
+						</div>
+						<div class="intrCon YCenter" value="1">
+							<p>近年来，团队大力推广校园极客文化，努力把创新活动与IT产业相结合。团队连续三年举办了Unique Hack Day校园黑客马拉松大赛，通过Unique Hack Day，连接起了当今最有想法的年轻人，努力让极客文化传播得更广。与此同时，团队成员在校期间努力创新，推出了众多产品。离校后，团队成员积极投身创业浪潮，成功孵化出了百纳信息技术有限公司等企业。联创团队着力打造新的联创平台，为把更多更好的学生带向自主创新之路而不懈努力。</p>
+						</div>
 					</div>
-					<aside>
+					<aside class="absoXCenter" id="intrAside" style="width:100px">
+						<a href="javascript:void(0)" class="intrDot" val="0" check="true"></a>
+						<a href="javascript:void(0)" class="intrDot" val="1"></a>	
 					</aside>
 				</div>
 			</div>
 		</section>
-		<section id="group" class="mainBlock" val="2">
+		<section id="group" class="mainBlock" val="2" style="z-index:4">
 			<div class="full" id="suspension">
 				<img src="images/pen.jpg" id="animation1" class="animation rotateR" width="30" style="left:48%; top:11%" alt="悬浮动画">
 				<div id="animation2" class="animation" style="position:absolute;width:30px; height:30px; border:#C9E649 1px solid; border-radius:30px; left:25%;top:21%"></div>
@@ -164,22 +202,22 @@
 				</div
 				><div style="height:100%;width:85%;display:inline-block">	
 					<div id="groupImgContainer">
-						<div class="groupImgBg" style="background-color:#ACDBEF">
+						<div class="groupImgBg" style="background-color:#bcdebd">
 							<img val="0" class="groupImg XYCenter" src="images/xiniu.jpg" id="groupImg1" alt="组别图">
 						</div>
-						<div class="groupImgBg">
+						<div class="groupImgBg" style="background-color:#b2dfdb">
 							<img val="1" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
 						</div>
-						<div class="groupImgBg">
+						<div class="groupImgBg" style="background-color:#fbe0e9">
 							<img val="2" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
 						</div>
-						<div class="groupImgBg">
+						<div class="groupImgBg" style="background-color:#fef9cb">
 							<img val="3" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
 						</div>
-						<div class="groupImgBg">
+						<div class="groupImgBg" style="background-color:#ACDBEF">
 							<img val="4" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
 						</div>
-						<div class="groupImgBg">
+						<div class="groupImgBg" style="background-color:#dfcec7">
 							<img val="5" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
 						</div>
 					</div>
@@ -188,17 +226,28 @@
 			><div id="groupRight" class="groupBlock">
 				<div class="groupIntr XYCenter" style="min-height:380px;width:70%;height:35%;">
 					<div id="groupNameContainer">
-						<img src="images/web.jpg" class="groupNameImg XYCenter" alt="组名图">
+						<img src="images/android.png" value="0" class="groupNameImg XYCenter" alt="组名图" style="opacity:1">
+						<img src="images/iOS.png" value="1" class="groupNameImg XYCenter" alt="组名图">
+						<img src="images/Design.png" value="2" class="groupNameImg XYCenter" alt="组名图">
+						<img src="images/PM.png" value="3" class="groupNameImg XYCenter" alt="组名图">
+						<img src="images/Web.png" value="4" class="groupNameImg XYCenter" alt="组名图">
+						<img src="images/lab.png" value="5" class="groupNameImg XYCenter" alt="组名图">
 					</div>
 					<div id="intrContent">
-						<span>Web组以通过互联网丰富生活为主要目的，时刻与最新的趋势保持同步。浏览器是我们的世界，在这里我们可以尽情地毁灭和创造。主要方向：网站开发、Web App开发、浏览器插件开发、微信公众平台开发。</span>	
+						<span value="0" style="opacity:1" >Android组是基于Android系统以实现创意、探索技术为目的的小组，无论是在本地化功能型应用方向，还是基于大数据的客户端，都保持领先的技术水平和辉煌的战果。主要方向：手机游戏开发、功能型App开发、移动互联网应用及插件开发。</span>
+						<span value="1">我们基于iOS系统展现创意和技术。无论是小而美的创意类应用，还是大型的客户端构建都是我们涉足的领域。在这里，你能优雅地通过技术为平凡生活增添光彩，得到自我提升。 Stay Hungry, Stay Foolish.不断进步，锐意创新。
+						</span>
+						<span value="2">Design组主要进行各个平台软件、网页及WebApp的界面和交互设计，也会进行游戏设计和视频制作。我们并非美工而是设计师，在这里你可以做任何发挥艺术天赋，并借由技术和互联网闪耀光芒的设计。</span>
+						<span value="3">PM组是用户与开发技术人员之间沟通的桥梁，它以开发出能够满足用户需求的高质量的应用服务为目标；在产品的开发过程中致力于对产品功能、UI等方面的诠释，将创新的想法与前沿的技术结合起来并应用到实践中。</span>
+						<span value="4">Web组以通过互联网丰富生活为主要目的，时刻与最新的趋势保持同步。浏览器是我们的世界，在这里我们可以尽情地毁灭和创造。主要方向：网站开发、Web App开发、浏览器插件开发、微信公众平台开发。</span>	
+						<span value="5">lab组致力于探索最前沿的计算机技术，各种计算机算法是我们的基础技能。我们对高性能计算、智能硬件、SDN、人工智能和网络安全均有涉猎。从底层设备到上层应用：嵌入式设备、Linux系统、网络编程、服务器运维都是我们的方向。我们欢迎Geek，我们尊重个性！</span>
 					</div>
 				
 				</div>
 			</div	
 		></section>
 
-		<section id="greatEvent" class="mainBlock">
+		<section id="greatEvent" class="mainBlock" style="z-index:3">
 			<div id="axis">
 				<div class="absoXCenter time" value="top">
 					<img src="images/time.jpg">
@@ -236,7 +285,7 @@
 			</div>
 		</section>
 
-		<section id="works" class="mainBlock">
+		<section id="works" class="mainBlock" style="z-index:2">
 			<div class="full" style="min-height:600px;position:relative">
 				<aside id="worksAside" class="absoXCenter">
 					<a href="javascript:void(0)" class="worksArrow" id="worksArrowLeft" val="-1"></a>
@@ -289,7 +338,7 @@
 			</div>
 		</section>
 
-		<section id="contact" class="mainBlock">	
+		<section id="contact" class="mainBlock" style="z-index:1">	
 			<!--
 			<div id="join" class="full">
 				

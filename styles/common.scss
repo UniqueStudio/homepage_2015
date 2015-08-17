@@ -27,7 +27,11 @@ html{
   -webkit-animation: scales 0.5s ease-in-out infinite alternate;
   -o-animation: scales 0.5s ease-in-out infinite alternate;
 }
-
+#monkeyImg {
+  animation: monkeyScales 0.5s ease-in-out infinite alternate;
+  -webkit-animation: monkeyScales 0.5s ease-in-out infinite alternate;
+  -o-animation: monkeyScales 0.5s ease-in-out infinite alternate;
+}
 #menu{
   animation: menuScale 0.5s ease-in-out infinite alternate;
   -webkit-animation: menuScale 0.5s ease-in-out infinite alternate;
@@ -79,7 +83,7 @@ html{
 }
 
 #loadImgContainer {
-  z-index: 4;
+  z-index: 20;
 }
 
 /*#bgImg{ display: block; margin-left: -50%; left: 50%; position: relative}*/
@@ -93,7 +97,7 @@ html{
   -o-transition: opacity 1s;
   transition: opacity 1s;
   opacity: 1;
-  z-index: 2;
+  z-index: 15;
 }
 
 #load1, #load2Container {
@@ -105,6 +109,7 @@ html{
 }
 
 #load2 {
+	left:1%;
   width: 100%;
   bottom: 0;
   position: absolute;
@@ -307,7 +312,7 @@ html{
 	position: fixed;
 	right:40px;
 	top:40px;
-	z-index:101;
+	z-index:10;
 	background-color:#6cbfef;
 	width:46px;
 	height:46px;
@@ -329,19 +334,29 @@ html{
 //--------导航条结束----------
 #main{
 	position: relative;	
+}
+.mainBlock{
+	top:0;
+	overflow: hidden;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-image:url(../images/dot.jpg);
 	transition: top $scrollTime $transFunc;
 	-o-transition: top $scrollTime $transFunc;
 	-webkit-transition: top $scrollTime $transFunc;
 	-moz-transition: top $scrollTime $transFunc;
 	-ms-transition: top $scrollTime $transFunc;
-}
-.mainBlock{
-	overflow: hidden;
-	position: relative;
-	height: 100%;
-	width: 100%;
-}
 
+}
+#circle{
+	position:absolute;
+	overflow:hidden;
+	z-index:6;
+}
+.mainBlock[unfold='true']{
+	top:-100%;
+}
 #group aside{
 	text-align: center;	
 	z-index:3;
@@ -475,7 +490,7 @@ html{
 	height: 20px;
 }
 
-.dot, .worksDot, .eventDot{
+.dot, .worksDot, .eventDot, .intrDot{
 	height:6px;
 	width:6px;
 	display:block;
@@ -494,12 +509,21 @@ html{
 }
 #intrContent{
 	position:relative;
-	height:50%;
+	height:60%;
 	word-wrap: break-word; 
 	word-break: normal; 
 	line-height:2em;
 //	padding-left: 20%;
 //	padding-right: 20%;
+	span{
+		position:absolute;
+		opacity:0;
+		transition: all $scrollTime;
+		-ms-transition: all $scrollTime;
+		-moz-transition: all $scrollTime;
+		-webkit-transition: all $scrollTime;
+		-o-transition: all $scrollTime;
+	}
 }
 .groupIntr{
 	width: 100%;
@@ -509,15 +533,19 @@ html{
 
 #groupNameContainer{
 	position:relative;
-	height:50%;
-	transition: all $scrollTime $transFunc;
-	-ms-transition: all $scrollTime $transFunc;
-	-moz-transition: all $scrollTime $transFunc;
-	-webkit-transition: all $scrollTime $transFunc;
-	-o-transition: all $scrollTime $transFunc;
+	height:40%;
+
+	img{
+		opacity:0;
+		transition: all $scrollTime;
+		-ms-transition: all $scrollTime;
+		-moz-transition: all $scrollTime;
+		-webkit-transition: all $scrollTime;
+		-o-transition: all $scrollTime;
+	}
 }
 .groupNameImg{
-	width:50%;
+	width:100%;
 }
 .groupBlock{
 	position: relative;
@@ -633,7 +661,7 @@ html{
 		display:inline;
 	}
 }
-#worksAside, #eventAside{
+#worksAside, #eventAside, #intrAside{
 	top:90%;
 	display:flex;
 	width:300px;
@@ -641,7 +669,7 @@ html{
 	z-index:1;
 	align-items:center;
 }
-.dot[check=true], .worksDot[check=true], .eventDot[check=true]{
+.dot[check=true], .worksDot[check=true], .eventDot[check=true], .intrDot[check=true]{
 	background-color:black;
 }
 .worksArrow{
@@ -781,6 +809,15 @@ html{
 	right:0;
 	line-height:2em;
 }
+.intrCon{
+	position:absolute;
+	opacity:0;
+	transition:opacity 1s;
+	-webkit-transition:opacity 1s;
+	-o-transition:opacity 1s;
+	-ms-transition:opacity 1s;
+	-moz-transition:opacity 1s;
+}
 //---------介绍页结束-----------------
 //---------报名页开始始--------------
 #join{
@@ -852,6 +889,7 @@ html{
 		resize:none;
 		width:13.25em;
 		height:7em;
+		background-color:transparent;
 	}
 }
 #address{

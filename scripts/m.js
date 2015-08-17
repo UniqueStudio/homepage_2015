@@ -94,6 +94,10 @@ define(function(require) {
 		Data.scroll(e, {target: This, quantity: 4, block: 'works', isLoca:true}, Data.exeHandler['works']);
 	});
 
+	$('.intrDot').bind('click', function(e) {		
+		var This = $(this);
+		Data.scroll(e, {target: This, quantity: 1, block: 'introduction', isLoca:true}, Data.exeHandler['introduction']);
+	});
 	$('.eventDot').bind('click', function(e) {		
 		var This = $(this);
 		Data.scroll(e, {target: This, quantity: 4, block: 'event', isLoca:true}, Data.exeHandler['event']);

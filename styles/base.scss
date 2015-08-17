@@ -93,6 +93,40 @@ body {
   }
 }
 
+@keyframes monkeyScales {
+  from {
+    transform: scale(0.98) rotate(-8deg);
+  }
+
+  to {
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+@-moz-keyframes monkeyScales {
+  from {
+    -moz-transform: scale(0.98);
+    transform: scale(0.98);
+  }
+
+  to {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes monkeyScales {
+  from {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
 @keyframes menuScale {
   from {
     transform: scale(0.8);

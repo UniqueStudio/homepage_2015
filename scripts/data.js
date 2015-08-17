@@ -38,7 +38,12 @@ define(function(require, exports, module) {
 	data.exeHandler = {
 		'default': 
 			function(param) {
-				$('#main').css('top', '-' + param.loca + '00%');	
+				for (var i = 0; i < 5; i++) {
+					if (i < param.loca)
+						$('.mainBlock:eq(' + i + ')').attr('unfold', 'true');
+					else
+						$('.mainBlock:eq(' + i + ')').attr('unfold', 'false');
+				}
 				$('.navList[val=' + param.loca + ']').attr('isselected', 'true');
 				$('.navList[val=' + data.block['default'] + ']').attr('isselected', 'false');	
 			},
@@ -49,12 +54,23 @@ define(function(require, exports, module) {
 				} else {
 					$('#intrImgCon>div').attr('aspect','z');
 				}
+				$('.intrDot[val=' + param.loca + ']').attr('check', 'true');
+				$('.intrDot[val=' + data.block['introduction'] + ']').attr('check', 'false');
+
+				$('.intrCon[value=' + data.block['introduction'] + ']').css('opacity',0);
+				$('.intrCon[value=' + param.loca + ']').css('opacity',1);
 			},
 		'group': 
 			function(param) {
 				$('#groupImgContainer').css('top', '-' + param.loca + '00%');			
 				$('.dot[val=' + param.loca + ']').attr('check', 'true');
 				$('.dot[val=' + data.block['group'] + ']').attr('check', 'false');
+
+				$('.groupNameImg[value=' + data.block['group'] + ']').css('opacity',0);
+				$('.groupNameImg[value=' + param.loca + ']').css('opacity',1);
+
+				$('#intrContent>span[value=' + data.block['group'] + ']').css('opacity',0);
+				$('#intrContent>span[value=' + param.loca + ']').css('opacity',1);
 			},
 		'event':
 			function(param) {
@@ -195,7 +211,13 @@ define(function(require, exports, module) {
 				var topStr = $('#main')[0].style['top'].replace('%', '');
 				var topNum = Number(topStr) + delta * 100;
 				*/
-				$('#main').css('top', '-' + loca + '00%');
+				for (var i = 0; i < 5; i++) {
+					if (i < loca)
+						$('.mainBlock:eq(' + i + ')').attr('unfold', 'true');
+					else
+						$('.mainBlock:eq(' + i + ')').attr('unfold', 'false');
+				}
+//				$('#main').css('top', '-' + loca + '00%');
 				$('.navList[val=' + loca + ']').attr('isselected', 'true');
 				$('.navList[val=' + data.block['default'] + ']').attr('isselected', 'false');
 				data.changing = true;
