@@ -105,25 +105,25 @@ body {
 
 @-moz-keyframes monkeyScales {
   from {
-    -moz-transform: scale(0.98);
-    transform: scale(0.98);
+    -moz-transform: scale(0.98) rotate(-8deg);
+    transform: scale(0.98) rotate(-8deg);
   }
 
   to {
-    -moz-transform: scale(1);
-    transform: scale(1);
+    -moz-transform: scale(1) rotate(-8deg);
+    transform: scale(1) rotate(-8deg);
   }
 }
 
 @-webkit-keyframes monkeyScales {
   from {
-    -webkit-transform: scale(0.98);
-    transform: scale(0.98);
+    -webkit-transform: scale(0.98) rotate(-8deg);
+    transform: scale(0.98) rotate(-8deg);
   }
 
   to {
-    -webkit-transform: scale(1);
-    transform: scale(1);
+    -webkit-transform: scale(1) rotate(-8deg);
+    transform: scale(1) rotate(-8deg);
   }
 }
 

@@ -17,6 +17,12 @@
 	<link rel="stylesheet"  href="styles/common.css">
 	<link rel="stylesheet"  href="styles/main.css">
 </head>
+<script>
+	window.process = 0;
+	function processing(num) {
+		window.process += num;
+	}
+</script>
 <body class="full">
 	<div id="main" style="top: 0%" class="full">
 		<!--		<div id="circle" class="XYCenter">-->
@@ -25,46 +31,37 @@
 			</div>
 
 			<div class="XCenter rela" id="loadImgContainer">
-				<img src="images/load1.jpg" id="load1" alt="uniquestudio底图">
+				<img src="images/load1.jpg" id="load1" alt="uniquestudio底图" onload='processing(8)'>
 				<div id="load2Container">
 					<canvas id="wave"></canvas>
-					<img src="images/load2.jpg" id="load2" alt="uniquestudio彩图">
+					<img src="images/load2.jpg" id="load2" alt="uniquestudio彩图" onload='processing(8)'>
 				</div>
+				<p id="slogan" class="absoXCenter">“在这里，天马行空的想法和无条件投入的兴趣是最受尊重的东西。”</p>
 				<img src="images/handle.jpg" class="hoverImgHandle" id="designImgHandle" alt="悬浮触发器">
-				<img src="images/designHover.jpg" class="hoverImg" id="designImg" alt="悬浮图标">
+				<img src="images/designHover.jpg" class="hoverImg" id="designImg" alt="悬浮图标" onload='processing(8)'>
 				<img src="images/handle.jpg" class="hoverImgHandle" id="webImgHandle" alt="悬浮触发器">
-				<img src="images/webHover.jpg" class="hoverImg" id="webImg" alt="悬浮图标">
+				<img src="images/webHover.jpg" class="hoverImg" id="webImg" alt="悬浮图标" onload='processing(8)'>
 				<img src="images/handle.jpg" class="hoverImgHandle" id="pmImgHandle" alt="悬浮触发器">
-				<img src="images/pmHover.jpg" class="hoverImg" id="pmImg" alt="悬浮图标">
+				<img src="images/pmHover.jpg" class="hoverImg" id="pmImg" alt="悬浮图标" onload='processing(8)'>
 				<img src="images/handle.jpg" class="hoverImgHandle" id="iosImgHandle" alt="悬浮触发器">
-				<img src="images/iosHover.jpg" class="hoverImg" id="iosImg" alt="悬浮图标">
+				<img src="images/iosHover.jpg" class="hoverImg" id="iosImg" alt="悬浮图标" onload='processing(8)'>
 				<img src="images/handle.jpg" class="hoverImgHandle" id="labImgHandle" alt="悬浮触发器">
-				<img src="images/labHover.jpg" class="hoverImg" id="labImg" alt="悬浮图标">
+				<img src="images/labHover.jpg" class="hoverImg" id="labImg" alt="悬浮图标" onload='processing(8)'>
 				<img src="images/handle.jpg" class="hoverImgHandle" id="monkeyImgHandle" alt="悬浮触发器">
-				<img src="images/monkeyHover.jpg" class="hoverImg" id="monkeyImg" alt="悬浮图标">
+				<img src="images/monkeyHover.jpg" class="hoverImg" id="monkeyImg" alt="悬浮图标" onload='processing(8)'>
 				<img src="images/handle.jpg" class="hoverImgHandle" id="androidImgHandle" alt="悬浮触发器">
-				<img src="images/androidHover.jpg" class="hoverImg" id="androidImg" alt="悬浮图标">
-
-
-
-
-
-
-
+				<img src="images/androidHover.jpg" class="hoverImg" id="androidImg" alt="悬浮图标" onload='processing(8)'>
+				<img src="images/handle.jpg" class="hoverImgHandle" id="yearImgHandle" alt="悬浮触发器">
+				<img src="images/yearHover.jpg" class="hoverImg" id="yearImg" alt="悬浮图标" onload='processing(8)'>
 
 			</div>
 			<div class="XCenter rela" id="hoverImgContainer">
 
 				<!--opera和safari不能用srcset-->
-				<img src="images/bgBig.jpg" id="bgImg" alt="手绘背景">
+				<img src="images/bgBig.jpg" id="bgImg" alt="手绘背景" onload='processing(50)'>
 			</div>
 			<!--显示loading的脚本-->
 			<script>
-
-				window.process = 0;
-				function processing(num) {
-					window.process += num;
-				}
 				(function() {
 					var c = document.getElementById("wave");
 					var cxt = c.getContext("2d");
@@ -85,8 +82,15 @@
 					}
 					window.wave = setInterval(function (){
 						draw();
-						document.getElementById('load2Container').style.top = 53-0.24*window.process + '%';
+						document.getElementById('load2Container').style.top = 51-0.24*window.process + '%';
 						if(window.process != 0) console.log(window.process);
+						if(window.process >= 100) {
+							clearInterval(window.wave);
+							document.getElementById('cover').style.opacity = 0;
+							document.getElementById('wave').style.opacity = 0;
+//							Data.isActive = true; 
+//							Data.workComple();
+						}
 					}, 20);
 				})();
 	
@@ -168,8 +172,10 @@
 		</section>
 		<section id="group" class="mainBlock" val="2" style="z-index:4">
 			<div class="full" id="suspension">
-				<img src="images/pen.jpg" id="animation1" class="animation rotateR" width="30" style="left:48%; top:11%" alt="悬浮动画">
-				<div id="animation2" class="animation" style="position:absolute;width:30px; height:30px; border:#C9E649 1px solid; border-radius:30px; left:25%;top:21%"></div>
+				<img src="images/pen.png" id="animation1" class="animation rotateR" width="30" style="left:42%; top:11%" alt="悬浮动画">
+				<img src="images/diamond.png" id="animation" class="animation rotateR" width="40" style="left:14%; top:89%" alt="悬浮动画">
+				<div class="animation rotateR" style="left:44%; top:79%; width:40px;height:40px;border:1px solid white"></div>
+				<div class="animation" style="left:17%; top:23%; width:30px;height:30px;border:1px solid white;border-radius:15px"></div>
 			</div>
 			<div id="groupLeft" class="groupBlock">
 				<div style="position:relative;height:100%;width:15%;display:inline-block">	
@@ -203,22 +209,22 @@
 				><div style="height:100%;width:85%;display:inline-block">	
 					<div id="groupImgContainer">
 						<div class="groupImgBg" style="background-color:#bcdebd">
-							<img val="0" class="groupImg XYCenter" src="images/xiniu.jpg" id="groupImg1" alt="组别图">
+							<img val="0" class="groupImg XYCenter" src="images/group-android.png" id="groupImg1" alt="组别图">
 						</div>
 						<div class="groupImgBg" style="background-color:#b2dfdb">
-							<img val="1" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
+							<img val="1" class="groupImg XYCenter" src="images/group-ios.png" alt="组别图">
 						</div>
 						<div class="groupImgBg" style="background-color:#fbe0e9">
-							<img val="2" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
+							<img val="2" class="groupImg XYCenter" src="images/group-design.png" alt="组别图">
 						</div>
 						<div class="groupImgBg" style="background-color:#fef9cb">
-							<img val="3" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
+							<img val="3" class="groupImg XYCenter" src="images/group-pm.jpg" alt="组别图">
 						</div>
 						<div class="groupImgBg" style="background-color:#ACDBEF">
-							<img val="4" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
+							<img val="4" class="groupImg XYCenter" src="images/group-web.png" alt="组别图">
 						</div>
 						<div class="groupImgBg" style="background-color:#dfcec7">
-							<img val="5" class="groupImg XYCenter" src="images/xiniu.jpg" alt="组别图">
+							<img val="5" class="groupImg XYCenter" src="images/group-lab.jpg" alt="组别图">
 						</div>
 					</div>
 				</div>
@@ -300,7 +306,8 @@
 				<div id="gallery"><img src="images/gallery.jpg" id="galleryImg" alt="gallery"></div>
 				<div id="worksIntr" class="absoXCenter">
 					<div id="worksIntrCon">
-						hahahahahahahahahahahaha
+						<p val="0">EACO是一个飞行驾驶类游戏的控制手柄，运用移动设备的特有的重力感应功能，优化操控感受，追求最舒适的驾驶体验。</a>
+						<p val="1">Fuubo是一款专注于提升新浪微博发送体验的发送助手，支持Android 4.0+。是针对那些嫌弃新浪出品的客户端臃肿的四次元客户端的用户开发的，更专注于发送体验的微博客户端。</p>	
 					</div>
 					<div id="worksIntrTitle">
 						<div id="rouleau" class="XCenter" style="height:18px;">
@@ -320,16 +327,16 @@
 				<div id="workSecContainer" class="full" style="left: 0%" block=0>
 					<!--为了解决内联元素之间由空格和换行造成的空隙,也可设置字体为零,但会影响真实文字,故不采用-->
 					 <section class="workBlock">
-						 <div class="worksImg absoXCenter"></div>
+						 <img src="images/eaco.jpg" class="worksImg absoXCenter">
 					</section	
 					><section class="workBlock">
-						 <div class="worksImg absoXCenter"></div>
+						 <img src="images/fuubo.jpg" class="worksImg absoXCenter">
 					</section	
 					><section class="workBlock">
-						 <div class="worksImg absoXCenter"></div>
+						 <img src="images/overhust.png" class="worksImg absoXCenter">
 					</section	
 					><section class="workBlock">
-						 <div class="worksImg absoXCenter"></div>
+						 <img src="images/weixin.png" class="worksImg absoXCenter">
 					</section	
 					><section class="workBlock">
 						 <div class="worksImg absoXCenter"></div>
@@ -339,104 +346,125 @@
 		</section>
 
 		<section id="contact" class="mainBlock" style="z-index:1">	
-			<!--
-			<div id="join" class="full">
-				
-				<form id="recruit_form" class="XYCenter">
-					<div id="labelBox">
-						<label for="name">姓名</label>
-						<label>性别</label>
-						<label>所在校区</label>
-						<label for="grade">院系/专业/年级</label>
-						<label for="phoneNum">联系电话</label>
-						<label for="reserveNum">备用电话</label>
-						<label for="group">报名组别</label>
-					</div>
-					<div id="inputBox">
-						<input type="text" id="name" name="name">
-						<div>
-							<label>
-								<span class="radio checked"></span>
-								<input type="radio" name="gender" value="男" checked="checked" style="display: none;">男
-							</label>
-							<label>
-								<span class="radio"></span>
-								<input type="radio" name="gender" value="女" style="display: none;">女
-							</label>
-						</div>
-						<div>
-							<label>
-								<span class="radio checked"></span>
-								<input type="radio" name="location" value="韵苑" checked="checked" style="display: none;">韵苑
-							</label>
-							<label>
-								<span class="radio"></span>
-								<input type="radio" name="location" value="沁苑" style="display: none;">沁苑
-							</label>
-							<label>
-								<span class="radio"></span><input type="radio" name="location" value="紫菘" style="display: none;">紫菘
-							</label>
-						</div>
-						<input type="text" name="grade" id="grade" placeholder="16字以内">
-						<input type="text" name="phoneNum" id="phoneNum">
-						<input type="text" name="reserveNum" id="reserveNum" placeholder=" 如室友电话">
-						<div id="groupRadio">
-							<label>
-								<span class="radio"></span>
-								<input type="radio" name="group" value="Android" checked="checked" style="display: none;">Android组
-							</label>
-							<label>
-								<span class="radio"></span>
-								<input type="radio" name="group" value="Web" style="display: none;">Web组
-							</label>
-							<label>
-								<span class="radio checked"></span>
-								<input type="radio" name="group" value="iOS" style="display: none;">iOS组
-							</label>
-							<label>
-								<span class="radio"></span>
-								<input type="radio" name="group" value="design" style="display: none;">Design组
-							</label>
+			<aside id="joinAside" class="YCenter">	
+				<div>
+					<a href="javascript:void(0)" class="joinDot" val="0" check="true"></a>
+				</div>
+				<div style="position:absolute;bottom:0">
+					<a href="javascript:void(0)" class="joinDot" val="1"></a>
+				</div>	
+			</aside>
+			<div class="full" id="joinCon" style="position:relative">
+				<div id="join" class="full">
 					
-				
-							<label>
-								<span class="radio"></span>
-								<input type="radio" name="group" value="pm" style="display: none;">PM组
-							</label>
-							<label>
-								<span class="radio"></span>
-								<input type="radio" name="group" value="lab" style="display: none;">UniqueLab
-							</label>
+					<form id="recruit_form" class="XYCenter">
+						<div id="labelBox">
+							<label for="name">姓名</label>
+							<label>性别</label>
+							<label>所在校区</label>
+							<label for="grade">院系/专业/年级</label>
+							<label for="phoneNum">联系电话</label>
+							<label for="reserveNum">备用电话</label>
+							<label for="group">报名组别</label>
 						</div>
-					</div>
-					<div id="selfIntro">
-						<label for="selfIntroText" style="display:block">个人简介</label>
-						<textarea name="selfIntro" id="selfIntroText" placeholder="  自我介绍/组别意向的来由/个人优势等等"></textarea>
-						<input type="submit" name="submit" id="submit" value="提交" class="XCenter">
-					</div>
-				</form>
-			</div>-->
-			<div id="chat" class="full" style="position:relative">
-				<div class="XYCenter" style="height:463px;">
-					<form>
-						<p style="margin-top:18%">姓名<input name="yName"></p>
-						<p>专业<input name="yPro"></p>
-						<p>邮箱<input name="yAdd"></p>
-						<p>想法与建议<br>
-						<textarea></textarea></p>
-						<input type="submit" value="提交">
+						<div id="inputBox">
+							<input type="text" id="name" name="name">
+							<div>
+								<label>
+									<input type="radio" name="gender" value="男" checked="checked" style="display: none;">
+									<span class="radio checked"></span>
+									男
+								</label>
+								<label>
+									<input type="radio" name="gender" value="女" style="display: none;">
+									<span class="radio"></span>
+									女
+								</label>
+							</div>
+							<div>
+								<label>
+									<input type="radio" name="location" value="韵苑" checked="checked" style="display: none;">
+									<span class="radio checked"></span>
+									韵苑
+								</label>
+								<label>
+									<input type="radio" name="location" value="沁苑" style="display: none;">
+									<span class="radio"></span>
+									沁苑
+								</label>
+								<label>
+									<input type="radio" name="location" value="紫菘" style="display: none;">
+									<span class="radio"></span>
+									紫菘
+								</label>
+							</div>
+							<input type="text" name="grade" id="grade" placeholder="16字以内">
+							<input type="text" name="phoneNum" id="phoneNum">
+							<input type="text" name="reserveNum" id="reserveNum" placeholder=" 如室友电话">
+							<div id="groupRadio">
+								<label>
+									<input type="radio" name="group" value="Android" checked="checked" style="display: none;">
+									<span class="radio"></span>
+									Android
+								</label>
+								<label>
+									<input type="radio" name="group" value="Web" style="display: none;">
+									<span class="radio"></span>
+									Web
+								</label>
+								<label>
+									<input type="radio" name="group" value="iOS" style="display: none;">
+									<span class="radio checked"></span>
+									iOS
+								</label>
+								<label>
+									<input type="radio" name="group" value="design" style="display: none;">
+									<span class="radio"></span>
+									Design
+								</label>
+						
+					
+								<label>
+									<input type="radio" name="group" value="pm" style="display: none;">
+									<span class="radio"></span>
+									PM
+								</label>
+								<label>
+									<input type="radio" name="group" value="lab" style="display: none;">
+									<span class="radio"></span>
+									UniqueLab
+								</label>
+							</div>
+						</div>
+						<div id="selfIntro">
+							<label for="selfIntroText" style="display:block">个人简介</label>
+							<textarea name="selfIntro" id="selfIntroText" placeholder="  自我介绍/组别意向的来由/个人优势等等"></textarea>
+							<input type="submit" name="submit" id="submit" value="提交" class="XCenter">
+						</div>
 					</form>
-					<div id="address">
-						<p>hr@hustunique.com</p>
-						<p>+86 155-2727-9060 孟涛</p>
-						<p style="height:54px">
-							<img src="images/sina.jpg"></img>
-							<img src="images/wechat.jpg"></img>
-							<img src="images/renren.jpg"></img>
-						</p>
-						<p>中国湖北省武汉市洪山区珞瑜路1037号华中科技大学启明学院亮胜楼8楼</p>
-						<p>8th Floor, Building LiangSheng, 1037 Luoyu Road, Wuhan 430074, P.R.China</p>
-						<iframe src="http://m.amap.com/navi/?dest=114.437217,30.515058&destName=%E5%90%AF%E6%98%8E%E5%AD%A6%E9%99%A2&hideRouteIcon=1&key=ef1d3d2475ba6588b872b73c4f6177af" style="width:100%;height:200px;border:0"></iframe>
+				</div>
+				<div id="chat" class="full" style="position:relative">
+					<div class="XYCenter" style="height:463px;">
+						<form>
+							<p style="margin-top:18%">姓名<input name="yName"></p>
+							<p>专业<input name="yPro"></p>
+							<p>邮箱<input name="yAdd"></p>
+							<p>想法与建议<br>
+							<textarea></textarea></p>
+							<input type="submit" value="提交">
+						</form>
+						<div id="address">
+							<p>hr@hustunique.com</p>
+							<p>+86 155-2727-9060 孟涛</p>
+							<p style="height:54px">
+								<img src="images/sina.jpg"></img>
+								<img src="images/wechat.jpg"></img>
+								<img src="images/renren.jpg"></img>
+							</p>
+							<p>中国湖北省武汉市洪山区珞瑜路1037号华中科技大学启明学院亮胜楼8楼</p>
+							<p>8th Floor, Building LiangSheng, 1037 Luoyu Road, Wuhan 430074, P.R.China</p>
+							<iframe src="http://m.amap.com/navi/?dest=114.437217,30.515058&destName=%E5%90%AF%E6%98%8E%E5%AD%A6%E9%99%A2&hideRouteIcon=1&key=ef1d3d2475ba6588b872b73c4f6177af" style="width:100%;height:200px;border:0"></iframe>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -5,18 +5,14 @@
 define(function(require) {
 	require('jquery');
 	var Data = require('./data');
-	$(document).ready(function() {
 	//为所有的透明图绑定事件，鼠标悬停：彩图出现，该图的形状变为彩图形状
-		(function () {
-			$('.hoverImgHandle').bind('mouseover', function() {
-				var imgID = this.id.replace(/Handle/, '');
-				$('#' + imgID).css('display', 'block');
+	$('.hoverImgHandle').bind('mouseover', function() {
+		var imgID = this.id.replace(/Handle/, '');
+		$('#' + imgID).css('display', 'block');
 
-			});
-			$('.hoverImg').bind('mouseout', function(){
-				$(this).css('display','none');
-			})
-		})();
+	});
+	$('.hoverImg').bind('mouseout', function(){
+		$(this).css('display','none');
 	});
 
 	//为处理一个bug,暂不知道出现的原因.由于只有在调整页面才会出现该bug,加载时不会,所以放到最后
@@ -69,11 +65,12 @@ define(function(require) {
 	});
 	
 	//绑定渐变结束事件,重新激活绑定的事件
-	$('#main, #workSecContainer, #groupImgContainer').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
+	$('#main, .mainBlock, #groupImgContainer').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
 		Data.changing = false;
 	});
 	$('#cover').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
-		$(this).attr('style', 'display:none');
+		$(this).css('display','none');
+		$('#wave').css('display','none');
 	});
 	$('.leau').bind('webkitAnimationEnd animationend', function() {
 		$(this).removeClass('lea');
@@ -103,6 +100,11 @@ define(function(require) {
 		Data.scroll(e, {target: This, quantity: 4, block: 'event', isLoca:true}, Data.exeHandler['event']);
 	});
 
+	$('.joinDot').bind('click', function(e) {		
+		var This = $(this);
+		Data.scroll(e, {target:This, quantity: 1,  block: 'join', isLoca:true}, Data.exeHandler['join']);
+	});
+
 	$('.groupArrow').bind('click', function(e){
 		var value = Number($(this).attr('val'));
 
@@ -124,11 +126,13 @@ define(function(require) {
 	});
 	//----------------介绍部分结束----------------
 	//测试用
+	
 	$(document).ready(function() {
-		$('#cover').css('opacity',0);
-		$('#load2Container').css('top','29%');
-		clearInterval(window.wave);
-		Data.isActive = true;
+//		$('#cover').css('opacity',0);
+//		$('#load2Container').css('top','29%');
+//		clearInterval(window.wave);
+//		Data.isActive = true;
 		Data.workComple();
 	});	
+	
 });

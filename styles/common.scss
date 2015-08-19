@@ -1,16 +1,16 @@
-$scrollTime : 1s;
+$scrollTime : 0.8s;
 $transFunc : cubic-bezier(.82,.03,.41,.59);
 //$transFunc: cubic-bezier(.92,.06,.37,.58);
 html{
+	color:#333333;
 	font-family: 'lanting';
-  -webkit-font-smoothing: antialiased;
+//  -webkit-font-smoothing: antialiased;
 //  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
+ // -moz-osx-font-smoothing: grayscale;
 }
 @font-face {
 	font-family: 'lanting';
 	src:url('fonts/lantingx.ttf');
-	src:url('fonts/lantingx.eot');
 }
 
 .iconfont {
@@ -105,7 +105,7 @@ html{
   z-index: 102;
   width: 29%;
   left: 35%;
-  bottom: 47%;
+  bottom: 51%;
 }
 
 #load2 {
@@ -117,8 +117,8 @@ html{
 
 #load2Container {
   overflow: hidden;
-  top: 53%;
-  z-index: 101;
+  //top: 22.56%;
+  z-index: 0;
  -webkit-transition: top 0.5s linear;
   -moz-transition: top 0.5s linear;
   -ms-transition: top 0.5s linear;
@@ -131,8 +131,19 @@ html{
   height: 20px;
   position: absolute;
   z-index: 2;
+  transition:opacity 0.5s;
+  -o-transition:opacity 0.5s;
+  -ms-transition:opacity 0.5s;
+  -moz-transition:opacity 0.5s;
+  -webkit-transition:opacity 0.5s;
 }
 
+#slogan{
+	z-index:0;
+	top:54%;
+	font-size:18px;
+	white-space:nowrap;
+}
 /*导航条*/
 
 #nav {
@@ -237,6 +248,12 @@ html{
 	  transform: rotateX(-180deg);
 	  -moz-transform: rotateX(-180deg);
 	  -o-transform: rotateX(-180deg);
+	  .listCon{
+		  -ms-transform:rotateX(180deg);
+	  }
+	  .clapboard{
+		  -ms-transform:rotateX(180deg);
+	  }
   }
   //.li:hover .listCon{opacity:0}
 
@@ -263,6 +280,9 @@ html{
 	padding-left:10px;
 	background-color:white;
 }
+.clapboard, .listCon{
+	-ms-transition: transform 0.5s;
+}
 .clapboard{
 	width: 101%;
 	height: 100%;
@@ -283,6 +303,8 @@ html{
 	transform: rotateX(180deg)translate(-50%,-50%);
 	-o-transform: rotateX(180deg)translate(-50%,-50%);
 	-moz-transform: rotateX(180deg)translate(-50%,-50%);
+	//针对ie
+	-ms-transform: translate(-50%,-50%);
 
 	-webkit-backface-visibility:hidden;
 	-moz-backface-visibility:hidden;
@@ -301,6 +323,7 @@ html{
 	transform: translate(-50%,-50%);
 	-o-transform: translate(-50%,-50%);
 	-moz-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%) rotateX(180deg);
 }
 #listContainer{
 //	position: absolute;
@@ -342,6 +365,7 @@ html{
 	height: 100%;
 	width: 100%;
 	background-image:url(../images/dot.jpg);
+	background-size: 10px 10px;
 	transition: top $scrollTime $transFunc;
 	-o-transition: top $scrollTime $transFunc;
 	-webkit-transition: top $scrollTime $transFunc;
@@ -490,7 +514,7 @@ html{
 	height: 20px;
 }
 
-.dot, .worksDot, .eventDot, .intrDot{
+.dot, .worksDot, .eventDot, .intrDot, .joinDot{
 	height:6px;
 	width:6px;
 	display:block;
@@ -626,13 +650,13 @@ html{
 	top:18%;
 	position: absolute;
 	background-color:green;
-	width:420px;
+	//width:420px;
 	height:50%;
 }
 #worksIntr{
 	top:68%;
 	height:15%;
-	width:420px;
+	width:672px;
 	position:absolute;
 	text-align:center;
 }
@@ -669,7 +693,7 @@ html{
 	z-index:1;
 	align-items:center;
 }
-.dot[check=true], .worksDot[check=true], .eventDot[check=true], .intrDot[check=true]{
+.dot[check=true], .worksDot[check=true], .eventDot[check=true], .intrDot[check=true], .joinDot[check=true]{
 	background-color:black;
 }
 .worksArrow{
@@ -693,8 +717,21 @@ html{
 
 #worksIntrCon{
 	height:50%;
-	background-color:white;
 	position:relative;
+	line-height:2em;
+	font-size:14px;
+	p{
+		position:absolute;
+		opacity:0;
+		transition: opacity $scrollTime;
+		-webkit-transition: opacity $scrollTime;
+		-o-transition: opacity $scrollTime;
+		-moz-transition: opacity $scrollTime;
+		-ms-transition: opacity $scrollTime;
+	}
+	p[val='0']{
+		opacity:1;
+	}
 }
 #worksIntrTitle{
 	position:relative;
@@ -759,12 +796,19 @@ html{
 		-moz-transform-style:preserve-3d;
 		-ms-transform-style:preserve-3d;
 		transform-style:preserve-3d;
+		:nth-child(2) {
+			-ms-backface-visibility:visible;
+		}
 	}
 	div[aspect='f']{
 		transform:rotateX(180deg);
 		-moz-transform:rotateX(180deg);
 		-ms-transform:rotateX(180deg);
 		-webkit-transform:rotateX(180deg);
+		
+		*{
+			-ms-transform:rotateX(180deg);
+		}
 	}
 	div[value='0']{
 		transition:transform 0.6s;
@@ -772,6 +816,9 @@ html{
 		-o-transition:transform 0.6s;
 		-ms-transition:transform 0.6s;
 		-moz-transition:transform 0.6s;
+		*{
+			-ms-transition:transform 0.6s;
+		}
 	}
 	div[value='1']{
 		transition:transform 0.6s 0.2s;
@@ -779,6 +826,9 @@ html{
 		-o-transition:transform 0.6s 0.2s;
 		-ms-transition:transform 0.6s 0.2s;
 		-moz-transition:transform 0.6s 0.2s;
+		*{
+			-ms-transition:transform 0.6s 0.2s;
+		}
 	}
 	div[value='2']{
 		transition:transform 0.6s 0.4s;
@@ -786,6 +836,9 @@ html{
 		-o-transition:transform 0.6s 0.4s;
 		-ms-transition:transform 0.6s 0.4s;
 		-moz-transition:transform 0.6s 0.4s;
+		*{
+			-ms-transition:transform 0.6s 0.4s;
+		}
 	}
 	.z{
 		z-index:1;
@@ -817,15 +870,24 @@ html{
 	-o-transition:opacity 1s;
 	-ms-transition:opacity 1s;
 	-moz-transition:opacity 1s;
+	p{
+		text-indent:2em;
+	}
 }
 //---------介绍页结束-----------------
 //---------报名页开始始--------------
-#join{
+#join, #chat{
+	//display:inline-block;
+}
+#joinAside{
+	z-index:5;
+	height:80px;
+	left:40px;
 }
 #labelBox{
 	float:left;
 	margin-right:30px;
-	margin-left:10%;
+	margin-left:7%;
 
 }
 #recruit_form, #chat > div{
@@ -890,6 +952,8 @@ html{
 		width:13.25em;
 		height:7em;
 		background-color:transparent;
+		border:1px solid grey;
+		overflow:hidden;
 	}
 }
 #address{
@@ -897,6 +961,10 @@ html{
 	width:35%;
 	margin-right:8%;
 	float:right;
+	white-space:normal;
+	p{
+		margin-bottom:1em;
+	}
 }
 #submit{
 	display:block;
@@ -908,15 +976,25 @@ html{
 	border-radius:3px;
 }
 #inputBox{
+
 	float:left;
 	width:300px;
+	input + .radio{
+		top:2px;
+		position:relative;
+		background-image:url(../images/radio.jpg);
+		background-size:100% 100%;
+	}
+	input:checked + .radio{
+		background-image:url(../images/radioChecked.jpg);
+	}
 }
 #selfIntro{
 	position:absolute;
 	right:0;
 	//float:right;
 	width:335px;
-	margin-right:10%;
+	margin-right:7%;
 	label{
 		margin-bottom:25px;
 	}
@@ -926,6 +1004,7 @@ html{
 	display:block;
 	margin-bottom:35px;
 	height:18px;
+	white-space:nowrap;
 }
 #inputBox>input{
 	display:block;
@@ -956,6 +1035,9 @@ html{
 }
 #groupRadio>label{
 	float:left;
+	width:95px;
+	height:25px;
+	white-space:nowrap;
 }
 label>.radio{
 	height:18px;

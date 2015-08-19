@@ -2,14 +2,12 @@ define(function(require, exports, module) {
 	require('jquery');
 	var data = {};
 	//以防在没加载完就开始滚动
-	data.isActive = false;
+//	data.isActive = false;
 
 	//作品页长图补全
 	data.galleryLeft = 0;
 	data.workComple = function() {
 		//不能使用offset().left
-		//var galleryWidth = $('#gallery').width();
-		//var sectionWidth = $('#works').width();
 		console.log('gallery='+$('#gallery').width()+',left='+data.galleryLeft +',window='+$(window).width());
 		while($('#gallery').width() + data.galleryLeft < $(window).width()) {
 			
@@ -31,6 +29,7 @@ define(function(require, exports, module) {
 		'default': 0,
 		'introduction': 0,
 		'group': 0,
+		'join': 0,
 		'event': 0,
 		'works': 0
 	};
@@ -59,6 +58,14 @@ define(function(require, exports, module) {
 
 				$('.intrCon[value=' + data.block['introduction'] + ']').css('opacity',0);
 				$('.intrCon[value=' + param.loca + ']').css('opacity',1);
+			},
+		'join':
+			function(param) {
+				$('#joinCon').animate({'top':'-'+param.loca+'00%'},function() {
+					data.changing = false;
+				});
+				$('.joinDot[val=' + param.loca + ']').attr('check', 'true');
+				$('.joinDot[val=' + data.block['join'] + ']').attr('check', 'false');
 			},
 		'group': 
 			function(param) {
@@ -120,6 +127,9 @@ define(function(require, exports, module) {
 
 				$('.worksName[val=' + data.block['works'] + ']').css('opacity',0);
 				$('.worksName[val=' + param.loca + ']').css('opacity',1);
+
+				$('#worksIntrCon>p[val=' + data.block['works'] + ']').css('opacity',0);
+				$('#worksIntrCon>p[val=' + param.loca + ']').css('opacity',1);
 
 				$('#worksNameCon').width($('.worksName[val=' + param.loca + ']').width() + 20);
 				$('.leau').addClass('lea');
@@ -188,7 +198,7 @@ define(function(require, exports, module) {
 	data.scroll = function (e, param, handler) {
 		//param中包括direction, quantity, block, isLoca(是否通过定位点触发), 
 		//如果是通过定位点触发的,则必须要包含target($)
-		if(data.changing || data.isActive == false) return;
+		if(data.changing || window.process < 100) return;
 		
 		console.log(data.block[param.block]);
 		
@@ -241,6 +251,9 @@ define(function(require, exports, module) {
 		'introduction': function(e) {
 			data.scroll(e, {direction: 'y', quantity: 1,  block: 'introduction', isLoca:false}, data.exeHandler['introduction']);
 		},
+		'join': function(e) {
+			data.scroll(e, {direction: 'y', quantity: 1,  block: 'join', isLoca:false}, data.exeHandler['join']);
+		},
 		'group': function(e) {
 			data.scroll(e, {direction: 'y',quantity: 5, block: 'group', isLoca:false}, data.exeHandler['group']);
 		},
@@ -251,6 +264,6 @@ define(function(require, exports, module) {
 			data.scroll(e, {direction: 'y', quantity: 4, block: 'event', isLoca:false}, data.exeHandler['event']);
 		},
 	};
-	data.scrollFuncMapping = ['default', 'introduction', 'group', 'event', 'works', 'default'];
+	data.scrollFuncMapping = ['default', 'introduction', 'group', 'event', 'works', 'join'];
 	module.exports = data;
 });
