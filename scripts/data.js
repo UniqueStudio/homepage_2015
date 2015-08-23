@@ -8,7 +8,6 @@ define(function(require, exports, module) {
 	data.galleryLeft = 0;
 	data.workComple = function() {
 		//不能使用offset().left
-		console.log('gallery='+$('#gallery').width()+',left='+data.galleryLeft +',window='+$(window).width());
 		while($('#gallery').width() + data.galleryLeft < $(window).width()) {
 			
 			var img = new Image();
@@ -17,13 +16,7 @@ define(function(require, exports, module) {
 		}
 	}
  	var eventYear = ['00', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15'];
-	var eventList = [
-		'',
-		'',
-		'',
-		'',
-		''
-			]
+	//var eventList = [];
 	data.changing = false;
 	data.block = {
 		'default': 0,
@@ -37,14 +30,26 @@ define(function(require, exports, module) {
 	data.exeHandler = {
 		'default': 
 			function(param) {
+				var block = data.block['default'];
+				$('.mainBlock:eq(' + param.loca + ')').css('display','block');
 				for (var i = 0; i < 5; i++) {
-					if (i < param.loca)
-						$('.mainBlock:eq(' + i + ')').attr('unfold', 'true');
+					var a = i;
+					if (a < param.loca)
+						$('.mainBlock:eq(' + a + ')').animate({'top': '-100%'},500,function() {
+							if(a != 4) return;
+							$('.mainBlock:eq(' + block + ')').css('display','none');
+							data.changing = false;
+						});
 					else
-						$('.mainBlock:eq(' + i + ')').attr('unfold', 'false');
+						$('.mainBlock:eq(' + a + ')').animate({'top': '0%'},500,function() {
+							if(a != 4) return ;
+							$('.mainBlock:eq(' + block + ')').css('display','none');
+							data.changing = false;
+						});
 				}
-				$('.navList[val=' + param.loca + ']').attr('isselected', 'true');
-				$('.navList[val=' + data.block['default'] + ']').attr('isselected', 'false');	
+				if(param.loca != 5) $('.navList[val=' + param.loca + ']').attr('isselected', 'true');
+				if(data.block['default'] !=5) $('.navList[val=' + data.block['default'] + ']').attr('isselected', 'false');	
+				
 			},
 		'introduction':
 			function(param) {
@@ -81,6 +86,7 @@ define(function(require, exports, module) {
 			},
 		'event':
 			function(param) {
+					console.log('ee'+data.block['event']);
 				var firstDir, thirdDir, next, pre, center = $('.time[value=center]'), dir;
 				if(param.loca > data.block['event']) 
 					dir = 'up';
@@ -98,23 +104,25 @@ define(function(require, exports, module) {
 					thirdDir = '0%';
 
 				}
-				console.log('eee'+param.loca + data.block['event']);
 				pre.attr('value',dir=='up'?'bottom':'top');
 				pre.css('top', thirdDir);
 				$('.eventDot[val=' + param.loca + ']').attr('check', 'true');
 				$('.eventDot[val=' + data.block['event'] + ']').attr('check', 'false');
-				center.animate({'top': firstDir}, 800, function() {
+				var current = data.block['event'];
+				center.animate({'top': firstDir}, 700, function() {
 					center.attr('value', dir=='up'?'top':'bottom');
-					console.log(next);
-					next.children()[1].innerHTML = eventYear[param.loca];
-					next.animate({'top': '50%'}, 800, function() {
+					console.log(next.children());
+					next.children()[1].innerHTML = '20' + eventYear[param.loca];
+					
+					$('.eventImgCon[val='+current+']').attr('see',0);
+					$('.eventImgCon[val='+param.loca+']').attr('see',1);
+					setTimeout("$('.eventImgCon[val="+param.loca+"]>div').css('opacity', 1)",10);
+					next.animate({'top': '50%'}, 700, function() {
 						next.attr('value', 'center');
 						data.changing = false;	
 					});
-					$('#eventImgCon').html(eventList[param.loca]);
-					$('#eventImgCon>img').css('opacity', 1);
 				});
-				$('#eventImgCon>img').css('opacity', 0);
+				$('.eventImgCon[val='+current+']>div').css('opacity', 0);
 			},
 		'works': 
 			function(param){
@@ -182,7 +190,6 @@ define(function(require, exports, module) {
 				}
 			}
 		} else {
-			console.log('param.arrrow='+param.arrow);
 			if(param.arrow){
 				loca += param.arrow;
 			} else if(loca == Number(param.target.attr('val'))) {
@@ -191,7 +198,6 @@ define(function(require, exports, module) {
 				loca = Number(param.target.attr('val'));
 			}
 		}
-		console.log(loca);
 		return loca;
 	}
 
@@ -200,12 +206,11 @@ define(function(require, exports, module) {
 		//如果是通过定位点触发的,则必须要包含target($)
 		if(data.changing || window.process < 100) return;
 		
-		console.log(data.block[param.block]);
 		
 		var loca = locaHandler(e, param);	
-		console.log(loca);
 		if (loca == 'false') return;
 
+		data.changing = true;
 		if(param.block == 'default'){
 			preview(loca);
 		}
@@ -213,30 +218,38 @@ define(function(require, exports, module) {
 		//判断是第一个或最后一个,只有在不是通过定位点触发的时候才会执行	
 		if(param.isLoca == false || param.arrow) {
 			if(loca < 0 || loca > param.quantity) {
-				if(param.block == 'default') return;
+				if(param.block == 'default' || loca > param.quantity && param.block == 'join') {
+					data.changing = false;
+					return;
+				}
 				if(loca < 0) loca = data.block['default'] - 1;
 				else if(loca > param.quantity) loca = data.block['default'] + 1;
-				//loca = Math.min(Math.max(loca ,0), param.quantity);
-				/*
-				var topStr = $('#main')[0].style['top'].replace('%', '');
-				var topNum = Number(topStr) + delta * 100;
-				*/
+				$('.mainBlock:eq(' + loca + ')').css('display','block');
 				for (var i = 0; i < 5; i++) {
-					if (i < loca)
-						$('.mainBlock:eq(' + i + ')').attr('unfold', 'true');
+					var block = data.block['default'];
+					var a = i;
+					if (a < loca)
+						$('.mainBlock:eq(' + a + ')').animate({'top': '-100%'},700,function() {
+							if(a != 4) return;
+							$('.mainBlock:eq(' + block + ')').css('display','none');
+							data.changing = false;
+						});
 					else
-						$('.mainBlock:eq(' + i + ')').attr('unfold', 'false');
+						$('.mainBlock:eq(' + a + ')').animate({'top': '0%'},700,function() {
+							if(a != 4) return;
+							$('.mainBlock:eq(' + block + ')').css('display','none');
+							data.changing = false;
+						});
+
 				}
-//				$('#main').css('top', '-' + loca + '00%');
-				$('.navList[val=' + loca + ']').attr('isselected', 'true');
-				$('.navList[val=' + data.block['default'] + ']').attr('isselected', 'false');
-				data.changing = true;
+				if (loca != 5) $('.navList[val=' + loca + ']').attr('isselected', 'true');
+				if (data.block['default'] != 5) $('.navList[val=' + data.block['default'] + ']').attr('isselected', 'false');
+				
 				data.block['default'] = loca;
 				return ;
 			}
 		}	
 		
-		data.changing = true;
 		param.loca = loca;
 		handler(param);
 
@@ -258,10 +271,10 @@ define(function(require, exports, module) {
 			data.scroll(e, {direction: 'y',quantity: 5, block: 'group', isLoca:false}, data.exeHandler['group']);
 		},
 		'works': function(e) {
-			data.scroll(e, {direction: 'x', quantity: 4, block: 'works', isLoca:false}, data.exeHandler['works']);
+			data.scroll(e, {direction: 'x', quantity: 8, block: 'works', isLoca:false}, data.exeHandler['works']);
 		},		
 		'event': function(e) {
-			data.scroll(e, {direction: 'y', quantity: 4, block: 'event', isLoca:false}, data.exeHandler['event']);
+			data.scroll(e, {direction: 'y', quantity: 12, block: 'event', isLoca:false}, data.exeHandler['event']);
 		},
 	};
 	data.scrollFuncMapping = ['default', 'introduction', 'group', 'event', 'works', 'join'];

@@ -5,16 +5,20 @@
 define(function(require) {
 	require('jquery');
 	var Data = require('./data');
-	//为所有的透明图绑定事件，鼠标悬停：彩图出现，该图的形状变为彩图形状
-	$('.hoverImgHandle').bind('mouseover', function() {
-		var imgID = this.id.replace(/Handle/, '');
-		$('#' + imgID).css('display', 'block');
 
-	});
-	$('.hoverImg').bind('mouseout', function(){
-		$(this).css('display','none');
-	});
 
+	(function(){
+		var html = document.getElementsByTagName('html')[0];
+		if(html.offsetWidth/html.offsetHeight < 16/9) {
+			var width = html.offsetHeight *16/9 +'px';
+			document.getElementById('hoverImgContainer').style.width = width;
+			document.getElementById('bgImg').style.width = width;
+		}
+		else {
+			document.getElementById('hoverImgContainer').style.width = '100%';
+			document.getElementById('bgImg').style.width = '100%';
+		}
+	})();
 	//为处理一个bug,暂不知道出现的原因.由于只有在调整页面才会出现该bug,加载时不会,所以放到最后
 	/*window.addEventListener('resize', function(){
 		var html = document.getElementsByTagName('html')[0];
@@ -38,7 +42,10 @@ define(function(require) {
 			'-webkit-transform','translate(0,0)'
 		);
 		$('#nav').attr('ischanging', 'true');
-		$(this).css('display','none');
+		$(this).css('display','none',
+			'-webkit-animation-play-state','paused',
+			'animation-play-state','paused'
+		);
 	});
 
 	$('#nav').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
@@ -55,17 +62,19 @@ define(function(require) {
 			'-webkit-transform','translate(0,-100%)'
 		);
 		$('#nav').attr('ischanging', 'true');
-		$('#menu').css('display','block');
+		$('#menu').css('display','block',
+			'-webkit-animation-play-state','running',
+			'animation-play-state','running'
+		);
 	});
 
 	$(window).bind('mousewheel DOMMouseScroll keydown', function(e) {
 		var funcName = Data.scrollFuncMapping[Data.block['default']];
-
 		Data.scrollFunc[funcName](e);
 	});
 	
 	//绑定渐变结束事件,重新激活绑定的事件
-	$('#main, .mainBlock, #groupImgContainer').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
+	$('.intrCon, #groupImgContainer, #workSecContainer').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
 		Data.changing = false;
 	});
 	$('#cover').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
@@ -76,9 +85,32 @@ define(function(require) {
 		$(this).removeClass('lea');
 	});
 
-	$('.navList').bind('click', function(e) {
+	var dotFuncMapping = {
+		'defaultDot':[5, 'default'],
+		'dot':[5, 'group'],
+		'worksDot':[8, 'works'],
+		'intrDot':[1, 'introduction'],
+		'eventDot':[12, 'event'],
+		'joinDot':[1, 'join']
+	};
+
+	$('.Dot').on('click', function(e) {
+		console.log(22);
+		var arr = ['defaultDot', 'dot', 'worksDot', 'intrDot', 'eventDot', 'joinDot'];
 		var This = $(this);
-		Data.scroll(e, {target: This, direction: 'y', quantity: 5,  block: 'default', isLoca:true}, Data.exeHandler['default']);
+		for(var i in arr) {
+			var className = arr[i];
+			if(This.hasClass(className)) {
+				var obj = dotFuncMapping[className];
+				Data.scroll(e, {target: This, quantity:obj[0],  block: obj[1], isLoca:true}, Data.exeHandler[obj[1]]);
+				break;
+			}
+		}
+	});
+	/*
+	$('.li').bind('click', function(e) {
+		var This = $(this);
+		Data.scroll(e, {target: This, quantity: 5,  block: 'default', isLoca:true}, Data.exeHandler['default']);
 	});
 	
 	$('.dot').bind('click', function(e) {		
@@ -88,7 +120,7 @@ define(function(require) {
 
 	$('.worksDot').bind('click', function(e) {		
 		var This = $(this);
-		Data.scroll(e, {target: This, quantity: 4, block: 'works', isLoca:true}, Data.exeHandler['works']);
+		Data.scroll(e, {target: This, quantity: 8, block: 'works', isLoca:true}, Data.exeHandler['works']);
 	});
 
 	$('.intrDot').bind('click', function(e) {		
@@ -97,7 +129,7 @@ define(function(require) {
 	});
 	$('.eventDot').bind('click', function(e) {		
 		var This = $(this);
-		Data.scroll(e, {target: This, quantity: 4, block: 'event', isLoca:true}, Data.exeHandler['event']);
+		Data.scroll(e, {target: This, quantity: 12, block: 'event', isLoca:true}, Data.exeHandler['event']);
 	});
 
 	$('.joinDot').bind('click', function(e) {		
@@ -105,6 +137,9 @@ define(function(require) {
 		Data.scroll(e, {target:This, quantity: 1,  block: 'join', isLoca:true}, Data.exeHandler['join']);
 	});
 
+	
+	*/
+	$('#group').css('display','none');
 	$('.groupArrow').bind('click', function(e){
 		var value = Number($(this).attr('val'));
 
@@ -118,10 +153,10 @@ define(function(require) {
 	//----------------介绍部分开始----------------
 	$('#intrImgCon').height($('#intrImgCon').width() * 1.8);	
 	//大事记页面的自适应也是相同操作
-	$('#eventImgCon').height($('#eventImgCon').width() / 1.8);
+	$('.eventImgCon').height($('.eventImgCon[val=0]').width() / 1.8);
 	$(window).resize(function() {
 		$('#intrImgCon').height($('#intrImgCon').width() * 1.8);	
-		$('#eventImgCon').height($('#eventImgCon').width() / 1.8);
+		$('.eventImgCon').height($('.eventImgCon[val=0]').width() / 1.8);
 		Data.workComple();
 	});
 	//----------------介绍部分结束----------------

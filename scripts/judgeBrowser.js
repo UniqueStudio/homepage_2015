@@ -7,7 +7,7 @@
     var b_version=navigator.appVersion;
     var version=b_version.split(";");
     var trim_Version=version[1].replace(/[ ]/g,"");
-    if(browser=="Microsoft Internet Explorer"&&trim_Version.match(/MSIE[678].0/)) {
+    if(browser=="Microsoft Internet Explorer"&&trim_Version.match(/MSIE[6789].0/)) {
         window.location.href="recommend.html";
     }
     var a={android:0,ipad:0,iphone:0,ipod:0,wp:0};
