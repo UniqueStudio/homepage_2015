@@ -32,56 +32,58 @@ define(function(require) {
 			document.getElementById('bgImg').style.width = '100%';
 		}
 	});*/
-	$('#menu').bind('click', function() {
-		if($('#nav').attr('ischanging') == 'true') return;	
-		$('#nav').css(
+	$(document).on('click', '#menu', function() {
+		var nav = $('#nav');
+		if(nav.attr('ischanging') == 'true') return;	
+		nav.css(
 			'transform','translate(0,0)',
 			'-o-transform','translate(0,0)',
 			'-moz-transform','translate(0,0)',
 			'-ms-transform','translate(0,0)',
 			'-webkit-transform','translate(0,0)'
 		);
-		$('#nav').attr('ischanging', 'true');
+		nav.attr('ischanging', 'true');
 		$(this).css('display','none',
 			'-webkit-animation-play-state','paused',
 			'animation-play-state','paused'
 		);
 	});
 
-	$('#nav').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
+	$(document).on('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', '#nav', function(e) {
 		$(this).attr('ischanging', 'false');
 	});
 
-	$('#menuInNav').bind('click', function() {
-		if($('#nav').attr('ischanging') == 'true') return;	
-		$('#nav').css(
+	$(document).on('click', '#menuInNav', function() {
+		var nav = $('#nav');
+		if(nav.attr('ischanging') == 'true') return;	
+		nav.css(
 			'transform','translate(0,-100%)',
 			'-o-transform','translate(0,-100%)',
 			'-moz-transform','translate(0,-100%)',
 			'-ms-transform','translate(0,-100%)',
 			'-webkit-transform','translate(0,-100%)'
 		);
-		$('#nav').attr('ischanging', 'true');
+		nav.attr('ischanging', 'true');
 		$('#menu').css('display','block',
 			'-webkit-animation-play-state','running',
 			'animation-play-state','running'
 		);
 	});
 
-	$(window).bind('mousewheel DOMMouseScroll keydown', function(e) {
+	$(window).on('mousewheel DOMMouseScroll keydown', function(e) {
 		var funcName = Data.scrollFuncMapping[Data.block['default']];
 		Data.scrollFunc[funcName](e);
 	});
 	
 	//绑定渐变结束事件,重新激活绑定的事件
-	$('.intrCon, #groupImgContainer, #workSecContainer').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
+	$(document).on('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', '.intrCon, #groupImgContainer, #workSecContainer',function(e) {
 		Data.changing = false;
 	});
-	$('#cover').bind('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', function(e) {
+	$(document).on('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', '#cover',function(e) {
 		$(this).css('display','none');
 		$('#wave').css('display','none');
 	});
-	$('.leau').bind('webkitAnimationEnd animationend', function() {
+	$(document).on('webkitAnimationEnd animationend', '.leau', function() {
 		$(this).removeClass('lea');
 	});
 
@@ -95,7 +97,6 @@ define(function(require) {
 	};
 
 	$('.Dot').on('click', function(e) {
-		console.log(22);
 		var arr = ['defaultDot', 'dot', 'worksDot', 'intrDot', 'eventDot', 'joinDot'];
 		var This = $(this);
 		for(var i in arr) {
@@ -139,7 +140,6 @@ define(function(require) {
 
 	
 	*/
-	$('#group').css('display','none');
 	$('.groupArrow').bind('click', function(e){
 		var value = Number($(this).attr('val'));
 
@@ -148,16 +148,19 @@ define(function(require) {
 
 	$('.worksArrow').bind('click', function(e){
 		var value = Number($(this).attr('val'));
-		Data.scroll(e, {arrow:value,direction: 'x',quantity: 4, block: 'works', isLoca:true}, Data.exeHandler['works']);
+		Data.scroll(e, {arrow:value,direction: 'x',quantity: 9, block: 'works', isLoca:true}, Data.exeHandler['works']);
 	});
 	//----------------介绍部分开始----------------
-	$('#intrImgCon').height($('#intrImgCon').width() * 1.8);	
+	//$('#intrImgCon').height($('#intrImgCon').width() * 1.8);	
 	//大事记页面的自适应也是相同操作
-	$('.eventImgCon').height($('.eventImgCon[val=0]').width() / 1.8);
+	//$('.eventImgCon').height($('.eventImgCon[val=0]').width() / 1.8);
+
+
+
 	$(window).resize(function() {
-		$('#intrImgCon').height($('#intrImgCon').width() * 1.8);	
-		$('.eventImgCon').height($('.eventImgCon[val=0]').width() / 1.8);
-		Data.workComple();
+		try{
+			window.preview[$('.mainBlock[active=1]').attr('val')]();
+		} catch(e){}	
 	});
 	//----------------介绍部分结束----------------
 	//测试用
@@ -167,7 +170,7 @@ define(function(require) {
 //		$('#load2Container').css('top','29%');
 //		clearInterval(window.wave);
 //		Data.isActive = true;
-		Data.workComple();
+//		Data.workComple();
 	});	
 	
 });

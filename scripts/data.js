@@ -1,21 +1,28 @@
+var galleryLeft = 0;
+window.preview['1'] = function() {
+	var intrImgCon = $('#intrImgCon');
+	intrImgCon.height(intrImgCon.width() * 1.8);
+};
+window.preview['3'] = function() {
+	$('.eventImgCon').height($('.eventImgCon[val=0]').width() / 1.8);
+};
+window.preview['4'] = function() {
+	var gallery = $('#gallery');
+	//不能使用offset().left
+	while(gallery.width() + galleryLeft < $(window).width()) {			
+		var img = new Image();
+		img.src = 'images/gallery.jpg';
+		gallery.append(img);
+	}
+};
+
 define(function(require, exports, module) {
 	require('jquery');
 	var data = {};
 	//以防在没加载完就开始滚动
 //	data.isActive = false;
 
-	//作品页长图补全
-	data.galleryLeft = 0;
-	data.workComple = function() {
-		//不能使用offset().left
-		while($('#gallery').width() + data.galleryLeft < $(window).width()) {
-			
-			var img = new Image();
-			img.src = 'images/gallery.jpg';
-			$('#gallery').append(img);
-		}
-	}
- 	var eventYear = ['00', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15'];
+	var eventYear = ['00', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15'];
 	//var eventList = [];
 	data.changing = false;
 	data.block = {
@@ -31,24 +38,28 @@ define(function(require, exports, module) {
 		'default': 
 			function(param) {
 				var block = data.block['default'];
-				$('.mainBlock:eq(' + param.loca + ')').css('display','block');
+				$('.mainBlock:eq(' + param.loca + ')').attr('active','1');
 				for (var i = 0; i < 5; i++) {
 					var a = i;
 					if (a < param.loca)
 						$('.mainBlock:eq(' + a + ')').animate({'top': '-100%'},500,function() {
 							if(a != 4) return;
-							$('.mainBlock:eq(' + block + ')').css('display','none');
+							$('.mainBlock:eq(' + block + ')').attr('active','0');
 							data.changing = false;
 						});
 					else
 						$('.mainBlock:eq(' + a + ')').animate({'top': '0%'},500,function() {
 							if(a != 4) return ;
-							$('.mainBlock:eq(' + block + ')').css('display','none');
+							$('.mainBlock:eq(' + block + ')').attr('active','0');
 							data.changing = false;
 						});
 				}
+				try {
+					window.preview[param.loca]();
+				} catch(e){}
+
 				if(param.loca != 5) $('.navList[val=' + param.loca + ']').attr('isselected', 'true');
-				if(data.block['default'] !=5) $('.navList[val=' + data.block['default'] + ']').attr('isselected', 'false');	
+				if(data.block['default'] !=5) $('.navList[val=' + block + ']').attr('isselected', 'false');	
 				
 			},
 		'introduction':
@@ -86,7 +97,6 @@ define(function(require, exports, module) {
 			},
 		'event':
 			function(param) {
-					console.log('ee'+data.block['event']);
 				var firstDir, thirdDir, next, pre, center = $('.time[value=center]'), dir;
 				if(param.loca > data.block['event']) 
 					dir = 'up';
@@ -130,8 +140,8 @@ define(function(require, exports, module) {
 				$('.worksDot[val=' + param.loca + ']').attr('check', 'true');
 				$('.worksDot[val=' + data.block['works'] + ']').attr('check', 'false');	
 
-				data.galleryLeft = -param.loca * 500;
-				$('#gallery').css('transform', 'translate('+ data.galleryLeft +'px)');
+				galleryLeft = -param.loca * 500;
+				$('#gallery').css('transform', 'translate('+ galleryLeft +'px)');
 
 				$('.worksName[val=' + data.block['works'] + ']').css('opacity',0);
 				$('.worksName[val=' + param.loca + ']').css('opacity',1);
@@ -142,7 +152,7 @@ define(function(require, exports, module) {
 				$('#worksNameCon').width($('.worksName[val=' + param.loca + ']').width() + 20);
 				$('.leau').addClass('lea');
 				//判断如果出界了,马上增补一张(或多张)
-				data.workComple();	
+				window.preview['4']();
 			}
 	};
 
@@ -224,20 +234,20 @@ define(function(require, exports, module) {
 				}
 				if(loca < 0) loca = data.block['default'] - 1;
 				else if(loca > param.quantity) loca = data.block['default'] + 1;
-				$('.mainBlock:eq(' + loca + ')').css('display','block');
+				$('.mainBlock:eq(' + loca + ')').attr('active','1');
 				for (var i = 0; i < 5; i++) {
 					var block = data.block['default'];
 					var a = i;
 					if (a < loca)
 						$('.mainBlock:eq(' + a + ')').animate({'top': '-100%'},700,function() {
 							if(a != 4) return;
-							$('.mainBlock:eq(' + block + ')').css('display','none');
+							$('.mainBlock:eq(' + block + ')').attr('active','0');
 							data.changing = false;
 						});
 					else
 						$('.mainBlock:eq(' + a + ')').animate({'top': '0%'},700,function() {
 							if(a != 4) return;
-							$('.mainBlock:eq(' + block + ')').css('display','none');
+							$('.mainBlock:eq(' + block + ')').attr('active','0');
 							data.changing = false;
 						});
 
@@ -245,6 +255,12 @@ define(function(require, exports, module) {
 				if (loca != 5) $('.navList[val=' + loca + ']').attr('isselected', 'true');
 				if (data.block['default'] != 5) $('.navList[val=' + data.block['default'] + ']').attr('isselected', 'false');
 				
+				try {
+					window.preview[loca]();
+					console.log(param.block);
+				} catch(e){
+					console.log(e);
+				}
 				data.block['default'] = loca;
 				return ;
 			}
@@ -252,7 +268,6 @@ define(function(require, exports, module) {
 		
 		param.loca = loca;
 		handler(param);
-
 		data.block[param.block] = loca;
 	}
 
@@ -271,7 +286,7 @@ define(function(require, exports, module) {
 			data.scroll(e, {direction: 'y',quantity: 5, block: 'group', isLoca:false}, data.exeHandler['group']);
 		},
 		'works': function(e) {
-			data.scroll(e, {direction: 'x', quantity: 8, block: 'works', isLoca:false}, data.exeHandler['works']);
+			data.scroll(e, {direction: 'x', quantity: 9, block: 'works', isLoca:false}, data.exeHandler['works']);
 		},		
 		'event': function(e) {
 			data.scroll(e, {direction: 'y', quantity: 12, block: 'event', isLoca:false}, data.exeHandler['event']);
@@ -280,3 +295,4 @@ define(function(require, exports, module) {
 	data.scrollFuncMapping = ['default', 'introduction', 'group', 'event', 'works', 'join'];
 	module.exports = data;
 });
+

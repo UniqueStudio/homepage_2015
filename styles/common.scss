@@ -4,7 +4,7 @@ $transFunc : cubic-bezier(.82,.03,.41,.59);
 //$transFunc: cubic-bezier(.92,.06,.37,.58);
 html{
 	color:#333333;
-	font-family: 'lanting';
+	font-family: 'lanting',Arial;
 //  -webkit-font-smoothing: antialiased;
 //  -webkit-text-stroke-width: 0.2px;
  // -moz-osx-font-smoothing: grayscale;
@@ -22,6 +22,7 @@ html{
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .hoverImg {
 	width:0;
   animation: scales 0.5s ease-in-out infinite alternate;
@@ -379,7 +380,7 @@ html{
 	position: relative;	
 }
 .mainBlock{
-//	display:none;
+	display:none;
 	top:0;
 	overflow: hidden;
 	position: absolute;
@@ -388,7 +389,9 @@ html{
 	background-image:url(../images/dot.jpg);
 	background-size: 10px 10px;
 	will-change:top;
-
+}
+.mainBlock[active='1']{
+	display:block;
 }
 #circle{
 	position:absolute;
@@ -522,6 +525,7 @@ html{
 	height:16.6667%;
 	width:100%;
 	position:relative;
+	overflow:hidden;
 }
 .groupImg{
 	width:60%;
@@ -596,6 +600,7 @@ html{
 }
 #groupRight{
 //	background-color: #ACDBEF;
+	vertical-align:top;
 }
 .groupArrow > a{
 	height:17px;
@@ -897,6 +902,7 @@ html{
 //---------报名页开始始--------------
 #join, #chat{
 	//display:inline-block;
+	overflow:hidden;
 }
 #joinAside{
 	z-index:5;
@@ -912,9 +918,7 @@ html{
 #recruit_form, #chat > div{
 	width:70%;
 	min-width:900px;
-	height:371px;	
-	
-	
+	height:372px;		
 }
 #recruit_form textarea{
 	width:335px;
@@ -1035,6 +1039,28 @@ html{
 	border: solid #C0BABA 1px;
 	border-radius:3px;
 }
+#inputBox>input::-webkit-input-placeholder ,#selfIntro>textarea::-webkit-input-placeholder{
+	font-family:Arial;
+	font-size:14px;
+}
+
+#inputBox>input::-moz-input-placeholder ,#selfIntro>textarea::-moz-input-placeholder{
+	font-family:Arial;
+	font-size:14px;
+}
+#inputBox>input:-moz-input-placeholder ,#selfIntro>textarea:-moz-input-placeholder{
+	font-family:Arial;
+	font-size:14px;
+}
+#inputBox>input::-ms-input-placeholder ,#selfIntro>textarea::-ms-input-placeholder{
+	font-family:Arial;
+	font-size:14px;
+}
+#inputBox>input::input-placeholder ,#selfIntro>textarea::input-placeholder{
+	font-family:Arial;
+	font-size:14px;
+}
+
 #inputBox>input:focus::-webkit-input-placeholder ,#selfIntro>textarea:focus::-webkit-input-placeholder{
 	color:white;
 }
@@ -1045,6 +1071,9 @@ html{
 	color:white;
 }
 #inputBox>input:focus::-ms-input-placeholder ,#selfIntro>textarea:focus::-ms-input-placeholder{
+	color:white;
+}
+#inputBox>input:focus::input-placeholder ,#selfIntro>textarea:focus::input-placeholder{
 	color:white;
 }
 #inputBox>div{
@@ -1148,15 +1177,24 @@ label>.radio{
 	-moz-transition: opacity 0.5s;
 	-webkit-transition: opacity 0.5s;
 	-ms-transition: opacity 0.5s;
-	p{
-		position:absolute;
-		bottom:0;
-		width:100%;
-		text-align:center;
-		margin-bottom:10px;
-	}
+
 }
-.greyCover:hover{
+.display1>p, .display2>p{
+	top:110%;
+	width:100%;
+	text-align:center;
+	font-size:14px;
+}
+.greyCover>	p{
+	bottom:0;
+	width:100%;
+	text-align:center;
+	margin-bottom:10px;
+	color:white;
+	font-size:14px;
+}
+
+.display3:hover>.greyCover, .display9:hover>.greyCover{
 	opacity:1;
 }
 .display1{

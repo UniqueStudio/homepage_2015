@@ -59,6 +59,15 @@ body {
 	-o-transform: translate(-50% ,-50%);
 	-webkit-transform: translate(-50% ,-50%);
 }
+.XYCenterNew{
+	margin: auto;
+	position: absolute;
+	top: 0; 
+	left: 0; 
+	bottom: 0; 
+	right: 0;
+}
+
 @keyframes scales {
   from {
     transform: scale(0.98);

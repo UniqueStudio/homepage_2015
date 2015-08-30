@@ -26,7 +26,7 @@
 <body class="full">
 	<div id="main" style="top: 0%" class="full">
 		<!--		<div id="circle" class="XYCenter">-->
-		<section id="home" class="mainBlock" style="z-index:6;display:block">
+		<section id="home" class="mainBlock" style="z-index:6" active="1" val="0">
 			<div id="cover" class="full">
 			</div>
 
@@ -103,50 +103,41 @@
 				})();
 	
 				
-				(function() {
+				//(function() {
 					var container = document.getElementById('loadImgContainer');
+					var hoverContainer = document.getElementById('hoverImgContainer');
 					var html = document.getElementsByTagName('html')[0];
 					var home = document.getElementById('home');
 					home.style.height = html.style.height;
 					home.style.width = html.style.width;
-					function resizeLoadContainer() {
+					window.preview = {};
+					window.preview['0'] = function () {
 						if(html.offsetWidth/html.offsetHeight < 16/9) {
 							var width = html.offsetHeight *16/9 +'px';
 							container.style.width = width;
-							var width = html.offsetHeight *16/9 +'px';
-							document.getElementById('hoverImgContainer').style.width = width;
+							hoverContainer.style.width = width;
 							document.getElementById('bgImg').style.width = width;
 						}
 						else {
-							document.getElementById('hoverImgContainer').style.width = '100%';
-							document.getElementById('bgImg').style.width = '100%';
 							container.style.width = '100%';
+							document.getElementById('bgImg').style.width = '100%';
+							hoverContainer.style.width = '100%';
 						}
-						container.style.height = Number(getComputedStyle(container).width.replace('px','')) * 0.5625 + 'px';
+						container.style.height = container.offsetWidth * 0.5625 + 'px';
 					}
-					resizeLoadContainer();
-					window.onresize = function() {
-							resizeLoadContainer();
-					};
-				})();
+					window.preview['0']();
+//					window.onresize = function() {
+						//if(home.style.display == 'none') return;
+//						window.preview['0']();
+//					};
+			//	})();
 			</script>
 
 		</section>
-		<!--	</div>-->
-	<script>
-/*
-		var circle = document.getElementById('circle');
-		var html = document.getElementsByTagName('html')[0];
-		var radius = Math.sqrt(Math.pow(html.offsetHeight,2) + Math.pow(html.offsetWidth,2));
-		circle.style.height = radius + 'px';
-		circle.style.width = radius + 'px';
-		/*
-	</script>
-
 		
 
-		<section id="introduction" class="mainBlock" style="z-index:5">
-			<div class="XYCenter" id="intrMain">
+		<section id="introduction" class="mainBlock" style="z-index:5" val="1">
+			<div class="XYCenterNew" id="intrMain">
 				<div id="intrImgCon" class="YCenter">
 					<div value="0" aspect="z">
 						<img src="images/intr1.jpg" alt="介绍图片" class="z">
@@ -186,7 +177,7 @@
 				<div class="animation" style="left:17%; top:23%; width:30px;height:30px;border:1px solid white;border-radius:15px"></div>
 			</div>
 			<div id="groupLeft" class="groupBlock">
-				<div style="position:relative;height:100%;width:15%;display:inline-block">	
+				<div style="position:relative;height:100%;width:15%;display:inline-block;vertical-align:top">	
 					<aside id="groupAside" class="XYCenter">
 						<div class="groupArrow" id="groupArrowUp" val="-1">
 							<a href="javascript:void(0)"></a>
@@ -254,14 +245,14 @@
 						<span value="2">Design组主要进行各个平台软件、网页及WebApp的界面和交互设计，也会进行游戏设计和视频制作。我们并非美工而是设计师，在这里你可以做任何发挥艺术天赋，并借由技术和互联网闪耀光芒的设计。</span>
 						<span value="3">PM组是用户与开发技术人员之间沟通的桥梁，它以开发出能够满足用户需求的高质量的应用服务为目标；在产品的开发过程中致力于对产品功能、UI等方面的诠释，将创新的想法与前沿的技术结合起来并应用到实践中。</span>
 						<span value="4">Web组以通过互联网丰富生活为主要目的，时刻与最新的趋势保持同步。浏览器是我们的世界，在这里我们可以尽情地毁灭和创造。主要方向：网站开发、Web App开发、浏览器插件开发、微信公众平台开发。</span>	
-						<span value="5">lab组致力于探索最前沿的计算机技术，各种计算机算法是我们的基础技能。我们对高性能计算、智能硬件、SDN、人工智能和网络安全均有涉猎。从底层设备到上层应用：嵌入式设备、Linux系统、网络编程、服务器运维都是我们的方向。我们欢迎Geek，我们尊重个性！</span>
+						<span value="5">Lab 组是Geek们的聚集地。我们探索各领域的算法，捣鼓智能硬件和系统级开发，有时焊焊芯片，服务器运维是我们的拿手好戏。我们致力于编写高性能的代码，热衷于处理海量的数据。</span>
 					</div>
 				
 				</div>
 			</div	
 		></section>
 
-		<section id="greatEvent" class="mainBlock" style="z-index:3">
+		<section id="greatEvent" class="mainBlock" style="z-index:3" val="3">
 			<div id="axis">
 				<div class="absoXCenter time" value="top">
 					<img src="images/time.jpg">
@@ -277,117 +268,92 @@
 				</div>
 			</div>
 			<div id="eventRight">
-				<div class="eventImgCon XYCenter" val="0" style="opacity:1" see="1">
+				<style>.greyCover>p{color:white}</style>
+				<div class="eventImgCon XYCenterNew" val="0" style="opacity:1" see="1">
 					<div class="display1" val="0" style="opacity:1">
-						<div class="greyCover">
-							<p class="absoXCenter">华中科技大学机械学院98级的13名学生创立了联创团队</p>
-						</div>
+						<p class="absoXCenter">华中科技大学机械学院98级的13名学生创立了联创工作室</p>
 						<img src="images/greatEvent/2000.jpg">
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="1">
+				<div class="eventImgCon XYCenterNew" val="1">
 					<div class="display1" val="0">
-						<div class="greyCover">
-							<p class="absoXCenter">百万程序大赛获奖</p>
-						</div>
 						<img src="images/greatEvent/2004.jpg">
+						<p class="absoXCenter">趋势科技全国百万程序大赛团体第四名</p>
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="2">
+				<div class="eventImgCon XYCenterNew" val="2">
 					<div class="display1" val="0">
-						<div class="greyCover">
-							<p class="absoXCenter">微软创新杯office designer第三名</p>
-						</div>
 						<img src="images/greatEvent/2005.jpg">
+						<p class="absoXCenter">微软创新杯office designer第三名</p>
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="3">
+				<div class="eventImgCon XYCenterNew" val="3">
 					<div class="display1" val="0">
-						<div class="greyCover">
-							<p class="absoXCenter">微软创新杯visual game全球第五名</p>
-						</div>
 						<img src="images/greatEvent/2006.jpg">
+						<p class="absoXCenter">微软创新杯visual game全球第五名</p>
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="4">
+				<div class="eventImgCon XYCenterNew" val="4">
 					<div class="display2" val="0">
-						<div class="greyCover">
-							<p class="absoXCenter">韩国首尔微软创新杯it组全球第一名</p>
-						</div>
 						<img src="images/greatEvent/2007_1.jpg">
+						<p class="absoXCenter">韩国首尔微软创新杯IT组全球第一名</p>
 					</div>
 					<div class="display2" val="1">
-						<div class="greyCover">
-							<p class="absoXCenter">软件设计中国赛区第一</p>
-						</div>
 						<img src="images/greatEvent/2007_2.jpg">
+						<p class="absoXCenter">微软创新杯2007软件设计项目中国赛区第一，比尔盖茨亲自颁奖</p>
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="5">
+				<div class="eventImgCon XYCenterNew" val="5">
 					<div class="display2" val="0">
-						<div class="greyCover">
-							<p class="absoXCenter">法国巴黎微软创新杯it组全球第三名</p>
-						</div>
 						<img src="images/greatEvent/2008_1.jpg">
+						<p class="absoXCenter">法国巴黎微软创新杯IT组全球第三名</p>
 					</div>
 					<div class="display2" val="1">
-						<div class="greyCover">
-							<p class="absoXCenter">软件设计组全球第六名</p>
-						</div>
 						<img src="images/greatEvent/2008_2.jpg">
+						<p class="absoXCenter">软件设计组全球第六名</p>
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="6">
+				<div class="eventImgCon XYCenterNew" val="6">
 					<div class="display2" val="0">
-						<div class="greyCover">
-							<p class="absoXCenter">埃及开罗微软创新杯it组全球第二名</p>
-						</div>
 						<img src="images/greatEvent/2009_1.jpg">
+						<p class="absoXCenter">埃及开罗微软创新杯2009IT挑战项目全球第二名</p>
 					</div>
 					<div class="display2" val="1">
-						<div class="greyCover">
-							<p class="absoXCenter">软件项目无限潜力开发设计</p>
-						</div>
 						<img src="images/greatEvent/2009_2.jpg">
+						<p class="absoXCenter">软件项目无限潜力开发设计</p>
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="7">
+				<div class="eventImgCon XYCenterNew" val="7">
 					<div class="display2" val="0">
-						<div class="greyCover">
-							<p class="absoXCenter">波兰华沙微软创新杯it组全球第一名</p>
-						</div>
 						<img src="images/greatEvent/2010_1.jpg">
+						<p class="absoXCenter">波兰华沙，微软创新杯2010，在Challenge项目获得中获得全球冠军。</p>
 					</div>
 					<div class="display2" val="1">
-						<div class="greyCover">
-							<p class="absoXCenter">联创团队成立十周年庆典</p>
-						</div>
 						<img src="images/greatEvent/2010_2.jpg">
+						<p class="absoXCenter">联创团队成立十周年庆典</p>
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="8">
+				<div class="eventImgCon XYCenterNew" val="8">
 					<div class="display2" val="0">
-						<div class="greyCover">
-							<p class="absoXCenter">美国纽约微软创新杯it组全球第六名</P>
-						</div>
 						<img src="images/greatEvent/2011_1.jpg">
+						<p class="absoXCenter">美国纽约微软创新杯IT组全球第六名</P>
 					</div>
 					<div class="display2" val="1">
-						<div class="greyCover">
-							<p class="absoXCenter">软件设计组全国第二名</p>
-						</div>
 						<img src="images/greatEvent/2011_2.jpg">
+						<p class="absoXCenter">软件设计项目中国赛区第一</p>
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="9">
-					<div class="display1" val="0">
-						<div class="greyCover">
-							<p class="absoXCenter">腾讯html5创新大赛全国冠军</p>
-						</div>
-						<img src="images/greatEvent/2012.jpg">
+				<div class="eventImgCon XYCenterNew" val="9">
+					<div class="display2" val="0">
+						<img src="images/greatEvent/2012_1.jpg">
+						<p class="absoXCenter">腾讯html5创新大赛全国冠军</p>
+					</div>
+					<div class="display2" val="1">
+						<img src="images/greatEvent/2012_2.png">
+						<p class="absoXCenter">手机防盗软件“Within”在Google第三届 Android挑战赛中获得全国二等奖</p>
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="10">
+				<div class="eventImgCon XYCenterNew" val="10">
 					<div class="display9" val="0">
 						<div class="greyCover">
 							<p class="absoXCenter">微信公众平台创新大赛全国铜奖</p>
@@ -396,7 +362,7 @@
 					</div>
 					<div class="display9" val="1">
 						<div class="greyCover">
-							<p class="absoXCenter">与豌豆荚合作，举办了首届校园黑客马拉松大赛</p>
+							<p class="absoXCenter">举办了首届校园黑客马拉松大赛Unique Hack Day，为国内首场由大学生组织的大学生黑客马拉松</p>
 						</div>
 						<img src="images/greatEvent/2013_2.png">
 					</div>
@@ -408,13 +374,13 @@
 					</div>
 					<div class="display9" val="7">
 						<div class="greyCover">
-							<p class="absoXCenter">首届全国大学生RDMA（远程直接内存访问）编程竞赛 一等奖</p>
+							<p class="absoXCenter">全国大学生RDMA（远程直接内存访问）编程竞赛 一等奖</p>
 						</div>
 						<img src="images/greatEvent/2013_8.png">
 					</div>
 					<div class="display9" val="8">
 						<div class="greyCover">
-							<p class="absoXCenter">面向武汉业界与媒体举办首届联创团队产品发布会</p>
+							<p class="absoXCenter">联创团队开放日，首次面向武汉互联网业界与媒体举办首届联创团队产品交流会。</p>
 						</div>
 						<img src="images/greatEvent/2013_9.jpg">
 					</div>
@@ -426,7 +392,7 @@
 					</div>
 					<div class="display9" val="6">
 						<div class="greyCover">
-							<p class="absoXCenter">搜狐云引擎SendCloud编程马拉松 一等奖</p>
+							<p class="absoXCenter">搜狐云编程马拉松第一名</p>
 						</div>
 						<img src="images/greatEvent/2013_7.jpg">
 					</div>
@@ -438,12 +404,12 @@
 					</div>
 					<div class="display9" val="4">
 						<div class="greyCover">
-							<p class="absoXCenter">建立华中地区第一个镜像源，同Linux Deepin一起组建WHLUG</p>
+							<p class="absoXCenter">与深度Linux社区合作组建武汉linux user group，筹建华中科技大学Linux镜像源。</p>
 						</div>
 						<img src="images/greatEvent/2013_5.png">
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="11">
+				<div class="eventImgCon XYCenterNew" val="11">
 					<div class="display3" val="0">
 						<div class="greyCover">
 							<p class="absoXCenter">第一届全国高校软件定义网络（SDN）应用创新开发大赛三等奖&最佳潜力奖</p>
@@ -452,35 +418,25 @@
 					</div>
 					<div class="display3" val="1">
 						<div class="greyCover">
-							<p class="absoXCenter">6月 二度与豌豆荚合作，举办了第二届Unique Hack Day（校园黑客马拉松）大赛</p>
+							<p class="absoXCenter">举办第二届Unique Hack Day（校园黑客马拉松）大赛，超过150位来自全国各地的高校大学生参赛</p>
 						</div>
 						<img src="images/greatEvent/2014_2.jpg">
 					</div>
 					<div class="display3" val="2">
 						<div class="greyCover">
-							<p class="absoXCenter">第二届360杯全国大学生信息安全技术大赛 总分第三名&优秀个人奖</p>
+							<p class="absoXCenter">360全国大学生信息安全大赛团队总分全国第三名。</p>
 						</div>
 						<img src="images/greatEvent/2014_3.jpg">
 					</div>
 				</div>
-				<div class="eventImgCon XYCenter" val="12">
-					<div class="display3" val="0">
-						<div class="greyCover">
-							<p class="absoXCenter">联创团队十五周年，举办第三届Unique Hack Day(校园黑客马拉松）大赛，吸引全国150余名参赛者，规模空前。</p>
-						</div>
+				<div class="eventImgCon XYCenterNew" val="12">
+					<div class="display2" val="0">
 						<img src="images/greatEvent/2015_1.jpg">
+						<p class="absoXCenter">联创团队十五周年，举办第三届Unique Hack Day(校园黑客马拉松）大赛，吸引全国150余名参赛者，规模空前。</p>
 					</div>
-					<div class="display3" val="1">
-						<div class="greyCover">
-							<p class="absoXCenter">夺得第二届阿里巴巴安全技术大赛冠军</p>
-						</div>
+					<div class="display2" val="1">
 						<img src="images/greatEvent/2015_2.jpg">
-					</div>
-					<div class="display3" val="2">
-						<div class="greyCover">
-							<p class="absoXCenter">包揽“极客周末-华科挑战赛”前三名</p>
-						</div>
-						<img src="images/greatEvent/2015_3.jpg">
+						<p class="absoXCenter">第二届 #阿里巴巴安全技术大赛# 冠军（团队成员）</p>
 					</div>
 				</div>
 
@@ -502,7 +458,7 @@
 			</div>
 		</section>
 
-		<section id="works" class="mainBlock" style="z-index:2">
+		<section id="works" class="mainBlock" style="z-index:2" val="4">
 			<div class="full" style="min-height:600px;position:relative">
 				<aside id="worksAside" class="absoXCenter">
 					<a href="javascript:void(0)" class="worksArrow" id="worksArrowLeft" val="-1"></a>
@@ -583,7 +539,7 @@
 			</div>
 		</section>
 
-		<section id="contact" class="mainBlock" style="z-index:1">	
+		<section id="contact" class="mainBlock" style="z-index:1" val="5">	
 			<aside id="joinAside" class="YCenter">	
 				<div>
 					<a href="javascript:void(0)" class="joinDot Dot" val="0" check="true"></a>
@@ -595,7 +551,7 @@
 			<div class="full" id="joinCon" style="position:relative">
 				<div id="join" class="full">
 					
-					<form id="recruit_form" class="XYCenter">
+					<form id="recruit_form" class="XYCenterNew">
 						<div id="labelBox">
 							<label for="name">姓名</label>
 							<label>性别</label>
@@ -677,12 +633,12 @@
 						<div id="selfIntro">
 							<label for="selfIntroText" style="display:block">个人简介</label>
 							<textarea name="selfIntro" id="selfIntroText" placeholder="  自我介绍/组别意向的来由/个人优势等等"></textarea>
-							<input type="submit" name="submit" id="submit" value="提交" class="XCenter">
+							<input type="submit" name="submit" id="submit" value="提交" class="XCenter" style="color:white">
 						</div>
 					</form>
 				</div>
 				<div id="chat" class="full" style="position:relative">
-					<div class="XYCenter" style="height:463px;">
+					<div class="XYCenterNew" style="height:462px;">
 						<form>
 							<p style="margin-top:18%">姓名<input name="yName"></p>
 							<p>专业<input name="yPro"></p>
@@ -701,7 +657,7 @@
 							</p>
 							<p>中国湖北省武汉市洪山区珞瑜路1037号华中科技大学启明学院亮胜楼8楼</p>
 							<p>8th Floor, Building LiangSheng, 1037 Luoyu Road, Wuhan 430074, P.R.China</p>
-							<iframe src="http://m.amap.com/navi/?dest=114.437217,30.515058&destName=%E5%90%AF%E6%98%8E%E5%AD%A6%E9%99%A2&hideRouteIcon=1&key=ef1d3d2475ba6588b872b73c4f6177af" style="width:100%;height:200px;border:0"></iframe>
+							<iframe src="http://m.amap.com/navi/?dest=114.43060,30.5090058&destName=%E5%90%AF%E6%98%8E%E5%AD%A6%E9%99%A2&hideRouteIcon=1&key=ef1d3d2475ba6588b872b73c4f6177af" style="width:100%;height:200px;border:0"></iframe>
 						</div>
 					</div>
 				</div>
@@ -719,7 +675,7 @@
 			<div id="navFlex"></div>
 			<div id="listContainer">
 				<span class="defaultDot li Dot" val="0">
-					<a href="javascript:void(0)" class="navList sin" isselected="true">
+					<a href="javascript:void(0)" class="navList sin" isselected="true" val="0">
 						<span class="listCon lanting">首页</span>
 						<div class="clapboard"></div
 						><div class="listPicContainer XYCenter">
@@ -728,7 +684,7 @@
 					</a>
 				</span
 				><span class="defaultDot li Dot" val="1">
-					<a href="javascript:void(0)" class="navList dou">
+					<a href="javascript:void(0)" class="navList dou" val="1">
 						<span class="listCon">简介</span>
 						<div class="clapboard"></div
 						><div class="listPicContainer XYCenter">
@@ -737,7 +693,7 @@
 					></a>
 				</span
 				><span class="defaultDot li Dot" val="2">
-				<a href="javascript:void(0)" class="navList sin">
+				<a href="javascript:void(0)" class="navList sin" val="2">
 					<span class="listCon">组别</span>
 					<div class="clapboard"></div
 					><div class="listPicContainer XYCenter">
@@ -746,7 +702,7 @@
 				</a>
 				</span
 				><span class="defaultDot li Dot" val="3">
-				<a href="javascript:void(0)" class="navList dou">
+				<a href="javascript:void(0)" class="navList dou" val="3">
 					<span class="listCon">大事记</span>
 					<div class="clapboard"></div
 					><div class="listPicContainer XYCenter">
@@ -755,7 +711,7 @@
 				</a>
 				</span
 				><span class="defaultDot li Dot" val="4">
-				<a href="javascript:void(0)" class="navList sin">
+				<a href="javascript:void(0)" class="navList sin" val="4">
 					<span class="listCon">作品</span>
 					<div class="clapboard"></div
 					><div class="listPicContainer XYCenter">
@@ -772,9 +728,7 @@
 					</div>
 				</a>
 				</span
-				><span style="background-color:white;height:100%;display:inline-block" id="joinLi" class="defaultDot Dot" val="5">
-				<a href="javascript:void(0)" class="navList">
-					<span class="listCon" id="joinBtn">加入/联系</span>
+				><span style="background-color:white;height:100%;display:inline-block" id="joinLi" class="defaultDot Dot" val="5"> <a href="javascript:void(0)" class="navList" val="5"> <span class="listCon" id="joinBtn">加入/联系</span>
 				</a>
 				</span
 				><a href="javascript:void(0)" id="menuInNav">
