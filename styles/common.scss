@@ -268,13 +268,18 @@ html{
   //.li:hover .listCon{opacity:0}
 
 }
+.joinDotText{
+	position:relative;
+	display:inline-block;
+	left:8px;
+	vertical-align:middle;
+}
 #joinBtn{
 	background-color:#FFD924;
 	border-radius:12px;
-	width:85px;
+	width:94px;
 	height:24px;
 	text-align:center;
-	box-shadow:1px 1px 1px #D6B82C;
 }
 #joinLi:hover #joinBtn{
 	opacity:0.7;
@@ -408,94 +413,7 @@ html{
 
 
 
-//-------------漂浮动画开始-------------
-@keyframes YMove {
-  from {
-    transform: translate(0, -20%);
-  }
 
-  to {
-    transform: translate(0, 0);
-  }
-}
-@-moz-keyframes YMove {
-  from {
-    -moz-transform: translate(0, -20%);
-    transform: translate(0, -20%);
-  }
-
-  to {
-    -moz-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
-@-webkit-keyframes YMove {
-  from {
-    -webkit-transform: translate(0, -20%);
-    transform: translate(0, -20%);
-  }
-
-  to {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes RotateR {
-  from {
-    transform: rotate(0);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-moz-keyframes RotateR {
-  from {
-    -moz-transform: rotate(0);
-    transform: rotate(0);
-  }
-
-  to {
-    -moz-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes RotateR {
-  from {
-    -webkit-transform: rotate(0);
-    transform: rotate(0);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-#suspension{
-	display: none;
-	animation: YMove 5s ease-in-out infinite alternate;
-	-webkit-animation: YMove 5s ease-in-out infinite alternate;
-	-o-animation: YMove 5s ease-in-out infinite alternate;
-}
-
-.rotateR{
-	animation: RotateR 5s linear infinite;
-	-webkit-animation: RotateR 5s linear infinite;
-	-o-animation: RotateR 5s linear infinite;
-}
-
-@media screen and (max-aspect-ratio:8/3) and (min-width:600px) and (min-height:500px){ 
-	#suspension{
-		display: block;
-	}
-}
-
-.animation{
-	position: absolute;
-}
-//-------------漂浮动画结束-------------
 //-------------组别开始-------------
 #group{
 	min-width:900px;
@@ -665,7 +583,7 @@ html{
 .workBlock{
 	display: inline-block;
 	position:relative;
-	width: 11.111%;
+	width: 10%;
 	height:100%;
 }
 .worksImg{
@@ -673,7 +591,8 @@ html{
 	position: absolute;
 	//width:420px;
 	height:50%;
-	box-shadow:2px 2px 4px #978D8D;
+	box-shadow:2px 2px 5px #DAD2D2;
+//border: solid 1px grey;
 }
 #worksIntr{
 	top:70%;
@@ -689,7 +608,7 @@ html{
 	-webkit-transition: left 0.7s $transFunc 0.3s;
 	-o-transition: left 0.7s $transFunc 0.3s;
 	position:relative;
-	width: 900%;
+	width: 1000%;
 }
 #gallery{
 	transition: transform $scrollTime ease-out;
@@ -728,12 +647,12 @@ html{
 	width:17px;
 }
 #worksArrowLeft{
-	border-top:2px black solid;
-	border-left:2px black solid;
+	border-top:1px black solid;
+	border-left:1px black solid;
 }
 #worksArrowRight{
-	border-right:2px black solid;
-	border-bottom:2px black solid;
+	border-right:1px black solid;
+	border-bottom:1px black solid;
 }
 
 
@@ -793,6 +712,7 @@ html{
 	vertical-align:top;
 }
 #intrImgCon{
+	left:5%;
 	top:53%;
 	//min-height:100%;
 	width:30%;
@@ -879,6 +799,7 @@ html{
 	width:70%;
 	float:right;
 	position:relative;
+	margin-right:3%;
 }
 #intrRight > div{
 	margin-left:100px;
@@ -953,7 +874,7 @@ html{
 	border-radius:3px;
 }
 #address img{
-	height:100%;
+	height:93%;
 	margin-right:20px;
 }
 #chat form p{
@@ -986,7 +907,7 @@ html{
 	float:right;
 	white-space:normal;
 	p{
-		margin-bottom:1em;
+		margin-bottom:11px;
 	}
 }
 #submit{
@@ -1154,8 +1075,9 @@ label>.radio{
 }
 .eventImgCon > div{
 	opacity:0;
-	box-shadow:2px 2px 2px;
+//	box-shadow:2px 2px 2px;
 	position:relative;
+	top:-3%;
 }
 .eventImgCon[see='1']{
 	display:flex;
@@ -1200,8 +1122,6 @@ label>.radio{
 .display1{
 	width:50%;
 	height:50%;
-	margin-top:25%;
-	margin-bottom:25%;
 }
 .display2, .display3{
 	width:40%;
