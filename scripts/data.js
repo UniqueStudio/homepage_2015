@@ -26,7 +26,7 @@ define(function(require, exports, module) {
 	//var eventList = [];
 	data.changing = false;
 	data.block = {
-		'default': 0,
+		'default': location.href.match(/#apply$/)?5:0,
 		'introduction': 0,
 		'group': 0,
 		'join': 0,

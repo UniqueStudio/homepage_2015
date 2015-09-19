@@ -10,12 +10,15 @@
     <meta name="discription" content="联创队团是华中科技大学由学生自发组织自主实践自行运营的IT团队">
     <meta name="discription" content="联创团队网站提供了团队的所有基本信息，包括团队简介，团队作品，团队招新和联系方式">
     <script src="scripts/judgeBrowser.js"></script>
+
+
+	<!-- build:css(.tmp) styles/main.css -->
 	<link rel="stylesheet"  href="styles/cssreset-min.css">
 	<link rel="stylesheet"  href="styles/cssbase-min.css">
 	<link rel="stylesheet"  href="styles/base.css">
 	<link rel="stylesheet"  href="styles/index.css">
 	<link rel="stylesheet"  href="styles/common.css">
-	<link rel="stylesheet"  href="styles/main.css">
+	<!-- endbuild -->
 </head>
 <script>
 	window.process = 0;
@@ -91,7 +94,6 @@
 					window.wave = setInterval(function (){
 						draw();
 						document.getElementById('load2Container').style.top = 51-0.24*window.process + '%';
-						if(window.process != 0) console.log(window.process);
 						if(window.process >= 100) {
 							clearInterval(window.wave);
 							document.getElementById('cover').style.opacity = 0;
@@ -567,29 +569,29 @@
 							<input type="text" id="name" name="name">
 							<div>
 								<label>
-									<input type="radio" name="gender" value="男" checked="checked" style="display: none;">
+									<input type="radio" name="gender" value="male" checked="checked" style="display: none;">
 									<span class="radio checked"></span>
 									男
 								</label>
 								<label>
-									<input type="radio" name="gender" value="女" style="display: none;">
+									<input type="radio" name="gender" value="female" style="display: none;">
 									<span class="radio"></span>
 									女
 								</label>
 							</div>
 							<div>
 								<label>
-									<input type="radio" name="location" value="韵苑" checked="checked" style="display: none;">
+									<input type="radio" name="location" value="yy" checked="checked" style="display: none;">
 									<span class="radio checked"></span>
 									韵苑
 								</label>
 								<label>
-									<input type="radio" name="location" value="沁苑" style="display: none;">
+									<input type="radio" name="location" value="qy" style="display: none;">
 									<span class="radio"></span>
 									沁苑
 								</label>
 								<label>
-									<input type="radio" name="location" value="紫菘" style="display: none;">
+									<input type="radio" name="location" value="zs" style="display: none;">
 									<span class="radio"></span>
 									紫菘
 								</label>
@@ -614,12 +616,12 @@
 									iOS
 								</label>
 								<label>
-									<input type="radio" name="group" value="design" style="display: none;">
+									<input type="radio" name="group" value="Design" style="display: none;">
 									<span class="radio"></span>
 									Design
 								</label>	
 								<label>
-									<input type="radio" name="group" value="pm" style="display: none;">
+									<input type="radio" name="group" value="PM" style="display: none;">
 									<span class="radio"></span>
 									PM
 								</label>
@@ -633,27 +635,27 @@
 						<div id="selfIntro">
 							<label for="selfIntroText" style="display:block">个人简介</label>
 							<textarea name="selfIntro" id="selfIntroText" placeholder="  自我介绍/组别意向的来由/个人优势等等"></textarea>
-							<input type="submit" name="submit" id="submit" value="提交" class="XCenter" style="color:white">
+							<input type="button" name="submit" id="submit" value="提交" class="XCenter" style="color:white">
 						</div>
 					</form>
 				</div>
 				<div id="chat" class="full" style="position:relative">
 					<div class="XYCenterNew" style="height:462px;">
 						<form>
-							<p style="margin-top:18%">姓名<input name="yName"></p>
-							<p>专业<input name="yPro"></p>
-							<p>邮箱<input name="yAdd"></p>
+							<p style="margin-top:18%">姓名<input name="yName" id="name2"></p>
+							<p>专业<input name="yPro" id="major2"></p>
+							<p>邮箱<input name="yAdd" id="email2"></p>
 							<p>想法与建议<br>
-							<textarea></textarea></p>
-							<input type="submit" value="提交">
+							<textarea id="advice2"></textarea></p>
+							<input id="submit2" type="button" value="提交">
 						</form>
 						<div id="address">
 							<p style="margin-top:9px">hr@hustunique.com</p>
 							<p>+86 155-2727-9060 孟涛</p>
 							<p style="height:54px;margin-bottom:1.6em">
-								<img src="images/sina.jpg"></img>
-								<img src="images/wechat.jpg"></img>
-								<img src="images/renren.jpg"></img>
+							<a href="http://weibo.com/uniquestudio"><img src="images/sina.jpg"></a>
+							<a onclick="alert('微信公众号: uniquestudio')"><img src="images/wechat.jpg"></a>
+							<a href="http://page.renren.com/601317380"><img src="images/renren.jpg"></a>
 							</p>
 							<p style="line-height:1.5em">中国湖北省武汉市洪山区珞瑜路1037号华中科技大学启明学院亮胜楼8楼</p>
 							<p style="line-height:1.5em">8th Floor, Building LiangSheng, 1037 Luoyu Road, Wuhan 430074, P.R.China</p>
@@ -720,7 +722,7 @@
 				</a>
 				</span
 				><span class="li">
-				<a href="javascript:void(0)" class="dou">
+				<a href="http://hacks.hustunique.com/" class="dou">
 					<span class="listCon">HackDay</span>
 					<div class="clapboard"></div
 					><div class="listPicContainer XYCenter">
@@ -742,12 +744,31 @@
 			</div>-->
 		</a>
 	
-		<script src="/bower_components/seajs/dist/sea.js"></script>
+		<!-- build:js(.) scripts/vendor.js -->
+		<!-- bower:js-->
+		<script src="bower_components/seajs/dist/sea.js"></script>
+		<!-- endbower -->
+		<!-- endbuild -->
 
-		<script src="scripts/sea.js"></script>
 
+		<!-- build:js(.) scripts/plugins.js -->
+		<!-- endbuild -->
+
+		<!-- build:js scripts/main.js -->
+		<script>
+			if (location.href.match(/#apply/)) {
+				var allBlock = document.getElementsByClassName('mainBlock');
+				for (var i=0;i<5;i++){
+					allBlock[i].style.top="-100%";
+				}
+				allBlock[5].setAttribute("active", "1");
+				allBlock[0].setAttribute("active", "0");
+				document.getElementsByClassName('navList')[0].setAttribute("isselected",false);
+
+			}
+		</script>
 		<script src="scripts/main.js"></script>
-		<script src="scripts/cloud.js"></script>
+		<!-- endbuild -->
 
 </body>
 </html>

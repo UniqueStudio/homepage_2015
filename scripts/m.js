@@ -108,38 +108,7 @@ define(function(require) {
 			}
 		}
 	});
-	/*
-	$('.li').bind('click', function(e) {
-		var This = $(this);
-		Data.scroll(e, {target: This, quantity: 5,  block: 'default', isLoca:true}, Data.exeHandler['default']);
-	});
-	
-	$('.dot').bind('click', function(e) {		
-		var This = $(this);
-		Data.scroll(e, {target: This, quantity: 5, block: 'group', isLoca:true}, Data.exeHandler['group']);
-	});
 
-	$('.worksDot').bind('click', function(e) {		
-		var This = $(this);
-		Data.scroll(e, {target: This, quantity: 8, block: 'works', isLoca:true}, Data.exeHandler['works']);
-	});
-
-	$('.intrDot').bind('click', function(e) {		
-		var This = $(this);
-		Data.scroll(e, {target: This, quantity: 1, block: 'introduction', isLoca:true}, Data.exeHandler['introduction']);
-	});
-	$('.eventDot').bind('click', function(e) {		
-		var This = $(this);
-		Data.scroll(e, {target: This, quantity: 12, block: 'event', isLoca:true}, Data.exeHandler['event']);
-	});
-
-	$('.joinDot').bind('click', function(e) {		
-		var This = $(this);
-		Data.scroll(e, {target:This, quantity: 1,  block: 'join', isLoca:true}, Data.exeHandler['join']);
-	});
-
-	
-	*/
 	$('.groupArrow').bind('click', function(e){
 		var value = Number($(this).attr('val'));
 
@@ -150,27 +119,26 @@ define(function(require) {
 		var value = Number($(this).attr('val'));
 		Data.scroll(e, {arrow:value,direction: 'x',quantity: 9, block: 'works', isLoca:true}, Data.exeHandler['works']);
 	});
-	//----------------介绍部分开始----------------
-	//$('#intrImgCon').height($('#intrImgCon').width() * 1.8);	
-	//大事记页面的自适应也是相同操作
-	//$('.eventImgCon').height($('.eventImgCon[val=0]').width() / 1.8);
-
-
 
 	$(window).resize(function() {
 		try{
 			window.preview[$('.mainBlock[active=1]').attr('val')]();
 		} catch(e){}	
 	});
-	//----------------介绍部分结束----------------
-	//测试用
-	
-	$(document).ready(function() {
-//		$('#cover').css('opacity',0);
-//		$('#load2Container').css('top','29%');
-//		clearInterval(window.wave);
-//		Data.isActive = true;
-//		Data.workComple();
-	});	
+
+	$('#submit2').click(function() {
+		$.post('/advice',{
+			name:$('#name2').val(),
+			major: $('#major2').val(),
+			email: $('#email2').val(),
+			advice: $('#advice2').val()
+		}).done(function(r) {
+			if(r.length == 0){
+				alert('信息成功提交');
+			} else {
+				alert('信息错误');
+			}
+		});
+	});
 	
 });
