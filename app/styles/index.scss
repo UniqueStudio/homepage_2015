@@ -1,0 +1,114 @@
+@import "cssreset-min";
+@import "cssbase-min";
+@import "common";
+#designImg {
+  top: -35%;
+  left: -319%;
+}
+
+#webImg {
+  top: -39%;
+  left: -22%;
+}
+#pmImg {
+  top: -93%;
+  left: -27.1%;
+}
+#iosImg {
+  top: -51%;
+  left: -25.5%;
+}
+#labImg {
+  top: -39%;
+  left: -59.5%;
+}
+#monkeyImg {
+  top: 8%;
+  left: -591.5%;
+}
+#androidImg {
+  top: -67.5%;
+  left: -352.1%;
+}
+#yearImg {
+  top: -25%;
+  left: -39%;
+}
+
+#designImgHandle {
+  width: 4%;
+  top: 41%;
+  left: 15.5%;
+  height:7%;
+
+}
+#designImgHandle:hover>img{
+	width:491%;
+}
+#webImgHandle {
+  width: 4.5%;
+  top: 70%;
+  left: 67%;
+  height:7%;
+}
+#webImgHandle:hover>img{
+	width:305%;
+}
+#pmImgHandle {
+  width: 3%;
+  top: 49%;
+  left: 87.5%;
+  height:9%;
+}
+#pmImgHandle:hover>img{
+	width:190%;
+}
+#iosImgHandle {
+  width: 4%;
+  top: 73%;
+  left: 37.5%;
+  height:6%;
+}
+#iosImgHandle:hover>img{
+	width:290%;
+}
+#labImgHandle {
+  width: 3%;
+  top: 71%;
+  left: 19%;
+  height:8%;
+}
+#labImgHandle:hover>img{
+	width:557%;
+}
+#monkeyImgHandle {
+  width: 4%;
+  top: 25%;
+  left: 26%;
+  height:10%;
+}
+#monkeyImgHandle:hover>img{
+	width:753%;
+}
+#androidImgHandle {
+  width: 4.5%;
+  top: 15%;
+  left: 48%;
+  height:9%;
+}
+#androidImgHandle:hover>img{
+	width:509%;
+}
+#yearImgHandle {
+  width: 5%;
+  top: 33%;
+  left: 77%;
+  height:9%;
+}
+#yearImgHandle:hover>img{
+	width:379%;
+}
+.hoverImgHandle:hover>img{
+	-webkit-animation-play-state:running;
+	animation-play-state:running;
+}

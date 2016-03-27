@@ -1,0 +1,200 @@
+*{
+	//font-family:"lanting";
+}
+.rela {
+  position: relative;
+}
+.lan{
+	font-family:'lanting';
+}
+a {
+	outline: none;
+}
+.XCenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.full{
+	width: 100%;
+	height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+.nowrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.fixed{
+	position: fixed;
+}
+.YCenter{
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	-o-transform: translate(0, -50%);
+	-moz-transform: translate(0, -50%);
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+}
+.absoXCenter{
+	position: absolute;
+	left: 50%;
+	transform: translate(-50% ,0);
+	-ms-transform: translate(-50% ,0);
+	-moz-transform: translate(-50% ,0);
+	-o-transform: translate(-50% ,0);
+	-webkit-transform: translate(-50% ,0);
+}
+.XYCenter{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50% , -50%);
+	-ms-transform: translate(-50% ,-50%);
+	-moz-transform: translate(-50% ,-50%);
+	-o-transform: translate(-50% ,-50%);
+	-webkit-transform: translate(-50% ,-50%);
+}
+.XYCenterNew{
+	margin: auto;
+	position: absolute;
+	top: 0; 
+	left: 0; 
+	bottom: 0; 
+	right: 0;
+}
+
+@keyframes scales {
+  from {
+    transform: scale(0.98);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@-moz-keyframes scales {
+  from {
+    -moz-transform: scale(0.98);
+    transform: scale(0.98);
+  }
+
+  to {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes scales {
+  from {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes monkeyScales {
+  from {
+    transform: scale(0.98) rotate(-8deg);
+  }
+
+  to {
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+@-moz-keyframes monkeyScales {
+  from {
+    -moz-transform: scale(0.98) rotate(-8deg);
+    transform: scale(0.98) rotate(-8deg);
+  }
+
+  to {
+    -moz-transform: scale(1) rotate(-8deg);
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+@-webkit-keyframes monkeyScales {
+  from {
+    -webkit-transform: scale(0.98) rotate(-8deg);
+    transform: scale(0.98) rotate(-8deg);
+  }
+
+  to {
+    -webkit-transform: scale(1) rotate(-8deg);
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+@keyframes menuScale {
+  from {
+    transform: scale(0.8);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@-moz-keyframes menuScale {
+  from {
+    -moz-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+
+  to {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes menuScale {
+  from {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes shake{
+	from {
+		transform: rotate(10deg);
+	}
+	to{
+		transform: rotate(-10deg);
+	}
+}
+@-webkit-keyframes shake{
+	from {
+		-webkit-transform: rotate(10deg);
+		transform: rotate(10deg);
+	}
+	to{
+		-webkit-transform: rotate(-10deg);
+		transform: rotate(-10deg);
+	}
+}
+@-moz-keyframes shake{
+	from {
+		-moz-transform: rotate(10deg);
+		transform: rotate(10deg);
+	}
+	to{
+		-moz-transform: rotate(-10deg);
+		transform: rotate(-10deg);
+	}
+}

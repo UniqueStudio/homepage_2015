@@ -1,0 +1,19 @@
+{
+  "name": "homepage_2015",
+  "version": "1.0.0",
+  "description": "Homepage of UniqueStudio",
+  "main": " ",
+  "scripts": {
+    "test": " "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UniqueStudio/homepage_2015.git"
+  },
+  "author": "mingtao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UniqueStudio/homepage_2015/issues"
+  },
+  "homepage": "https://github.com/UniqueStudio/homepage_2015#readme"
+}
