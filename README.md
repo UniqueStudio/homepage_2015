@@ -1,9 +1,26 @@
 # homepage_2015
 The official website(2015) of UniqueStudio
 
-当前状态：
-设计师没有画完,就自己加了一些图片以供测试进度条,还不错
+##构建(部署可跳过)
+需要设备安装有 nodejs(包名: node/nodejs)
 
-疑难：
-给动图绑定鼠标移开即消失事件，居然可以通过手速破解；若在移开的过程中直接移出了浏览器，则事件失效
-同样是opera浏览器，在不同系统上反应不同
+``
+git clone https://github.com/UniqueStudio/homepage_2015
+``
+
+``
+cd homepage_2015/
+``
+
+``
+npm install
+``
+
+``
+npm run build
+``
+
+dist 文件夹中内容即为结果
+##部署
+请直接在release中下载
+
