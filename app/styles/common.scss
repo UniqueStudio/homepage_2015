@@ -832,11 +832,10 @@ html{
 	border:#C0BABA solid 1px;
 	border-radius:3px;
 	overflow:hidden;
+    box-sizing: border-box;
+    padding: 5px;
 }
 
-#contact{
-//	transform:translate(0, -100%);
-}
 #chat form{
 	margin-left:8%;
 	float:left;
@@ -855,6 +854,8 @@ html{
 	border:0;
 	color:white;
 	border-radius:3px;
+	padding-left: 5px;
+    padding-right: 5px;
 }
 #address img{
 	height:93%;
@@ -869,7 +870,7 @@ html{
 		width:162px;
 		float:right;
 		background-color:transparent;
-		border:0px;
+		border:0;
 		border-bottom:1px solid;
 		outline:none;
 	}
@@ -881,6 +882,8 @@ html{
 		background-color:transparent;
 		border:1px solid grey;
 		overflow:hidden;
+        padding: 5px;
+        box-sizing: border-box;
 	}
 }
 #address{
@@ -942,6 +945,8 @@ html{
 	width:200px;
 	border: solid #C0BABA 1px;
 	border-radius:3px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 #inputBox>input::-webkit-input-placeholder ,#selfIntro>textarea::-webkit-input-placeholder{
 	font-family:Arial;
