@@ -1,3 +1,4 @@
+var $ = require('./jquery');
 var galleryLeft = 0;
 window.preview['1'] = function() {
 	var intrImgCon = $('#intrImgCon');
@@ -16,8 +17,6 @@ window.preview['4'] = function() {
 	}
 };
 
-define(function(require, exports, module) {
-	require('jquery');
 	var data = {};
 	//以防在没加载完就开始滚动
 //	data.isActive = false;
@@ -112,7 +111,6 @@ define(function(require, exports, module) {
 					next = $('.time[value=top]');
 					firstDir = '100%';
 					thirdDir = '0%';
-
 				}
 				pre.attr('value',dir=='up'?'bottom':'top');
 				pre.css('top', thirdDir);
@@ -121,12 +119,12 @@ define(function(require, exports, module) {
 				var current = data.block['event'];
 				center.animate({'top': firstDir}, 700, function() {
 					center.attr('value', dir=='up'?'top':'bottom');
-					console.log(next.children());
 					next.children()[1].innerHTML = '20' + eventYear[param.loca];
-					
 					$('.eventImgCon[val='+current+']').attr('see',0);
 					$('.eventImgCon[val='+param.loca+']').attr('see',1);
-					setTimeout("$('.eventImgCon[val="+param.loca+"]>div').css('opacity', 1)",10);
+					setTimeout(function () {
+						$('.eventImgCon[val='+param.loca+']>div').css('opacity', 1);
+					},10);
 					next.animate({'top': '50%'}, 700, function() {
 						next.attr('value', 'center');
 						data.changing = false;	
@@ -293,6 +291,8 @@ define(function(require, exports, module) {
 		},
 	};
 	data.scrollFuncMapping = ['default', 'introduction', 'group', 'event', 'works', 'join'];
-	module.exports = data;
-});
+	module.exports = {
+		data: data,
+		$: $
+	};
 

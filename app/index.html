@@ -8,12 +8,7 @@
     <meta name="keywords" content="联创,华中科技大学,启明学院,学生团队,首页,招新,成果,联系方式">
     <meta name="discription" content="联创队团是华中科技大学由学生自发组织自主实践自行运营的IT团队">
     <meta name="discription" content="联创团队网站提供了团队的所有基本信息，包括团队简介，团队作品，团队招新和联系方式">
-    <script src="scripts/judgeBrowser.js"></script>
-
-
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet"  href="styles/index.css">
-    <!-- endbuild -->
+    <script src="scripts/head.build.js"></script>
   </head>
   <script>
 window.process = 0;
@@ -733,11 +728,8 @@ function processing(num) {
 		</nav>
 		<a id="menu" href="javascript:void(0)">
 			<img src="images/menu2.svg" alt="菜单" class="XYCenter" style="width:19px;">
-			<!--<div id="menuCenter">
-			</div>-->
 		</a>
 
-		<script src="./scripts/sea.js"></script>
 		<script>
 			if (location.href.match(/#apply/)) {
 				var allBlock = document.getElementsByClassName('mainBlock');
@@ -750,7 +742,6 @@ function processing(num) {
 
 			}
 		</script>
-		<script src="scripts/main.js"></script>
-		<!-- endbuild -->
+		<script src="./scripts/index.build.js"></script>
 </body>
 </html>

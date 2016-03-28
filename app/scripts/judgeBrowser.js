@@ -1,14 +1,17 @@
 /**
- *  *
- *   * Created by Mingtao Fu on 2015/7/28.
- *    */
+ * Created by Mingtao Fu on 2015/7/28.
+ */
 (function(){
 	var browser=navigator.appName;
 	var b_version=navigator.appVersion;
 	var version=b_version.split(";");
-	var trim_Version=version[1].replace(/[ ]/g,"");
-	if(browser=="Microsoft Internet Explorer"&&trim_Version.match(/MSIE[6789].0/) || trim_Version.match(/Chrome\/[123]/)) {
-		window.location.href="recommend.html";
+	try {
+		var trim_Version=version[1].replace(/[ ]/g,"");
+		if(browser=="Microsoft Internet Explorer"&&trim_Version.match(/MSIE[6789].0/) || trim_Version.match(/Chrome\/[123]/)) {
+			window.location.href="recommend.html";
+		}
+	} catch (e) {
+		console.warn(e);
 	}
 	var a={android:0,ipad:0,iphone:0,ipod:0,wp:0};
 	var b=window.navigator.userAgent.toLowerCase();
