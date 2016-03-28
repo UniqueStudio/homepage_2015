@@ -4,7 +4,8 @@
   "description": "Homepage of UniqueStudio",
   "main": " ",
   "scripts": {
-    "dev": "webpack --watch"
+    "dev": "webpack --watch",
+    "build": "grunt"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,15 @@
   "bugs": {
     "url": "https://github.com/UniqueStudio/homepage_2015/issues"
   },
-  "homepage": "https://github.com/UniqueStudio/homepage_2015#readme"
+  "homepage": "https://github.com/UniqueStudio/homepage_2015#readme",
+  "devDependencies": {
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-htmlmin": "^1.1.0",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-font-spider": "0.0.4"
+  }
 }

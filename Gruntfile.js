@@ -17,10 +17,10 @@ module.exports = function(grunt) {
           mangle: true //混淆
         },
         files: {
-          '<%= config.dist %>/scripts/index.js': ['<%= config.dist %>/scripts/index.js'],
+          '<%= config.dist %>/scripts/index.build.js': ['<%= config.app %>/scripts/index.build.js'],
+          '<%= config.dist %>/scripts/head.build.js': ['<%= config.app %>/scripts/head.build.js']
         }
       }
-
     },
     imagemin: {                          // Task
       dynamic: {                         // Another target
@@ -31,9 +31,9 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,                  // Enable dynamic expansion
-          cwd: '<% config.dist %>/images',                   // Src matches are relative to this path
-          src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
-          dest: '<% config.dist %>/images'                  // Destination path prefix
+          cwd: 'dist/images',                   // Src matches are relative to this path
+          src: ['**/*.{png,jpg,gif,svg}'],   // Actual patterns to match
+          dest: 'dist/images'                  // Destination path prefix
         }]
       }
     },
@@ -88,16 +88,19 @@ module.exports = function(grunt) {
           src: [
             '*.{ico,png,txt}',
             'images/{,*/}*.*',
-            'scripts/{,*/}*.js',
-            'styles/index.css',
-            'styles/cssreset-min.css',
+            //'scripts/{,*/}*.js',
+          //  'styles/index.css',
           '{,*/}*.html',
           'styles/fonts/{,*/}*.*'
           ]
         }]
       }
     },
-
+    clean: {
+      build: {
+        src: "dist"
+      }
+    }
   });
 
   // 加载包含任务的插件。
@@ -108,8 +111,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-font-spider');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // 默认被执行的任务列表。
-  grunt.registerTask('default', ['copy', 'uglify', 'htmlmin', 'cssmin', 'imagemin', 'font-spider']);
+  grunt.registerTask('default', ['clean', 'copy', 'uglify', 'htmlmin', /*'cssmin',*/ 'imagemin', 'font-spider']);
 
 };
