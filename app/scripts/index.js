@@ -3,6 +3,7 @@
  */
 var Data = require('./data').data;
 var $ = require('./data').$;
+require('./alert');
 (function(){
 	var html = document.getElementsByTagName('html')[0];
 	if(html.offsetWidth/html.offsetHeight < 16/9) {

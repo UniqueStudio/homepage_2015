@@ -255,9 +255,8 @@ window.preview['4'] = function() {
 				
 				try {
 					window.preview[loca]();
-					console.log(param.block);
 				} catch(e){
-					console.log(e);
+					//console.log(e);
 				}
 				data.block['default'] = loca;
 				return ;
