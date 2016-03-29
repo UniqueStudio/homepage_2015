@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+    - '5.1'
+
+before_script:
+    - npm install -g grunt-cli
+    - npm install grunt
+
+script:
+    - git config --global user.name "Hexchain Tong"
+    - git config --global user.email "haochentong@hustunique.com"
+    - git config --global push.default simple
+    - git clone --depth=1 https://$GH_TOKEN@github.com/UniqueStudio/uniquestudio.github.io.git _dist
+    - npm run build
+
+after_success:
+    - cd _dist
+    - rsync -a --delete --delete-after --exclude '.git' ../dist/ ./
+    - git add -A .
+    - git commit -a -m "update from travis, build $TRAVIS_BUILD_NUMBER at $(hostname)"
+    - git push --quiet origin master
+
+env:
+  global:
+    secure: yykF4VLy9LlTX1z0HbfF5xIDlyawx16PTzSMBHwcO3kqy8gL/6NgF3ooevldKxgN2KByVE6/wWZYOHy9uX7/Y21f2aTMk6qvrtsDodMzQWbg+iogxIiR5LOkzHA4sO6t+PQyUT+NrsbBTs9jqHIhRiOlD1qPcGy7jbeL3oqd3Pc8cA8fOv+vWvvvOKY3SzJtdD/KdvCrYZU57/UHJRKTbddgQJEWurRSqb3ZA8eCDoGVVhyPO4nZYibNdkOrVcXLAL7JaZ82th6nYUGL5FrepPQ7ubw5ckhRRPr5XB6pJuq3rQoi9c3Mp0k0HGK0JAP6EVETwD9P3ncitTfwy6MMf43vQoniFGgnnl5l9CASdyLyE7VUoQY/O1sgDx06IiqOUbCpU3vSI9C2Bl8AK0eAAjNbtqNUlUoTB6hkUtTFO449uOTe6NxqmeDciSDr5ASz0kar2+pYUnKDPZUxvfeBoGNIukfxuBnXzdYw2BZ1X18ekIGhBk68b6Jm+r4CQ6lbKlmJs4z9fZDYGEndsSkymw5iYtcsk5PCK+OBSq+/uKASWG326M3nN8LLXbAu+TedcKhOXpDim6yKDEDeGtfgKPydc7P5XcLpiO0M6JwkFWREBDNuDVH2TYTM9b8qliPzH5B5iWDrON8OpmhGb3DYlWkMizsyBJaGABFkpgvhquo=
