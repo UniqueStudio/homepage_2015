@@ -1,26 +1,6 @@
-# homepage_2015
-The official website(2015) of UniqueStudio
+# Homepage\_2015 + Travis ![travis](https://travis-ci.org/UniqueStudio/homepage_travis_test.svg)
+The official website of UniqueStudio, published at https://uniquestudio.github.io/
 
-##构建(部署可跳过)
-需要设备安装有 nodejs(包名: node/nodejs)
+## Building and deploying
 
-``
-git clone https://github.com/UniqueStudio/homepage_2015
-``
-
-``
-cd homepage_2015/
-``
-
-``
-npm install
-``
-
-``
-npm run build
-``
-
-dist 文件夹中内容即为结果
-##部署
-请直接在release中下载
-
+This project is automatically built and pushed to GitHub pages. See [`.travis.yml`](https://github.com/UniqueStudio/homepage_travis_test/blob/master/.travis.yml) for more info.
