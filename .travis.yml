@@ -16,6 +16,7 @@ script:
 after_success:
     - cd _dist
     - rsync -a --delete --delete-after --exclude '.git' ../dist/ ./
+    - cp ../CNAME .
     - git add -A .
     - git commit -a -m "update from travis, build $TRAVIS_BUILD_NUMBER at $(hostname)"
     - git push --quiet origin master
