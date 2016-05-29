@@ -7,8 +7,8 @@ before_script:
     - npm install grunt
 
 script:
-    - git config --global user.name "Hexchain Tong"
-    - git config --global user.email "haochentong@hustunique.com"
+    - git config --global user.name "$GIT_NAME"
+    - git config --global user.email "$GIT_EMAIL"
     - git config --global push.default simple
     - git clone --depth=1 https://$GH_TOKEN@github.com/UniqueStudio/uniquestudio.github.io.git _dist
     - npm run build
@@ -23,4 +23,4 @@ after_success:
 
 env:
   global:
-    secure: yykF4VLy9LlTX1z0HbfF5xIDlyawx16PTzSMBHwcO3kqy8gL/6NgF3ooevldKxgN2KByVE6/wWZYOHy9uX7/Y21f2aTMk6qvrtsDodMzQWbg+iogxIiR5LOkzHA4sO6t+PQyUT+NrsbBTs9jqHIhRiOlD1qPcGy7jbeL3oqd3Pc8cA8fOv+vWvvvOKY3SzJtdD/KdvCrYZU57/UHJRKTbddgQJEWurRSqb3ZA8eCDoGVVhyPO4nZYibNdkOrVcXLAL7JaZ82th6nYUGL5FrepPQ7ubw5ckhRRPr5XB6pJuq3rQoi9c3Mp0k0HGK0JAP6EVETwD9P3ncitTfwy6MMf43vQoniFGgnnl5l9CASdyLyE7VUoQY/O1sgDx06IiqOUbCpU3vSI9C2Bl8AK0eAAjNbtqNUlUoTB6hkUtTFO449uOTe6NxqmeDciSDr5ASz0kar2+pYUnKDPZUxvfeBoGNIukfxuBnXzdYw2BZ1X18ekIGhBk68b6Jm+r4CQ6lbKlmJs4z9fZDYGEndsSkymw5iYtcsk5PCK+OBSq+/uKASWG326M3nN8LLXbAu+TedcKhOXpDim6yKDEDeGtfgKPydc7P5XcLpiO0M6JwkFWREBDNuDVH2TYTM9b8qliPzH5B5iWDrON8OpmhGb3DYlWkMizsyBJaGABFkpgvhquo=
+    secure: "HI/ZK3GFOYt3go1Qer+Fu1mHwOuEKdw3snDQdC1Zh5f09ADmRYpM6SemIgciYah/9RSD2bTWdJp7KtMmERxUuPEh/org8TQAR51VkEUR6gCne6o7xklC8AtP8zM3x7CWL3IOtainE7tsfHMELdsvFmCVMy+v/MtfrmMFlXKPOmK7TeWM2EWruVq6rWp7HGfRi66J0rb4FxRTTqPV8YgopHhv9/MJNbFF35cBAktEESxtB7AAVj9xIgtidNk/zr4rJAIXeFTZoZTcbxvkQR4reK7EGUp41DoEFTwznbUuacDexz60v5v5i/qbfeuNygjX17dje7rMtN6dNQHXuxfLCqtBEp8t8eoH6ZNGca7SxvhFqzvlM/e+p7H2tkFbGXv1ftjolg9HkeAy9sQUbKhkFtMYX73GyT4ZOsY8EQfnf+8NVbauS+qJIFq1znvqN+/p5PqPyCOIFtQfGjSJ28XtWFAPKzqwxLs92IWuNMRZFqjk+PXtbrm/rYhf5pGb1ZoZOgMQ5jbdGUr1+Ly5BxzC0xZFY4F7OraJivu3ikB/7KdGudPMnTDehckvSLI0qRKcxLETpQBhPju9vhmZ5gARn7DqbsKtj8plmY8wvpI9ISa7WStV1A8mRPHGFrvSD8BABb6bCu+al4m7Uaq/1858q1VEzxBoACShr+Xu76M3da8="
