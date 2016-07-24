@@ -10888,7 +10888,7 @@
 	    -o-transform: translate(-50%,-50%);transform: translate(-50%,-50%);' \
 	    }\
 	";
-	var innerHTML = "<img id='wechatCode' src='images/wechat' alt='二维码'>";
+	var innerHTML = "<img id='wechatCode' src='images/wechat.png' alt='二维码'>";
 	ele.innerHTML = innerHTML;
 	styleEle.innerHTML = style;
 	document.body.appendChild(styleEle);

@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/UniqueStudio/homepage_2015#readme",
   "devDependencies": {
+    "css-loader": "^0.23.1",
+    "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
@@ -25,6 +27,10 @@
     "grunt-contrib-htmlmin": "^1.1.0",
     "grunt-contrib-imagemin": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
-    "grunt-font-spider": "0.0.4"
+    "grunt-font-spider": "0.0.4",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7"
   }
 }
