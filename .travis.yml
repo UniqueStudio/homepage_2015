@@ -6,7 +6,7 @@ node_js:
 
 before_script:
     - npm install -g grunt-cli
-    - npm install grunt
+    - npm install
 
 script:
     - git config --global user.name "$GIT_NAME"
