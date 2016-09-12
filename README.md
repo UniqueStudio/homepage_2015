@@ -1,4 +1,4 @@
-# Homepage\_2015 + Travis [![travis](https://travis-ci.org/UniqueStudio/homepage_travis_test.svg)](https://travis-ci.org/UniqueStudio/homepage_travis_test)
+# Homepage\_2015 + Travis [![travis](https://travis-ci.org/UniqueStudio/homepage_2015.svg)](https://travis-ci.org/UniqueStudio/homepage_travis_test)
 The official website of UniqueStudio, published at https://uniquestudio.github.io/
 
 ## Building and deploying
